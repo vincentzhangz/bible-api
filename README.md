@@ -16,7 +16,7 @@ A RESTful API for Bible translations, built with Rust and PostgreSQL.
 docker-compose up --build
 ```
 
-The API will be available at `http://localhost:3000`
+The API will be available at `http://localhost:8080`
 
 ### Local Development
 
@@ -101,7 +101,7 @@ See `schema/translation.schema.json` for the full JSON Schema specification.
 
 1. Create a JSON file in `data/translations/` following the schema
 2. Ensure the `license` value references a valid license in `data/licenses/licenses.json`
-3. Run validation: `python3 scripts/validate_json.py`
+3. Run validation: `cargo test --test validate_json`
 4. Submit a pull request
 
 ## License
@@ -153,5 +153,5 @@ cargo build --release
 | -------------- | ---------------------------- | --------- |
 | `DATABASE_URL` | PostgreSQL connection string | Required  |
 | `API_HOST`     | API bind address             | `0.0.0.0` |
-| `API_PORT`     | API port                     | `3000`    |
+| `API_PORT`     | API port                     | `8080`    |
 | `RUST_LOG`     | Log level                    | `info`    |

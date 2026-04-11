@@ -10,8 +10,7 @@ Thank you for your interest in contributing.
 
 2. **Validate your JSON**:
    ```bash
-   pip install jsonschema
-   python3 scripts/validate_json.py
+   cargo test --test validate_json
    ```
 
 3. **Ensure license compliance**: The `license` field must reference a valid license in `data/licenses/licenses.json`
