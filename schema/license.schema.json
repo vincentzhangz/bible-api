@@ -1,0 +1,33 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "License Definition",
+  "description": "JSON schema for license data files",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": ["id", "name"],
+    "additionalProperties": false,
+    "properties": {
+      "id": {
+        "type": "string",
+        "description": "Unique license ID (e.g., public-domain, cc-by-4.0)"
+      },
+      "name": {
+        "type": "string",
+        "description": "Human-readable license name"
+      },
+      "url": {
+        "type": ["string", "null"],
+        "description": "URL to license text or info page"
+      },
+      "attributionRequired": {
+        "type": "boolean",
+        "default": false
+      },
+      "commercialUse": {
+        "type": "boolean",
+        "default": true
+      }
+    }
+  }
+}

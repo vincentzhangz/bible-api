@@ -1,0 +1,153 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://bible-api.example.com/schemas/translation.schema.json",
+  "title": "Bible Translation",
+  "description": "JSON schema for Bible translation data files",
+  "type": "object",
+  "required": ["id", "metadata", "books"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique translation ID in format 'xx-yyyyy' (e.g., en-kjv, id-tb)",
+      "pattern": "^[a-z]{2}-[a-z0-9_]+$"
+    },
+    "metadata": {
+      "type": "object",
+      "required": ["name", "language", "license"],
+      "additionalProperties": true,
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Full name of the translation"
+        },
+        "shortname": {
+          "type": ["string", "null"],
+          "description": "Short/abbreviated name"
+        },
+        "language": {
+          "type": "string",
+          "description": "ISO 639-1 language code",
+          "pattern": "^[a-z]{2}$"
+        },
+        "license": {
+          "type": "string",
+          "description": "License ID reference (must exist in licenses.json)"
+        },
+        "source": {
+          "type": ["string", "null"],
+          "enum": ["community", "official", null],
+          "default": "community"
+        },
+        "year": {
+          "type": ["string", "null"],
+          "description": "Publication year or date range"
+        },
+        "publisher": {
+          "type": ["string", "null"],
+          "description": "Publishing organization"
+        },
+        "description": {
+          "type": ["string", "null"],
+          "description": "HTML description of the translation"
+        },
+        "url": {
+          "type": ["string", "null"],
+          "description": "URL to the translation source"
+        },
+        "copyright_statement": {
+          "type": ["string", "null"],
+          "description": "Full copyright notice text"
+        },
+        "italics": {
+          "type": "boolean",
+          "default": false
+        },
+        "strongs": {
+          "type": "boolean",
+          "default": false
+        },
+        "red_letter": {
+          "type": "boolean",
+          "default": false
+        },
+        "paragraph": {
+          "type": "boolean",
+          "default": false
+        },
+        "official": {
+          "type": "boolean",
+          "default": false
+        },
+        "research": {
+          "type": "boolean",
+          "default": false
+        },
+        "version": {
+          "type": ["string", "null"],
+          "description": "Module/version identifier"
+        }
+      }
+    },
+    "books": {
+      "type": "array",
+      "description": "List of Bible books",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "testament", "chapters"],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Book identifier in kebab-case (e.g., genesis, 1-samuel)"
+          },
+          "name": {
+            "type": "string",
+            "description": "Full book name"
+          },
+          "testament": {
+            "type": "string",
+            "enum": ["old", "new"],
+            "description": "Testament division"
+          },
+          "chapters": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "required": ["chapter", "verses"],
+              "additionalProperties": false,
+              "properties": {
+                "chapter": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "description": "Chapter number"
+                },
+                "verses": {
+                  "type": "array",
+                  "minItems": 1,
+                  "items": {
+                    "type": "object",
+                    "required": ["verse", "text"],
+                    "additionalProperties": false,
+                    "properties": {
+                      "verse": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "description": "Verse number within chapter"
+                      },
+                      "text": {
+                        "type": "string",
+                        "description": "Verse text content"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

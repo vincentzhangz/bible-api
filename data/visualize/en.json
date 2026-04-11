@@ -1,0 +1,1773 @@
+{
+  "language": "en",
+  "language_name": "English",
+  "timeline": [
+    {
+      "key": "creation",
+      "event": "Creation",
+      "reference": "Genesis 1:1",
+      "estimated_year": -4000,
+      "category": "creation"
+    },
+    {
+      "key": "adam_eve",
+      "event": "Creation of Adam and Eve",
+      "reference": "Genesis 2:7-25",
+      "estimated_year": -4000,
+      "category": "creation"
+    },
+    {
+      "key": "fall",
+      "event": "The Fall",
+      "reference": "Genesis 3:1-24",
+      "estimated_year": -3990,
+      "category": "creation"
+    },
+    {
+      "key": "cain_abel",
+      "event": "Cain and Abel",
+      "reference": "Genesis 4:1-16",
+      "estimated_year": -3980,
+      "category": "creation"
+    },
+    {
+      "key": "flood",
+      "event": "The Great Flood",
+      "reference": "Genesis 6-9",
+      "estimated_year": -2500,
+      "category": "major_event"
+    },
+    {
+      "key": "babel",
+      "event": "Tower of Babel",
+      "reference": "Genesis 11:1-9",
+      "estimated_year": -2200,
+      "category": "major_event"
+    },
+    {
+      "key": "abraham_call",
+      "event": "Call of Abraham",
+      "reference": "Genesis 12:1-9",
+      "estimated_year": -2000,
+      "category": "patriarchs"
+    },
+    {
+      "key": "abraham_sacrifice",
+      "event": "Abraham's near sacrifice of Isaac",
+      "reference": "Genesis 22:1-19",
+      "estimated_year": -1980,
+      "category": "patriarchs"
+    },
+    {
+      "key": "isaac_birth",
+      "event": "Birth of Isaac",
+      "reference": "Genesis 21:1-7",
+      "estimated_year": -1960,
+      "category": "patriarchs"
+    },
+    {
+      "key": "jacob_esau",
+      "event": "Jacob and Esau",
+      "reference": "Genesis 25-36",
+      "estimated_year": -1900,
+      "category": "patriarchs"
+    },
+    {
+      "key": "joseph_dream",
+      "event": "Joseph's Dreams",
+      "reference": "Genesis 37:1-11",
+      "estimated_year": -1850,
+      "category": "patriarchs"
+    },
+    {
+      "key": "joseph_slavery",
+      "event": "Joseph Sold into Slavery",
+      "reference": "Genesis 37:12-36",
+      "estimated_year": -1840,
+      "category": "patriarchs"
+    },
+    {
+      "key": "joseph_egypt",
+      "event": "Joseph Rises in Egypt",
+      "reference": "Genesis 39-41",
+      "estimated_year": -1830,
+      "category": "patriarchs"
+    },
+    {
+      "key": "joseph_reunion",
+      "event": "Joseph Reunites with Family",
+      "reference": "Genesis 42-50",
+      "estimated_year": -1800,
+      "category": "patriarchs"
+    },
+    {
+      "key": "exodus",
+      "event": "Exodus from Egypt",
+      "reference": "Exodus 12:37-51",
+      "estimated_year": -1446,
+      "category": "patriarchs"
+    },
+    {
+      "key": "red_sea",
+      "event": "Parting of the Red Sea",
+      "reference": "Exodus 14",
+      "estimated_year": -1446,
+      "category": "patriarchs"
+    },
+    {
+      "key": "sinai_law",
+      "event": "Giving of the Law at Sinai",
+      "reference": "Exodus 19-20",
+      "estimated_year": -1446,
+      "category": "patriarchs"
+    },
+    {
+      "key": "tabernacle",
+      "event": "Construction of the Tabernacle",
+      "reference": "Exodus 25-40",
+      "estimated_year": -1445,
+      "category": "patriarchs"
+    },
+    {
+      "key": "spies",
+      "event": "Spies Sent into Canaan",
+      "reference": "Numbers 13",
+      "estimated_year": -1430,
+      "category": "wilderness"
+    },
+    {
+      "key": "wandering",
+      "event": "40 Years of Wilderness Wandering",
+      "reference": "Numbers 14:26-35",
+      "estimated_year": -1430,
+      "category": "wilderness"
+    },
+    {
+      "key": "balaam",
+      "event": "Balaam's Prophecy",
+      "reference": "Numbers 22-24",
+      "estimated_year": -1407,
+      "category": "wilderness"
+    },
+    {
+      "key": "joshua_leadership",
+      "event": "Joshua Leads Israel",
+      "reference": "Joshua 1",
+      "estimated_year": -1406,
+      "category": "history"
+    },
+    {
+      "key": "jericho",
+      "event": "Fall of Jericho",
+      "reference": "Joshua 6",
+      "estimated_year": -1406,
+      "category": "history"
+    },
+    {
+      "key": "conquest",
+      "event": "Conquest of Canaan",
+      "reference": "Joshua 10-12",
+      "estimated_year": -1406,
+      "category": "history"
+    },
+    {
+      "key": "judges_cycle",
+      "event": "Cycle of Judges",
+      "reference": "Judges 2:10-23",
+      "estimated_year": -1380,
+      "category": "history"
+    },
+    {
+      "key": "samson",
+      "event": "Samson's Story",
+      "reference": "Judges 13-16",
+      "estimated_year": -1100,
+      "category": "history"
+    },
+    {
+      "key": "ruth",
+      "event": "Story of Ruth",
+      "reference": "Ruth 1-4",
+      "estimated_year": -1150,
+      "category": "history"
+    },
+    {
+      "key": "samuel_call",
+      "event": "Samuel's Call",
+      "reference": "1 Samuel 3",
+      "estimated_year": -1100,
+      "category": "monarchy"
+    },
+    {
+      "key": "saul_king",
+      "event": "Saul Becomes First King",
+      "reference": "1 Samuel 10:1-25",
+      "estimated_year": -1050,
+      "category": "monarchy"
+    },
+    {
+      "key": "saul_rejected",
+      "event": "Saul Rejected as King",
+      "reference": "1 Samuel 15:10-35",
+      "estimated_year": -1040,
+      "category": "monarchy"
+    },
+    {
+      "key": "david_anointed",
+      "event": "David Anointed",
+      "reference": "1 Samuel 16:1-13",
+      "estimated_year": -1030,
+      "category": "monarchy"
+    },
+    {
+      "key": "david_goliath",
+      "event": "David vs Goliath",
+      "reference": "1 Samuel 17",
+      "estimated_year": -1030,
+      "category": "monarchy"
+    },
+    {
+      "key": "david_saul_friendship",
+      "event": "David and Jonathan's Friendship",
+      "reference": "1 Samuel 18:1-4",
+      "estimated_year": -1030,
+      "category": "monarchy"
+    },
+    {
+      "key": "david_king_judah",
+      "event": "David King over Judah",
+      "reference": "2 Samuel 2:1-7",
+      "estimated_year": -1010,
+      "category": "monarchy"
+    },
+    {
+      "key": "david_king_all_israel",
+      "event": "David King over All Israel",
+      "reference": "2 Samuel 5:1-5",
+      "estimated_year": -1003,
+      "category": "monarchy"
+    },
+    {
+      "key": "ark_transferred",
+      "event": "Ark Brought to Jerusalem",
+      "reference": "2 Samuel 6",
+      "estimated_year": -1000,
+      "category": "monarchy"
+    },
+    {
+      "key": "david_covenant",
+      "event": "Davidic Covenant",
+      "reference": "2 Samuel 7:8-17",
+      "estimated_year": -990,
+      "category": "monarchy"
+    },
+    {
+      "key": "temple_solomon",
+      "event": "Temple Construction by Solomon",
+      "reference": "1 Kings 6",
+      "estimated_year": -966,
+      "category": "monarchy"
+    },
+    {
+      "key": "solomon_wisdom",
+      "event": "Solomon's Wisdom",
+      "reference": "1 Kings 3:1-15",
+      "estimated_year": -971,
+      "category": "monarchy"
+    },
+    {
+      "key": "queen_sheba",
+      "event": "Queen of Sheba Visits",
+      "reference": "1 Kings 10:1-13",
+      "estimated_year": -950,
+      "category": "monarchy"
+    },
+    {
+      "key": "kingdom_split",
+      "event": "Kingdom Divides",
+      "reference": "1 Kings 12:1-24",
+      "estimated_year": -931,
+      "category": "monarchy"
+    },
+    {
+      "key": "elijah_ministry",
+      "event": "Elijah's Ministry",
+      "reference": "1 Kings 17-19",
+      "estimated_year": -870,
+      "category": "kingdom"
+    },
+    {
+      "key": "carmel_showdown",
+      "event": "Mount Carmel Contest",
+      "reference": "1 Kings 18",
+      "estimated_year": -870,
+      "category": "kingdom"
+    },
+    {
+      "key": "naaman_healing",
+      "event": "Naaman's Healing",
+      "reference": "2 Kings 5",
+      "estimated_year": -850,
+      "category": "kingdom"
+    },
+    {
+      "key": "jonah_nineveh",
+      "event": "Jonah and Nineveh",
+      "reference": "Jonah 1-4",
+      "estimated_year": -760,
+      "category": "kingdom"
+    },
+    {
+      "key": "amos_prophecy",
+      "event": "Amos Prophesies",
+      "reference": "Amos 1-9",
+      "estimated_year": -760,
+      "category": "kingdom"
+    },
+    {
+      "key": "hosea_marriage",
+      "event": "Hosea's Marriage",
+      "reference": "Hosea 1-3",
+      "estimated_year": -755,
+      "category": "kingdom"
+    },
+    {
+      "key": "israel_exile",
+      "event": "Assyrian Exile of Israel",
+      "reference": "2 Kings 17",
+      "estimated_year": -722,
+      "category": "exile"
+    },
+    {
+      "key": "hezekiah_reform",
+      "event": "Hezekiah's Reformation",
+      "reference": "2 Kings 18:1-8",
+      "estimated_year": -715,
+      "category": "kingdom"
+    },
+    {
+      "key": "senacherib",
+      "event": "Sennacherib's Invasion",
+      "reference": "2 Kings 18:17-37",
+      "estimated_year": -701,
+      "category": "kingdom"
+    },
+    {
+      "key": "josiah_reform",
+      "event": "Josiah's Reformation",
+      "reference": "2 Kings 22:1-23:30",
+      "estimated_year": -640,
+      "category": "kingdom"
+    },
+    {
+      "key": "jeremiah_ministry",
+      "event": "Jeremiah's Ministry",
+      "reference": "Jeremiah 1:1-19",
+      "estimated_year": -627,
+      "category": "kingdom"
+    },
+    {
+      "key": "judah_exile",
+      "event": "Babylonian Exile of Judah",
+      "reference": "2 Kings 25",
+      "estimated_year": -586,
+      "category": "exile"
+    },
+    {
+      "key": "jeremiah_lament",
+      "event": "Jeremiah's Lamentations",
+      "reference": "Lamentations 1-5",
+      "estimated_year": -586,
+      "category": "exile"
+    },
+    {
+      "key": "ezekiel_exile",
+      "event": "Ezekiel's Prophecies",
+      "reference": "Ezekiel 1-48",
+      "estimated_year": -573,
+      "category": "exile"
+    },
+    {
+      "key": "daniel_lions",
+      "event": "Daniel in the Lions' Den",
+      "reference": "Daniel 6",
+      "estimated_year": -539,
+      "category": "exile"
+    },
+    {
+      "key": "nebuchadnezzar_dreams",
+      "event": "Nebuchadnezzar's Dreams",
+      "reference": "Daniel 2, 4",
+      "estimated_year": -605,
+      "category": "exile"
+    },
+    {
+      "key": "return_babylon",
+      "event": "Decree to Return from Babylon",
+      "reference": "Ezra 1:1-4",
+      "estimated_year": -538,
+      "category": "exile"
+    },
+    {
+      "key": "temple_rebuilt",
+      "event": "Temple Rebuilt",
+      "reference": "Ezra 6:13-22",
+      "estimated_year": -516,
+      "category": "exile"
+    },
+    {
+      "key": "ezra_reform",
+      "event": "Ezra's Reforms",
+      "reference": "Ezra 7-10",
+      "estimated_year": -458,
+      "category": "exile"
+    },
+    {
+      "key": "nehemiah_walls",
+      "event": "Nehemiah Rebuilds Walls",
+      "reference": "Nehemiah 2-6",
+      "estimated_year": -445,
+      "category": "exile"
+    },
+    {
+      "key": "esther_queen",
+      "event": "Esther Becomes Queen",
+      "reference": "Esther 2:1-18",
+      "estimated_year": -483,
+      "category": "exile"
+    },
+    {
+      "key": "purim",
+      "event": "Feast of Purim Established",
+      "reference": "Esther 9:20-32",
+      "estimated_year": -473,
+      "category": "exile"
+    },
+    {
+      "key": "malachi",
+      "event": "Malachi's Prophecy",
+      "reference": "Malachi 1-4",
+      "estimated_year": -460,
+      "category": "exile"
+    },
+    {
+      "key": "silence_years",
+      "event": "400 Years of Silence",
+      "reference": "Between Malachi and Matthew",
+      "estimated_year": -460,
+      "category": "silence"
+    },
+    {
+      "key": "jesus_birth",
+      "event": "Birth of Jesus",
+      "reference": "Luke 2:1-20",
+      "estimated_year": -4,
+      "category": "new_testament"
+    },
+    {
+      "key": "magi_worship",
+      "event": "Magi Worship Jesus",
+      "reference": "Matthew 2:1-12",
+      "estimated_year": -4,
+      "category": "new_testament"
+    },
+    {
+      "key": "jesus_flight",
+      "event": "Flight to Egypt",
+      "reference": "Matthew 2:13-15",
+      "estimated_year": -4,
+      "category": "new_testament"
+    },
+    {
+      "key": "john_baptist_birth",
+      "event": "Birth of John the Baptist",
+      "reference": "Luke 1:57-80",
+      "estimated_year": -4,
+      "category": "new_testament"
+    },
+    {
+      "key": "jesus_grows",
+      "event": "Jesus Grows in Nazareth",
+      "reference": "Luke 2:39-52",
+      "estimated_year": 8,
+      "category": "new_testament"
+    },
+    {
+      "key": "jesus_baptism",
+      "event": "Baptism of Jesus",
+      "reference": "Mark 1:9-11",
+      "estimated_year": 27,
+      "category": "new_testament"
+    },
+    {
+      "key": "temptation",
+      "event": "Jesus Tempted in Wilderness",
+      "reference": "Matthew 4:1-11",
+      "estimated_year": 27,
+      "category": "new_testament"
+    },
+    {
+      "key": "wedding_canaan",
+      "event": "Wedding at Cana",
+      "reference": "John 2:1-12",
+      "estimated_year": 27,
+      "category": "new_testament"
+    },
+    {
+      "key": "jesus_ministry",
+      "event": "Jesus' Public Ministry Begins",
+      "reference": "Mark 1:14-15",
+      "estimated_year": 27,
+      "category": "new_testament"
+    },
+    {
+      "key": "sermon_mount",
+      "event": "Sermon on the Mount",
+      "reference": "Matthew 5-7",
+      "estimated_year": 28,
+      "category": "new_testament"
+    },
+    {
+      "key": "miracles",
+      "event": "Jesus' Miracles Begin",
+      "reference": "John 2:23-3:36",
+      "estimated_year": 27,
+      "category": "new_testament"
+    },
+    {
+      "key": "feeding_5000",
+      "event": "Feeding of the 5000",
+      "reference": "John 6:1-15",
+      "estimated_year": 29,
+      "category": "new_testament"
+    },
+    {
+      "key": "transfiguration",
+      "event": "Transfiguration",
+      "reference": "Matthew 17:1-13",
+      "estimated_year": 30,
+      "category": "new_testament"
+    },
+    {
+      "key": "lazarus",
+      "event": "Raising of Lazarus",
+      "reference": "John 11:1-45",
+      "estimated_year": 30,
+      "category": "new_testament"
+    },
+    {
+      "key": "triumphal_entry",
+      "event": "Triumphal Entry",
+      "reference": "Matthew 21:1-11",
+      "estimated_year": 30,
+      "category": "new_testament"
+    },
+    {
+      "key": "jesus_crucifixion",
+      "event": "Crucifixion of Jesus",
+      "reference": "Mark 15",
+      "estimated_year": 30,
+      "category": "new_testament"
+    },
+    {
+      "key": "jesus_resurrection",
+      "event": "Resurrection of Jesus",
+      "reference": "Mark 16",
+      "estimated_year": 30,
+      "category": "new_testament"
+    },
+    {
+      "key": "ascension",
+      "event": "Ascension of Jesus",
+      "reference": "Acts 1:1-11",
+      "estimated_year": 30,
+      "category": "new_testament"
+    },
+    {
+      "key": "pentecost",
+      "event": "Day of Pentecost",
+      "reference": "Acts 2",
+      "estimated_year": 30,
+      "category": "new_testament"
+    },
+    {
+      "key": "stephen_martyr",
+      "event": "Martyrdom of Stephen",
+      "reference": "Acts 7",
+      "estimated_year": 34,
+      "category": "new_testament"
+    },
+    {
+      "key": "saul_conversion",
+      "event": "Conversion of Saul",
+      "reference": "Acts 9:1-31",
+      "estimated_year": 34,
+      "category": "new_testament"
+    },
+    {
+      "key": "cornelius",
+      "event": "Cornelius and Peter's Vision",
+      "reference": "Acts 10",
+      "estimated_year": 40,
+      "category": "new_testament"
+    },
+    {
+      "key": "paul_barnabas",
+      "event": "Paul and Barnabas Sent",
+      "reference": "Acts 13:1-3",
+      "estimated_year": 45,
+      "category": "new_testament"
+    },
+    {
+      "key": "paul_missions",
+      "event": "St. Paul's Missionary Journeys",
+      "reference": "Acts 13-21",
+      "estimated_year": 45,
+      "category": "new_testament"
+    },
+    {
+      "key": "james_martyr",
+      "event": "Martyrdom of James",
+      "reference": "Acts 12:1-2",
+      "estimated_year": 44,
+      "category": "new_testament"
+    },
+    {
+      "key": "nicolaitans",
+      "event": "Council at Jerusalem",
+      "reference": "Acts 15",
+      "estimated_year": 49,
+      "category": "new_testament"
+    },
+    {
+      "key": "paul_arrested",
+      "event": "Paul Arrested in Jerusalem",
+      "reference": "Acts 21:27-36",
+      "estimated_year": 58,
+      "category": "new_testament"
+    },
+    {
+      "key": "paul_shipwreck",
+      "event": "Paul's Shipwreck",
+      "reference": "Acts 27",
+      "estimated_year": 60,
+      "category": "new_testament"
+    },
+    {
+      "key": "paul_rome",
+      "event": "Paul Arrives in Rome",
+      "reference": "Acts 28",
+      "estimated_year": 60,
+      "category": "new_testament"
+    },
+    {
+      "key": "peter_letters",
+      "event": "Peter's Epistles Written",
+      "reference": "1 Peter, 2 Peter",
+      "estimated_year": 63,
+      "category": "new_testament"
+    },
+    {
+      "key": "paul_letters",
+      "event": "Paul's Epistles Written",
+      "reference": "Romans through Philemon",
+      "estimated_year": 50,
+      "category": "new_testament"
+    },
+    {
+      "key": "hebrews_written",
+      "event": "Epistle to Hebrews Written",
+      "reference": "Hebrews",
+      "estimated_year": 67,
+      "category": "new_testament"
+    },
+    {
+      "key": "james_written",
+      "event": "Epistle of James Written",
+      "reference": "James",
+      "estimated_year": 45,
+      "category": "new_testament"
+    },
+    {
+      "key": "temple_destroyed",
+      "event": "Destruction of Jerusalem Temple",
+      "reference": "Matthew 24:1-35",
+      "estimated_year": 70,
+      "category": "new_testament"
+    },
+    {
+      "key": "revelation_written",
+      "event": "Book of Revelation Written",
+      "reference": "Revelation 1",
+      "estimated_year": 95,
+      "category": "new_testament"
+    }
+  ],
+  "books": {
+    "genesis": {
+      "characters": [
+        {"key": "adam", "name": "Adam"},
+        {"key": "eve", "name": "Eve"},
+        {"key": "cain", "name": "Cain"},
+        {"key": "abel", "name": "Abel"},
+        {"key": "seth", "name": "Seth"},
+        {"key": "enos", "name": "Enosh"},
+        {"key": "enoch", "name": "Enoch"},
+        {"key": "methuselah", "name": "Methuselah"},
+        {"key": "noah", "name": "Noah"},
+        {"key": "shem", "name": "Shem"},
+        {"key": "ham", "name": "Ham"},
+        {"key": "japheth", "name": "Japheth"},
+        {"key": "abraham", "name": "Abraham"},
+        {"key": "sarah", "name": "Sarah"},
+        {"key": "lot", "name": "Lot"},
+        {"key": "isaac", "name": "Isaac"},
+        {"key": "rebekah", "name": "Rebekah"},
+        {"key": "jacob", "name": "Jacob"},
+        {"key": "rachel", "name": "Rachel"},
+        {"key": "leah", "name": "Leah"},
+        {"key": "joseph", "name": "Joseph"}
+      ],
+      "relationships": [
+        {"type": "created", "from": "god", "to": "adam"},
+        {"type": "created", "from": "god", "to": "eve"},
+        {"type": "spouse", "from": "adam", "to": "eve"},
+        {"type": "parent", "from": "adam", "to": "cain"},
+        {"type": "parent", "from": "adam", "to": "abel"},
+        {"type": "parent", "from": "adam", "to": "seth"},
+        {"type": "brother", "from": "cain", "to": "abel"},
+        {"type": "parent", "from": "noah", "to": "shem"},
+        {"type": "parent", "from": "noah", "to": "ham"},
+        {"type": "parent", "from": "noah", "to": "japheth"},
+        {"type": "spouse", "from": "abraham", "to": "sarah"},
+        {"type": "nephew", "from": "lot", "to": "abraham"},
+        {"type": "parent", "from": "abraham", "to": "isaac"},
+        {"type": "spouse", "from": "isaac", "to": "rebekah"},
+        {"type": "parent", "from": "isaac", "to": "jacob"},
+        {"type": "parent", "from": "isaac", "to": "esau"},
+        {"type": "spouse", "from": "jacob", "to": "rachel"},
+        {"type": "spouse", "from": "jacob", "to": "leah"},
+        {"type": "parent", "from": "jacob", "to": "joseph"},
+        {"type": "parent", "from": "jacob", "to": "benjamin"},
+        {"type": "brother", "from": "joseph", "to": "brothers"},
+        {"type": "son", "from": "joseph", "to": "jacob"}
+      ]
+    },
+    "exodus": {
+      "characters": [
+        {"key": "moses", "name": "Moses"},
+        {"key": "aaron", "name": "Aaron"},
+        {"key": "miriam", "name": "Miriam"},
+        {"key": "zipporah", "name": "Zipporah"},
+        {"key": "pharaoh", "name": "Pharaoh"},
+        {"key": "joshua", "name": "Joshua"},
+        {"key": "korah", "name": "Korah"},
+        {"key": "balaam", "name": "Balaam"}
+      ],
+      "relationships": [
+        {"type": "brother", "from": "moses", "to": "aaron"},
+        {"type": "sister", "from": "moses", "to": "miriam"},
+        {"type": "spouse", "from": "moses", "to": "zipporah"},
+        {"type": "opponent", "from": "moses", "to": "pharaoh"},
+        {"type": "helper", "from": "aaron", "to": "moses"},
+        {"type": "sister", "from": "aaron", "to": "miriam"},
+        {"type": "leader", "from": "moses", "to": "joshua"}
+      ]
+    },
+    "leviticus": {
+      "characters": [
+        {"key": "moses", "name": "Moses"},
+        {"key": "aaron", "name": "Aaron"},
+        {"key": "nadab", "name": "Nadab"},
+        {"key": "abihu", "name": "Abihu"},
+        {"key": "eleazar", "name": "Eleazar"},
+        {"key": "ithamar", "name": "Ithamar"}
+      ],
+      "relationships": [
+        {"type": "leader", "from": "moses", "to": "aaron"},
+        {"type": "sons", "from": "aaron", "to": "nadab"},
+        {"type": "sons", "from": "aaron", "to": "abihu"},
+        {"type": "sons", "from": "aaron", "to": "eleazar"},
+        {"type": "sons", "from": "aaron", "to": "ithamar"}
+      ]
+    },
+    "numbers": {
+      "characters": [
+        {"key": "moses", "name": "Moses"},
+        {"key": "aaron", "name": "Aaron"},
+        {"key": "miriam", "name": "Miriam"},
+        {"key": "joshua", "name": "Joshua"},
+        {"key": "caleb", "name": "Caleb"},
+        {"key": "balaam", "name": "Balaam"},
+        {"key": "balak", "name": "Balak"},
+        {"key": "korah", "name": "Korah"}
+      ],
+      "relationships": [
+        {"type": "leader", "from": "moses", "to": "joshua"},
+        {"type": "spy", "from": "caleb", "to": "joshua"},
+        {"type": "opponent", "from": "balak", "to": "israel"},
+        {"type": "prophet", "from": "balaam", "to": "balak"}
+      ]
+    },
+    "deuteronomy": {
+      "characters": [
+        {"key": "moses", "name": "Moses"},
+        {"key": "joshua", "name": "Joshua"},
+        {"key": "sihon", "name": "Sihon"},
+        {"key": "og", "name": "Og"}
+      ],
+      "relationships": [
+        {"type": "mentor", "from": "moses", "to": "joshua"},
+        {"type": "opponent", "from": "sihon", "to": "israel"},
+        {"type": "opponent", "from": "og", "to": "israel"}
+      ]
+    },
+    "joshua": {
+      "characters": [
+        {"key": "joshua", "name": "Joshua"},
+        {"key": "rahab", "name": "Rahab"},
+        {"key": "caleb", "name": "Caleb"},
+        {"key": "ahijah", "name": "Ahijah"}
+      ],
+      "relationships": [
+        {"type": "leader", "from": "joshua", "to": "israel"},
+        {"type": "helper", "from": "rahab", "to": "spies"}
+      ]
+    },
+    "judges": {
+      "characters": [
+        {"key": "oshua", "name": "Joshua"},
+        {"key": "deborah", "name": "Deborah"},
+        {"key": "barak", "name": "Barak"},
+        {"key": "sisera", "name": "Sisera"},
+        {"key": "jael", "name": "Jael"},
+        {"key": "gideon", "name": "Gideon"},
+        {"key": "samson", "name": "Samson"},
+        {"key": "delilah", "name": "Delilah"},
+        {"key": "ruth", "name": "Ruth"},
+        {"key": "naomi", "name": "Naomi"},
+        {"key": "boaz", "name": "Boaz"}
+      ],
+      "relationships": [
+        {"type": "judge", "from": "deborah", "to": "israel"},
+        {"type": "warrior", "from": "barak", "to": "deborah"},
+        {"type": "enemy", "from": "sisera", "to": "israel"},
+        {"type": "hero", "from": "jael", "to": "sisera"},
+        {"type": "judge", "from": "gideon", "to": "israel"},
+        {"type": "judge", "from": "samson", "to": "israel"},
+        {"type": "deceiver", "from": "delilah", "to": "samson"},
+        {"type": "daughter_in_law", "from": "ruth", "to": "naomi"},
+        {"type": "kinsman", "from": "boaz", "to": "ruth"}
+      ]
+    },
+    "ruth": {
+      "characters": [
+        {"key": "ruth", "name": "Ruth"},
+        {"key": "naomi", "name": "Naomi"},
+        {"key": "boaz", "name": "Boaz"},
+        {"key": "elimelech", "name": "Elimelech"}
+      ],
+      "relationships": [
+        {"type": "daughter_in_law", "from": "ruth", "to": "naomi"},
+        {"type": "husband", "from": "boaz", "to": "ruth"},
+        {"type": "kinsman", "from": "boaz", "to": "naomi"}
+      ]
+    },
+    "1 samuel": {
+      "characters": [
+        {"key": "samuel", "name": "Samuel"},
+        {"key": "elkanah", "name": "Elkanah"},
+        {"key": "hannah", "name": "Hannah"},
+        {"key": "eli", "name": "Eli"},
+        {"key": "saul", "name": "Saul"},
+        {"key": "david", "name": "David"},
+        {"key": "jonathan", "name": "Jonathan"},
+        {"key": "nathan", "name": "Nathan"},
+        {"key": "gad", "name": "Gad"},
+        {"key": "abigail", "name": "Abigail"},
+        {"key": " Michal", "name": "Michal"}
+      ],
+      "relationships": [
+        {"type": "son", "from": "samuel", "to": "elkanah"},
+        {"type": "mother", "from": "hannah", "to": "samuel"},
+        {"type": "mentor", "from": "eli", "to": "samuel"},
+        {"type": "prophet", "from": "samuel", "to": "saul"},
+        {"type": "king", "from": "saul", "to": "israel"},
+        {"type": "anointed", "from": "samuel", "to": "david"},
+        {"type": "friend", "from": "david", "to": "jonathan"},
+        {"type": "enemy", "from": "saul", "to": "david"},
+        {"type": "prophet", "from": "nathan", "to": "david"}
+      ]
+    },
+    "2 samuel": {
+      "characters": [
+        {"key": "david", "name": "David"},
+        {"key": "absalom", "name": "Absalom"},
+        {"key": "amnon", "name": "Amnon"},
+        {"key": "joab", "name": "Joab"},
+        {"key": "nathan", "name": "Nathan"},
+        {"key": "bathsheba", "name": "Bathsheba"},
+        {"key": "solomon", "name": "Solomon"}
+      ],
+      "relationships": [
+        {"type": "king", "from": "david", "to": "israel"},
+        {"type": "son", "from": "absalom", "to": "david"},
+        {"type": "son", "from": "amnon", "to": "david"},
+        {"type": "son", "from": "solomon", "to": "david"},
+        {"type": "commander", "from": "joab", "to": "david"},
+        {"type": "wife", "from": "david", "to": "bathsheba"},
+        {"type": "prophet", "from": "nathan", "to": "david"}
+      ]
+    },
+    "1 kings": {
+      "characters": [
+        {"key": "solomon", "name": "Solomon"},
+        {"key": "jeroboam", "name": "Jeroboam"},
+        {"key": "elijah", "name": "Elijah"},
+        {"key": "naboth", "name": "Naboth"},
+        {"key": "jezebel", "name": "Jezebel"},
+        {"key": "ahijah", "name": "Ahijah"},
+        {"key": "sHmria", "name": "Shemaiah"}
+      ],
+      "relationships": [
+        {"type": "king", "from": "solomon", "to": "israel"},
+        {"type": "servant", "from": "jeroboam", "to": "solomon"},
+        {"type": "prophet", "from": "elijah", "to": "israel"},
+        {"type": "wife", "from": "jeroboam", "to": "jezebel"},
+        {"type": "opponent", "from": "elijah", "to": "jezebel"}
+      ]
+    },
+    "2 kings": {
+      "characters": [
+        {"key": "elijah", "name": "Elijah"},
+        {"key": "elisha", "name": "Elisha"},
+        {"key": "naaman", "name": "Naaman"},
+        {"key": "gehazi", "name": "Gehazi"},
+        {"key": "jehu", "name": "Jehu"},
+        {"key": "josiah", "name": "Josiah"},
+        {"key": "hezekiah", "name": "Hezekiah"},
+        {"key": "sennacherib", "name": "Sennacherib"},
+        {"key": "isaiah", "name": "Isaiah"}
+      ],
+      "relationships": [
+        {"type": "prophet", "from": "elijah", "to": "israel"},
+        {"type": "successor", "from": "elisha", "to": "elijah"},
+        {"type": "leper", "from": "naaman", "to": "elisha"},
+        {"type": "servant", "from": "gehazi", "to": "elisha"},
+        {"type": "king", "from": "jehu", "to": "israel"}
+      ]
+    },
+    "1 chronicles": {
+      "characters": [
+        {"key": "david", "name": "David"},
+        {"key": "joab", "name": "Joab"},
+        {"key": "asaiah", "name": "Asaiah"}
+      ],
+      "relationships": [
+        {"type": "king", "from": "david", "to": "israel"},
+        {"type": "commander", "from": "joab", "to": "david"}
+      ]
+    },
+    "2 chronicles": {
+      "characters": [
+        {"key": "solomon", "name": "Solomon"},
+        {"key": "hezekiah", "name": "Hezekiah"},
+        {"key": "josiah", "name": "Josiah"},
+        {"key": "manasseh", "name": "Manasseh"},
+        {"key": "isaiah", "name": "Isaiah"}
+      ],
+      "relationships": [
+        {"type": "king", "from": "solomon", "to": "israel"},
+        {"type": "king", "from": "hezekiah", "to": "judah"},
+        {"type": "king", "from": "josiah", "to": "judah"},
+        {"type": "prophet", "from": "isaiah", "to": "hezekiah"}
+      ]
+    },
+    "ezra": {
+      "characters": [
+        {"key": "ezra", "name": "Ezra"},
+        {"key": "artaxerxes", "name": "Artaxerxes"},
+        {"key": "nehemiah", "name": "Nehemiah"},
+        {"key": "zechariah", "name": "Zechariah"}
+      ],
+      "relationships": [
+        {"type": "scribe", "from": "ezra", "to": "israel"},
+        {"type": "king", "from": "artaxerxes", "to": "persia"},
+        {"type": "governor", "from": "nehemiah", "to": "judah"}
+      ]
+    },
+    "nehemiah": {
+      "characters": [
+        {"key": "nehemiah", "name": "Nehemiah"},
+        {"key": "artaxerxes", "name": "Artaxerxes"},
+        {"key": "ezra", "name": "Ezra"},
+        {"key": "sanballat", "name": "Sanballat"},
+        {"key": "tobiah", "name": "Tobiah"}
+      ],
+      "relationships": [
+        {"type": "cupbearer", "from": "nehemiah", "to": "artaxerxes"},
+        {"type": "governor", "from": "nehemiah", "to": "judah"},
+        {"type": "opponent", "from": "sanballat", "to": "nehemiah"},
+        {"type": "opponent", "from": "tobiah", "to": "nehemiah"}
+      ]
+    },
+    "esther": {
+      "characters": [
+        {"key": "esther", "name": "Esther"},
+        {"key": "ahasuerus", "name": "Ahasuerus"},
+        {"key": "mordecai", "name": "Mordecai"},
+        {"key": "haman", "name": "Haman"},
+        {"key": "zeresh", "name": "Zeresh"}
+      ],
+      "relationships": [
+        {"type": "queen", "from": "esther", "to": "ahasuerus"},
+        {"type": "cousin", "from": "esther", "to": "mordecai"},
+        {"type": "adoptive_father", "from": "mordecai", "to": "esther"},
+        {"type": "enemy", "from": "mordecai", "to": "haman"}
+      ]
+    },
+    "job": {
+      "characters": [
+        {"key": "job", "name": "Job"},
+        {"key": "satan", "name": "Satan"},
+        {"key": "eliphaz", "name": "Eliphaz"},
+        {"key": "bildad", "name": "Bildad"},
+        {"key": "zophar", "name": "Zophar"},
+        {"key": "elihu", "name": "Elihu"}
+      ],
+      "relationships": [
+        {"type": "friend", "from": "eliphaz", "to": "job"},
+        {"type": "friend", "from": "bildad", "to": "job"},
+        {"type": "friend", "from": "zophar", "to": "job"}
+      ]
+    },
+    "psalms": {
+      "characters": [
+        {"key": "david", "name": "David"},
+        {"key": "asaph", "name": "Asaph"},
+        {"key": "sons_of_korah", "name": "Sons of Korah"},
+        {"key": "ethan", "name": "Ethan"},
+        {"key": "moses", "name": "Moses"}
+      ],
+      "relationships": [
+        {"type": "author", "from": "david", "to": "psalms"},
+        {"type": "author", "from": "asaph", "to": "psalms"}
+      ]
+    },
+    "proverbs": {
+      "characters": [
+        {"key": "solomon", "name": "Solomon"},
+        {"key": "bezalel", "name": "Bezalel"}
+      ],
+      "relationships": [
+        {"type": "author", "from": "solomon", "to": "proverbs"}
+      ]
+    },
+    "ecclesiastes": {
+      "characters": [
+        {"key": "solomon", "name": "Solomon"}
+      ],
+      "relationships": [
+        {"type": "author", "from": "solomon", "to": "ecclesiastes"}
+      ]
+    },
+    "song of solomon": {
+      "characters": [
+        {"key": "solomon", "name": "Solomon"},
+        {"key": "shulamite", "name": "Shulamite"}
+      ],
+      "relationships": [
+        {"type": "beloved", "from": "solomon", "to": "shulamite"}
+      ]
+    },
+    "isaiah": {
+      "characters": [
+        {"key": "isaiah", "name": "Isaiah"},
+        {"key": "ahaz", "name": "Ahaz"},
+        {"key": "hezekiah", "name": "Hezekiah"},
+        {"key": "manasseh", "name": "Manasseh"},
+        {"key": "seriah", "name": "Sennacherib"}
+      ],
+      "relationships": [
+        {"type": "prophet", "from": "isaiah", "to": "judah"},
+        {"type": "king", "from": "ahaz", "to": "judah"},
+        {"type": "king", "from": "hezekiah", "to": "judah"},
+        {"type": "king", "from": "manasseh", "to": "judah"}
+      ]
+    },
+    "jeremiah": {
+      "characters": [
+        {"key": "jeremiah", "name": "Jeremiah"},
+        {"key": "king_of_juah", "name": "King of Judah"},
+        {"key": "baruch", "name": "Baruch"},
+        {"key": "zechariah", "name": "Zechariah"},
+        {"key": "ephraim", "name": "Ephraim"}
+      ],
+      "relationships": [
+        {"type": "prophet", "from": "jeremiah", "to": "judah"},
+        {"type": "scribe", "from": "baruch", "to": "jeremiah"}
+      ]
+    },
+    "lamentations": {
+      "characters": [
+        {"key": "jeremiah", "name": "Jeremiah"}
+      ],
+      "relationships": [
+        {"type": "author", "from": "jeremiah", "to": "lamentations"}
+      ]
+    },
+    "ezekiel": {
+      "characters": [
+        {"key": "ezeziel", "name": "Ezekiel"},
+        {"key": "king_of_juah", "name": "King of Judah"},
+        {"key": "glaphyra", "name": "Glaphyra"}
+      ],
+      "relationships": [
+        {"type": "prophet", "from": "ezeziel", "to": "israel"}
+      ]
+    },
+    "daniel": {
+      "characters": [
+        {"key": "daniel", "name": "Daniel"},
+        {"key": "nebuchadnezzar", "name": "Nebuchadnezzar"},
+        {"key": "belshazzar", "name": "Belshazzar"},
+        {"key": "shadrach", "name": "Shadrach"},
+        {"key": "meshach", "name": "Meshach"},
+        {"key": "abednego", "name": "Abednego"},
+        {"key": "mordecai", "name": "Mordecai"}
+      ],
+      "relationships": [
+        {"type": "prophet", "from": "daniel", "to": "babylon"},
+        {"type": "king", "from": "nebuchadnezzar", "to": "babylon"},
+        {"type": "friend", "from": "daniel", "to": "shadrach"},
+        {"type": "friend", "from": "daniel", "to": "meshach"},
+        {"type": "friend", "from": "daniel", "to": "abednego"}
+      ]
+    },
+    "hosea": {
+      "characters": [
+        {"key": "hosea", "name": "Hosea"},
+        {"key": "gomer", "name": "Gomer"},
+        {"key": "jezreel", "name": "Jezreel"},
+        {"key": "loruhamah", "name": "Loruhamah"},
+        {"key": "loammi", "name": "Loammi"}
+      ],
+      "relationships": [
+        {"type": "prophet", "from": "hosea", "to": "israel"},
+        {"type": "wife", "from": "gomer", "to": "hosea"}
+      ]
+    },
+    "joel": {
+      "characters": [
+        {"key": "joel", "name": "Joel"}
+      ],
+      "relationships": [
+        {"type": "prophet", "from": "joel", "to": "judah"}
+      ]
+    },
+    "amos": {
+      "characters": [
+        {"key": "amos", "name": "Amos"},
+        {"key": "jeroboam", "name": "Jeroboam"},
+        {"key": "amaziah", "name": "Amaziah"}
+      ],
+      "relationships": [
+        {"type": "prophet", "from": "amos", "to": "israel"},
+        {"type": "king", "from": "jeroboam", "to": "israel"},
+        {"type": "priest", "from": "amaziah", "to": "amos"}
+      ]
+    },
+    "obadiah": {
+      "characters": [
+        {"key": "obadiah", "name": "Obadiah"}
+      ],
+      "relationships": [
+        {"type": "prophet", "from": "obadiah", "to": "edom"}
+      ]
+    },
+    "jonah": {
+      "characters": [
+        {"key": "jonah", "name": "Jonah"},
+        {"key": "king_of_nineveh", "name": "King of Nineveh"}
+      ],
+      "relationships": [
+        {"type": "prophet", "from": "jonah", "to": "nineveh"}
+      ]
+    },
+    "micah": {
+      "characters": [
+        {"key": "micah", "name": "Micah"}
+      ],
+      "relationships": [
+        {"type": "prophet", "from": "micah", "to": "judah"}
+      ]
+    },
+    "nahum": {
+      "characters": [
+        {"key": "nahum", "name": "Nahum"}
+      ],
+      "relationships": [
+        {"type": "prophet", "from": "nahum", "to": "nineveh"}
+      ]
+    },
+    "habakkuk": {
+      "characters": [
+        {"key": "habakkuk", "name": "Habakkuk"}
+      ],
+      "relationships": [
+        {"type": "prophet", "from": "habakkuk", "to": "judah"}
+      ]
+    },
+    "zephaniah": {
+      "characters": [
+        {"key": "zephaniah", "name": "Zephaniah"}
+      ],
+      "relationships": [
+        {"type": "prophet", "from": "zephaniah", "to": "judah"}
+      ]
+    },
+    "haggai": {
+      "characters": [
+        {"key": "haggai", "name": "Haggai"},
+        {"key": "zerubbabel", "name": "Zerubbabel"},
+        {"key": "joshua", "name": "Joshua"}
+      ],
+      "relationships": [
+        {"type": "prophet", "from": "haggai", "to": "judah"},
+        {"type": "governor", "from": "zerubbabel", "to": "judah"},
+        {"type": "high_priest", "from": "joshua", "to": "judah"}
+      ]
+    },
+    "zechariah": {
+      "characters": [
+        {"key": "zechariah", "name": "Zechariah"},
+        {"key": "zerubbabel", "name": "Zerubbabel"},
+        {"key": "joshua", "name": "Joshua"}
+      ],
+      "relationships": [
+        {"type": "prophet", "from": "zechariah", "to": "judah"}
+      ]
+    },
+    "malachi": {
+      "characters": [
+        {"key": "malachi", "name": "Malachi"}
+      ],
+      "relationships": [
+        {"type": "prophet", "from": "malachi", "to": "judah"}
+      ]
+    },
+    "matthew": {
+      "characters": [
+        {"key": "jesus", "name": "Jesus"},
+        {"key": "mary", "name": "Mary"},
+        {"key": "joseph", "name": "Joseph"},
+        {"key": "herod", "name": "Herod"},
+        {"key": "peter", "name": "Peter"},
+        {"key": "andrew", "name": "Andrew"},
+        {"key": "james", "name": "James"},
+        {"key": "john", "name": "John"},
+        {"key": "philip", "name": "Philip"},
+        {"key": "bartholomew", "name": "Bartholomew"},
+        {"key": "thomas", "name": "Thomas"},
+        {"key": "matthew", "name": "Matthew"},
+        {"key": "james_alphaeus", "name": "James (Alphaeus)"},
+        {"key": "thaddaeus", "name": "Thaddaeus"},
+        {"key": "simon_zealot", "name": "Simon (Zealot)"},
+        {"key": "judas_iscariot", "name": "Judas Iscariot"},
+        {"key": "john_baptist", "name": "John the Baptist"},
+        {"key": "pilate", "name": "Pilate"},
+        {"key": "centurion", "name": "Centurion"}
+      ],
+      "relationships": [
+        {"type": "son", "from": "jesus", "to": "mary"},
+        {"type": "son", "from": "jesus", "to": "joseph"},
+        {"type": "king", "from": "herod", "to": "jewry"},
+        {"type": "disciple", "from": "peter", "to": "jesus"},
+        {"type": "disciple", "from": "andrew", "to": "jesus"},
+        {"type": "disciple", "from": "james", "to": "jesus"},
+        {"type": "disciple", "from": "john", "to": "jesus"},
+        {"type": "disciple", "from": "philip", "to": "jesus"},
+        {"type": "disciple", "from": "bartholomew", "to": "jesus"},
+        {"type": "disciple", "from": "thomas", "to": "jesus"},
+        {"type": "disciple", "from": "matthew", "to": "jesus"},
+        {"type": "disciple", "from": "james_alphaeus", "to": "jesus"},
+        {"type": "disciple", "from": "thaddaeus", "to": "jesus"},
+        {"type": "disciple", "from": "simon_zealot", "to": "jesus"},
+        {"type": "betrayer", "from": "judas_iscariot", "to": "jesus"},
+        {"type": "forerunner", "from": "john_baptist", "to": "jesus"},
+        {"type": "governor", "from": "pilate", "to": "judaea"}
+      ]
+    },
+    "mark": {
+      "characters": [
+        {"key": "jesus", "name": "Jesus"},
+        {"key": "john_baptist", "name": "John the Baptist"},
+        {"key": "peter", "name": "Peter"},
+        {"key": "andrew", "name": "Andrew"},
+        {"key": "james", "name": "James"},
+        {"key": "john", "name": "John"},
+        {"key": "philip", "name": "Philip"},
+        {"key": "bartholomew", "name": "Bartholomew"},
+        {"key": "thomas", "name": "Thomas"},
+        {"key": "matthew", "name": "Matthew"},
+        {"key": "james_alphaeus", "name": "James (Alphaeus)"},
+        {"key": "thaddaeus", "name": "Thaddaeus"},
+        {"key": "simon_zealot", "name": "Simon (Zealot)"},
+        {"key": "judas_iscariot", "name": "Judas Iscariot"},
+        {"key": "herod_antipas", "name": "Herod Antipas"},
+        {"key": "pilate", "name": "Pilate"},
+        {"key": "barabbas", "name": "Barabbas"},
+        {"key": "legion", "name": "Legion"}
+      ],
+      "relationships": [
+        {"type": "forerunner", "from": "john_baptist", "to": "jesus"},
+        {"type": "disciple", "from": "peter", "to": "jesus"},
+        {"type": "disciple", "from": "andrew", "to": "jesus"},
+        {"type": "disciple", "from": "james", "to": "jesus"},
+        {"type": "disciple", "from": "john", "to": "jesus"},
+        {"type": "disciple", "from": "philip", "to": "jesus"},
+        {"type": "disciple", "from": "bartholomew", "to": "jesus"},
+        {"type": "disciple", "from": "thomas", "to": "jesus"},
+        {"type": "disciple", "from": "matthew", "to": "jesus"},
+        {"type": "disciple", "from": "james_alphaeus", "to": "jesus"},
+        {"type": "disciple", "from": "thaddaeus", "to": "jesus"},
+        {"type": "disciple", "from": "simon_zealot", "to": "jesus"},
+        {"type": "betrayer", "from": "judas_iscariot", "to": "jesus"},
+        {"type": "ruler", "from": "herod_antipas", "to": "galilee"}
+      ]
+    },
+    "luke": {
+      "characters": [
+        {"key": "jesus", "name": "Jesus"},
+        {"key": "mary", "name": "Mary"},
+        {"key": "joseph", "name": "Joseph"},
+        {"key": "elizabeth", "name": "Elizabeth"},
+        {"key": "zechariah", "name": "Zechariah"},
+        {"key": "john_baptist", "name": "John the Baptist"},
+        {"key": "anna", "name": "Anna"},
+        {"key": "simeon", "name": "Simeon"},
+        {"key": "peter", "name": "Peter"},
+        {"key": "john", "name": "John"},
+        {"key": "james", "name": "James"},
+        {"key": "andrew", "name": "Andrew"},
+        {"key": "philip", "name": "Philip"},
+        {"key": "nathanael", "name": "Nathanael"},
+        {"key": "thomas", "name": "Thomas"},
+        {"key": "matthew", "name": "Matthew"},
+        {"key": "james_alphaeus", "name": "James (Alphaeus)"},
+        {"key": "simon_zealot", "name": "Simon (Zealot)"},
+        {"key": "judas_iscariot", "name": "Judas Iscariot"},
+        {"key": "martha", "name": "Martha"},
+        {"key": "mary_magdalene", "name": "Mary Magdalene"},
+        {"key": "nicodemus", "name": "Nicodemus"},
+        {"key": "good_samaritan", "name": "Good Samaritan"},
+        {"key": "mary_bethany", "name": "Mary of Bethany"},
+        {"key": "lazrus", "name": "Lazarus"},
+        {"key": "pilate", "name": "Pilate"},
+        {"key": "herod_antipas", "name": "Herod Antipas"}
+      ],
+      "relationships": [
+        {"type": "son", "from": "jesus", "to": "mary"},
+        {"type": "son", "from": "jesus", "to": "joseph"},
+        {"type": "cousin", "from": "jesus", "to": "john_baptist"},
+        {"type": "relative", "from": "mary", "to": "elizabeth"},
+        {"type": "disciple", "from": "peter", "to": "jesus"},
+        {"type": "disciple", "from": "john", "to": "jesus"},
+        {"type": "disciple", "from": "james", "to": "jesus"},
+        {"type": "disciple", "from": "andrew", "to": "jesus"},
+        {"type": "disciple", "from": "philip", "to": "jesus"},
+        {"type": "disciple", "from": "nathanael", "to": "jesus"},
+        {"type": "disciple", "from": "thomas", "to": "jesus"},
+        {"type": "disciple", "from": "matthew", "to": "jesus"},
+        {"type": "disciple", "from": "james_alphaeus", "to": "jesus"},
+        {"type": "disciple", "from": "simon_zealot", "to": "jesus"},
+        {"type": "betrayer", "from": "judas_iscariot", "to": "jesus"},
+        {"type": "friend", "from": "jesus", "to": "lazrus"},
+        {"type": "friend", "from": "jesus", "to": "martha"},
+        {"type": " follower", "from": "mary_magdalene", "to": "jesus"}
+      ]
+    },
+    "john": {
+      "characters": [
+        {"key": "jesus", "name": "Jesus"},
+        {"key": "john", "name": "John"},
+        {"key": "peter", "name": "Peter"},
+        {"key": "andrew", "name": "Andrew"},
+        {"key": "philip", "name": "Philip"},
+        {"key": "nathanael", "name": "Nathanael"},
+        {"key": "thomas", "name": "Thomas"},
+        {"key": "matthew", "name": "Matthew"},
+        {"key": "james", "name": "James"},
+        {"key": "simon_zealot", "name": "Simon (Zealot)"},
+        {"key": "judas_iscariot", "name": "Judas Iscariot"},
+        {"key": "mary_magdalene", "name": "Mary Magdalene"},
+        {"key": "martha", "name": "Martha"},
+        {"key": "lazrus", "name": "Lazarus"},
+        {"key": "nicodemus", "name": "Nicodemus"},
+        {"key": "samaritan_woman", "name": "Samaritan Woman"},
+        {"key": "lazarus", "name": "Lazarus"},
+        {"key": "john_baptist", "name": "John the Baptist"},
+        {"key": "pilate", "name": "Pilate"},
+        {"key": "caiphas", "name": "Caiaphas"},
+        {"key": "lazarus", "name": "Lazarus"}
+      ],
+      "relationships": [
+        {"type": "disciple", "from": "john", "to": "jesus"},
+        {"type": "disciple", "from": "peter", "to": "jesus"},
+        {"type": "disciple", "from": "andrew", "to": "jesus"},
+        {"type": "disciple", "from": "philip", "to": "jesus"},
+        {"type": "disciple", "from": "nathanael", "to": "jesus"},
+        {"type": "disciple", "from": "thomas", "to": "jesus"},
+        {"type": "disciple", "from": "matthew", "to": "jesus"},
+        {"type": "disciple", "from": "james", "to": "jesus"},
+        {"type": "disciple", "from": "simon_zealot", "to": "jesus"},
+        {"type": "betrayer", "from": "judas_iscariot", "to": "jesus"},
+        {"type": "friend", "from": "jesus", "to": "lazrus"},
+        {"type": "teacher", "from": "jesus", "to": "nicodemus"},
+        {"type": "beloved", "from": "john", "to": "jesus"}
+      ]
+    },
+    "acts": {
+      "characters": [
+        {"key": "peter", "name": "Peter"},
+        {"key": "john", "name": "John"},
+        {"key": "james", "name": "James"},
+        {"key": "andrew", "name": "Andrew"},
+        {"key": "philip", "name": "Philip"},
+        {"key": "thomas", "name": "Thomas"},
+        {"key": "bartholomew", "name": "Bartholomew"},
+        {"key": "matthew", "name": "Matthew"},
+        {"key": "james_alphaeus", "name": "James (Alphaeus)"},
+        {"key": "simon_zealot", "name": "Simon (Zealot)"},
+        {"key": "judas_iscariot", "name": "Judas Iscariot"},
+        {"key": "matthias", "name": "Matthias"},
+        {"key": "paul", "name": "Paul"},
+        {"key": "barnabas", "name": "Barnabas"},
+        {"key": "silas", "name": "Silas"},
+        {"key": "timothy", "name": "Timothy"},
+        {"key": "stephen", "name": "Stephen"},
+        {"key": "philip_evangelist", "name": "Philip (Evangelist)"},
+        {"key": "saul", "name": "Saul"},
+        {"key": "ananas", "name": "Ananias"},
+        {"key": "cornelius", "name": "Cornelius"},
+        {"key": "agabus", "name": "Agabus"},
+        {"key": "lydia", "name": "Lydia"},
+        {"key": "priscilla", "name": "Priscilla"},
+        {"key": "aquila", "name": "Aquila"},
+        {"key": "apollo", "name": "Apollo"},
+        {"key": "festus", "name": "Festus"},
+        {"key": "felix", "name": "Felix"},
+        {"key": "king_agrippa", "name": "King Agrippa"}
+      ],
+      "relationships": [
+        {"type": "apostle", "from": "peter", "to": "jerusalem"},
+        {"type": "apostle", "from": "john", "to": "jerusalem"},
+        {"type": "apostle", "from": "james", "to": "jerusalem"},
+        {"type": "replaced", "from": "matthias", "to": "judas_iscariot"},
+        {"type": "persecutor", "from": "saul", "to": "christians"},
+        {"type": "convert", "from": "ananas", "to": "saul"},
+        {"type": "apostle", "from": "paul", "to": "nations"},
+        {"type": "missionary_companion", "from": "barnabas", "to": "paul"},
+        {"type": "missionary_companion", "from": "silas", "to": "paul"},
+        {"type": "mentor", "from": "paul", "to": "timothy"},
+        {"type": "martyr", "from": "stephen", "to": "paul"},
+        {"type": "evangelist", "from": "philip_evangelist", "to": "samaria"}
+      ]
+    },
+    "romans": {
+      "characters": [
+        {"key": "paul", "name": "Paul"},
+        {"key": "timothy", "name": "Timothy"},
+        {"key": "silas", "name": "Silas"},
+        {"key": "phoebe", "name": "Phoebe"},
+        {"key": "priscilla", "name": "Priscilla"},
+        {"key": "aquila", "name": "Aquila"}
+      ],
+      "relationships": [
+        {"type": "author", "from": "paul", "to": "romans"},
+        {"type": "mentor", "from": "paul", "to": "timothy"},
+        {"type": "missionary_companion", "from": "paul", "to": "silas"},
+        {"type": "benefactor", "from": "phoebe", "to": "paul"}
+      ]
+    },
+    "1 corinthians": {
+      "characters": [
+        {"key": "paul", "name": "Paul"},
+        {"key": "sosthenes", "name": "Sosthenes"},
+        {"key": "apollo", "name": "Apollo"},
+        {"key": "cephas", "name": "Cephas"},
+        {"key": "clemen", "name": "Clement"}
+      ],
+      "relationships": [
+        {"type": "author", "from": "paul", "to": "corinthians"},
+        {"type": "mentor", "from": "paul", "to": "apollo"},
+        {"type": "fellow_apostle", "from": "paul", "to": "cephas"}
+      ]
+    },
+    "2 corinthians": {
+      "characters": [
+        {"key": "paul", "name": "Paul"},
+        {"key": "timothy", "name": "Timothy"},
+        {"key": "barnabas", "name": "Barnabas"},
+        {"key": "titus", "name": "Titus"}
+      ],
+      "relationships": [
+        {"type": "author", "from": "paul", "to": "corinthians"},
+        {"type": "mentor", "from": "paul", "to": "timothy"},
+        {"type": "missionary_companion", "from": "paul", "to": "barnabas"},
+        {"type": "representative", "from": "titus", "to": "paul"}
+      ]
+    },
+    "galatians": {
+      "characters": [
+        {"key": "paul", "name": "Paul"},
+        {"key": "barnabas", "name": "Barnabas"},
+        {"key": "peter", "name": "Peter"},
+        {"key": "john", "name": "John"},
+        {"key": "james", "name": "James"}
+      ],
+      "relationships": [
+        {"type": "author", "from": "paul", "to": "galatians"},
+        {"type": "missionary_companion", "from": "paul", "to": "barnabas"},
+        {"type": "apostle", "from": "peter", "to": "jews"},
+        {"type": "apostle", "from": "paul", "to": "gentiles"}
+      ]
+    },
+    "ephesians": {
+      "characters": [
+        {"key": "paul", "name": "Paul"},
+        {"key": "timothy", "name": "Timothy"},
+        {"key": "tychicus", "name": "Tychicus"},
+        {"key": "onessimus", "name": "Onesimus"}
+      ],
+      "relationships": [
+        {"type": "author", "from": "paul", "to": "ephesians"},
+        {"type": "mentor", "from": "paul", "to": "timothy"},
+        {"type": "messenger", "from": "tychicus", "to": "ephesus"}
+      ]
+    },
+    "philippians": {
+      "characters": [
+        {"key": "paul", "name": "Paul"},
+        {"key": "timothy", "name": "Timothy"},
+        {"key": "epaphroditus", "name": "Epaphroditus"},
+        {"key": "euodia", "name": "Euodia"},
+        {"key": "syntyche", "name": "Syntyche"}
+      ],
+      "relationships": [
+        {"type": "author", "from": "paul", "to": "philippians"},
+        {"type": "mentor", "from": "paul", "to": "timothy"},
+        {"type": "messenger", "from": "epaphroditus", "to": "paul"}
+      ]
+    },
+    "colossians": {
+      "characters": [
+        {"key": "paul", "name": "Paul"},
+        {"key": "timothy", "name": "Timothy"},
+        {"key": "tychicus", "name": "Tychicus"},
+        {"key": "onessimus", "name": "Onesimus"},
+        {"key": "archippus", "name": "Archippus"}
+      ],
+      "relationships": [
+        {"type": "author", "from": "paul", "to": "colossians"},
+        {"type": "mentor", "from": "paul", "to": "timothy"},
+        {"type": "slave", "from": "onessimus", "to": "philemon"}
+      ]
+    },
+    "1 thessalonians": {
+      "characters": [
+        {"key": "paul", "name": "Paul"},
+        {"key": "silas", "name": "Silas"},
+        {"key": "timothy", "name": "Timothy"}
+      ],
+      "relationships": [
+        {"type": "author", "from": "paul", "to": "thessalonians"},
+        {"type": "missionary_companion", "from": "paul", "to": "silas"},
+        {"type": "mentor", "from": "paul", "to": "timothy"}
+      ]
+    },
+    "2 thessalonians": {
+      "characters": [
+        {"key": "paul", "name": "Paul"},
+        {"key": "silas", "name": "Silas"},
+        {"key": "timothy", "name": "Timothy"}
+      ],
+      "relationships": [
+        {"type": "author", "from": "paul", "to": "thessalonians"},
+        {"type": "missionary_companion", "from": "paul", "to": "silas"},
+        {"type": "mentor", "from": "paul", "to": "timothy"}
+      ]
+    },
+    "1 timothy": {
+      "characters": [
+        {"key": "paul", "name": "Paul"},
+        {"key": "timothy", "name": "Timothy"},
+        {"key": "philemon", "name": "Philemon"}
+      ],
+      "relationships": [
+        {"type": "author", "from": "paul", "to": "timothy"},
+        {"type": "mentor", "from": "paul", "to": "timothy"},
+        {"type": "recipient", "from": "timothy", "to": "paul"}
+      ]
+    },
+    "2 timothy": {
+      "characters": [
+        {"key": "paul", "name": "Paul"},
+        {"key": "timothy", "name": "Timothy"},
+        {"key": "prisca", "name": "Prisca"},
+        {"key": "aquila", "name": "Aquila"},
+        {"key": "hymenaeus", "name": "Hymenaeus"}
+      ],
+      "relationships": [
+        {"type": "author", "from": "paul", "to": "timothy"},
+        {"type": "mentor", "from": "paul", "to": "timothy"},
+        {"type": "teacher", "from": "prisca", "to": "aquila"}
+      ]
+    },
+    "titus": {
+      "characters": [
+        {"key": "paul", "name": "Paul"},
+        {"key": "titus", "name": "Titus"},
+        {"key": "artemas", "name": "Artemas"},
+        {"key": "zenas", "name": "Zenas"}
+      ],
+      "relationships": [
+        {"type": "author", "from": "paul", "to": "titus"},
+        {"type": "mentor", "from": "paul", "to": "titus"},
+        {"type": "recipient", "from": "titus", "to": "paul"}
+      ]
+    },
+    "philemon": {
+      "characters": [
+        {"key": "paul", "name": "Paul"},
+        {"key": "timothy", "name": "Timothy"},
+        {"key": "philemon", "name": "Philemon"},
+        {"key": "onessimus", "name": "Onesimus"},
+        {"key": "archippus", "name": "Archippus"}
+      ],
+      "relationships": [
+        {"type": "author", "from": "paul", "to": "philemon"},
+        {"type": "mentor", "from": "paul", "to": "philemon"},
+        {"type": "slave", "from": "onessimus", "to": "philemon"},
+        {"type": "fellow_soldier", "from": "archippus", "to": "paul"}
+      ]
+    },
+    "hebrews": {
+      "characters": [
+        {"key": "paul", "name": "Paul"},
+        {"key": "timothy", "name": "Timothy"},
+        {"key": "abraham", "name": "Abraham"},
+        {"key": "moses", "name": "Moses"},
+        {"key": "aaron", "name": "Aaron"},
+        {"key": "joshua", "name": "Joshua"},
+        {"key": "melchizedek", "name": "Melchizedek"}
+      ],
+      "relationships": [
+        {"type": "author", "from": "paul", "to": "hebrews"},
+        {"type": "mentor", "from": "paul", "to": "timothy"},
+        {"type": "ancestor", "from": "abraham", "to": "israel"},
+        {"type": "leader", "from": "moses", "to": "israel"}
+      ]
+    },
+    "james": {
+      "characters": [
+        {"key": "james", "name": "James"},
+        {"key": "jesus", "name": "Jesus"}
+      ],
+      "relationships": [
+        {"type": "author", "from": "james", "to": "jews"},
+        {"type": "brother", "from": "james", "to": "jesus"}
+      ]
+    },
+    "1 peter": {
+      "characters": [
+        {"key": "peter", "name": "Peter"},
+        {"key": "silas", "name": "Silas"},
+        {"key": "mark", "name": "Mark"}
+      ],
+      "relationships": [
+        {"type": "author", "from": "peter", "to": "exiles"},
+        {"type": "apostle", "from": "peter", "to": "christians"},
+        {"type": "coworker", "from": "silas", "to": "peter"},
+        {"type": "coworker", "from": "mark", "to": "peter"}
+      ]
+    },
+    "2 peter": {
+      "characters": [
+        {"key": "peter", "name": "Peter"},
+        {"key": "paul", "name": "Paul"},
+        {"key": "silas", "name": "Silas"}
+      ],
+      "relationships": [
+        {"type": "author", "from": "peter", "to": "christians"},
+        {"type": "apostle", "from": "peter", "to": "christians"}
+      ]
+    },
+    "1 john": {
+      "characters": [
+        {"key": "john", "name": "John"},
+        {"key": "jesus", "name": "Jesus"}
+      ],
+      "relationships": [
+        {"type": "author", "from": "john", "to": "christians"},
+        {"type": "disciple", "from": "john", "to": "jesus"}
+      ]
+    },
+    "2 john": {
+      "characters": [
+        {"key": "john", "name": "John"},
+        {"key": "elect_lady", "name": "Elect Lady"}
+      ],
+      "relationships": [
+        {"type": "author", "from": "john", "to": "elect_lady"}
+      ]
+    },
+    "3 john": {
+      "characters": [
+        {"key": "john", "name": "John"},
+        {"key": "gaius", "name": "Gaius"},
+        {"key": "diotrephes", "name": "Diotrephes"},
+        {"key": "demetrius", "name": "Demetrius"}
+      ],
+      "relationships": [
+        {"type": "author", "from": "john", "to": "gaius"},
+        {"type": "host", "from": "gaius", "to": "john"},
+        {"type": "opponent", "from": "diotrephes", "to": "john"}
+      ]
+    },
+    "jude": {
+      "characters": [
+        {"key": "jude", "name": "Jude"},
+        {"key": "jesus", "name": "Jesus"}
+      ],
+      "relationships": [
+        {"type": "author", "from": "jude", "to": "christians"},
+        {"type": "brother", "from": "jude", "to": "jesus"}
+      ]
+    },
+    "revelation": {
+      "characters": [
+        {"key": "john", "name": "John"},
+        {"key": "jesus", "name": "Jesus"},
+        {"key": "lamb", "name": "Lamb (Jesus)"},
+        {"key": "dragon", "name": "Dragon (Satan)"},
+        {"key": "beast", "name": "Beast"},
+        {"key": "false_prophet", "name": "False Prophet"},
+        {"key": "antichrist", "name": "Antichrist"},
+        {"key": "michael", "name": "Michael"},
+        {"key": "gabriel", "name": "Gabriel"},
+        {"key": "babylon", "name": "Babylon"},
+        {"key": "new_jerusalem", "name": "New Jerusalem"},
+        {"key": "throne", "name": "Throne of God"}
+      ],
+      "relationships": [
+        {"type": "author", "from": "john", "to": "churches"},
+        {"type": "revealer", "from": "jesus", "to": "john"},
+        {"type": "opponent", "from": "dragon", "to": "god"},
+        {"type": "archangel", "from": "michael", "to": "dragon"},
+        {"type": "symbol", "from": "beast", "to": "antichrist"},
+        {"type": "city", "from": "new_jerusalem", "to": "god"}
+      ]
+    }
+  }
+}

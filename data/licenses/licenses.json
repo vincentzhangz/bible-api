@@ -1,0 +1,23 @@
+[
+  {
+    "id": "public-domain",
+    "name": "Public Domain",
+    "url": "https://creativecommons.org/publicdomain/",
+    "attributionRequired": false,
+    "commercialUse": true
+  },
+  {
+    "id": "cc-by-4.0",
+    "name": "Creative Commons Attribution 4.0",
+    "url": "https://creativecommons.org/licenses/by/4.0/",
+    "attributionRequired": true,
+    "commercialUse": true
+  },
+  {
+    "id": "cc-by-sa-4.0",
+    "name": "Creative Commons Attribution-ShareAlike 4.0",
+    "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attributionRequired": true,
+    "commercialUse": true
+  }
+]

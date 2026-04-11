@@ -1,0 +1,234 @@
+{
+	"info": {
+		"name": "Bible API",
+		"description": "API for Bible translations, verses, search, and visualization. Run docker-compose up first to start the API.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8080"
+		},
+		{
+			"key": "translation",
+			"value": "en-kjv"
+		},
+		{
+			"key": "translationId",
+			"value": "id-indo_tb"
+		},
+		{
+			"key": "book",
+			"value": "genesis"
+		},
+		{
+			"key": "bookJohn",
+			"value": "john"
+		},
+		{
+			"key": "chapter",
+			"value": "1"
+		},
+		{
+			"key": "chapter3",
+			"value": "3"
+		},
+		{
+			"key": "verse",
+			"value": "1"
+		},
+		{
+			"key": "verse16",
+			"value": "16"
+		},
+		{
+			"key": "query",
+			"value": "love"
+		},
+		{
+			"key": "lang",
+			"value": "en"
+		},
+		{
+			"key": "langId",
+			"value": "id"
+		}
+	],
+	"item": [
+		{
+			"name": "Health Check",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/v1/health",
+					"host": ["{{baseUrl}}"],
+					"path": ["api", "v1", "health"]
+				},
+				"description": "Check API health status, database connection, and version"
+			}
+		},
+		{
+			"name": "List Translations",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/v1/translations",
+					"host": ["{{baseUrl}}"],
+					"path": ["api", "v1", "translations"]
+				},
+				"description": "Get all available Bible translations"
+			}
+		},
+		{
+			"name": "Get Chapter",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/v1/translations/{{translation}}/books/{{book}}/chapters/{{chapter}}",
+					"host": ["{{baseUrl}}"],
+					"path": ["api", "v1", "translations", "{{translation}}", "books", "{{book}}", "chapters", "{{chapter}}"]
+				},
+				"description": "Get all verses in a specific chapter"
+			}
+		},
+		{
+			"name": "Get Verse",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/v1/translations/{{translation}}/books/{{book}}/chapters/{{chapter}}/verses/{{verse}}",
+					"host": ["{{baseUrl}}"],
+					"path": ["api", "v1", "translations", "{{translation}}", "books", "{{book}}", "chapters", "{{chapter}}", "verses", "{{verse}}"]
+				},
+				"description": "Get a specific verse (e.g., John 3:16)"
+			}
+		},
+		{
+			"name": "Search Verses (all translations)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/v1/search?q={{query}}",
+					"host": ["{{baseUrl}}"],
+					"path": ["api", "v1", "search"],
+					"query": [
+						{"key": "q", "value": "{{query}}", "description": "Search query text"}
+					]
+				},
+				"description": "Search verses by text across all translations"
+			}
+		},
+		{
+			"name": "Search Verses (specific translation)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/v1/search?q={{query}}&translation={{translation}}",
+					"host": ["{{baseUrl}}"],
+					"path": ["api", "v1", "search"],
+					"query": [
+						{"key": "q", "value": "{{query}}", "description": "Search query text"},
+						{"key": "translation", "value": "{{translation}}", "description": "Filter by translation ID"}
+					]
+				},
+				"description": "Search verses by text within a specific translation"
+			}
+		},
+		{
+			"name": "Word Frequency",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/v1/visualize/word-frequency/{{translation}}/{{book}}",
+					"host": ["{{baseUrl}}"],
+					"path": ["api", "v1", "visualize", "word-frequency", "{{translation}}", "{{book}}"]
+				},
+				"description": "Get word frequency analysis for a book (top 100 words longer than 3 chars)"
+			}
+		},
+		{
+			"name": "Cross References",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/v1/visualize/cross-references/{{translation}}/{{bookJohn}}/{{chapter3}}/{{verse16}}",
+					"host": ["{{baseUrl}}"],
+					"path": ["api", "v1", "visualize", "cross-references", "{{translation}}", "{{bookJohn}}", "{{chapter3}}", "{{verse16}}"]
+				},
+				"description": "Get cross-references for a specific verse (e.g., John 3:16)"
+			}
+		},
+		{
+			"name": "Timeline (English)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/v1/visualize/timeline/{{translation}}?lang={{lang}}",
+					"host": ["{{baseUrl}}"],
+					"path": ["api", "v1", "visualize", "timeline", "{{translation}}"],
+					"query": [
+						{"key": "lang", "value": "{{lang}}", "description": "Language code (en, id)"}
+					]
+				},
+				"description": "Get timeline events for biblical history"
+			}
+		},
+		{
+			"name": "Timeline (Indonesian)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/v1/visualize/timeline/{{translationId}}?lang={{langId}}",
+					"host": ["{{baseUrl}}"],
+					"path": ["api", "v1", "visualize", "timeline", "{{translationId}}"],
+					"query": [
+						{"key": "lang", "value": "{{langId}}", "description": "Language code (en, id)"}
+					]
+				},
+				"description": "Get timeline events in Indonesian"
+			}
+		},
+		{
+			"name": "Relationships (Genesis)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/v1/visualize/relationships/{{translation}}/{{book}}?lang={{lang}}",
+					"host": ["{{baseUrl}}"],
+					"path": ["api", "v1", "visualize", "relationships", "{{translation}}", "{{book}}"],
+					"query": [
+						{"key": "lang", "value": "{{lang}}", "description": "Language code (en, id)"}
+					]
+				},
+				"description": "Get character relationships for Genesis"
+			}
+		},
+		{
+			"name": "Relationships (John)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/v1/visualize/relationships/{{translation}}/{{bookJohn}}?lang={{lang}}",
+					"host": ["{{baseUrl}}"],
+					"path": ["api", "v1", "visualize", "relationships", "{{translation}}", "{{bookJohn}}"],
+					"query": [
+						{"key": "lang", "value": "{{lang}}", "description": "Language code (en, id)"}
+					]
+				},
+				"description": "Get character relationships for John (Jesus, disciples, etc.)"
+			}
+		}
+	]
+}

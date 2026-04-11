@@ -1,0 +1,1768 @@
+{
+  "language": "id",
+  "language_name": "Indonesian",
+  "timeline": [
+    {
+      "key": "creation",
+      "event": "Penciptaan",
+      "reference": "Kejadian 1:1",
+      "estimated_year": -4000,
+      "category": "creation"
+    },
+    {
+      "key": "adam_eve",
+      "event": "Penciptaan Adam dan Hawa",
+      "reference": "Kejadian 2:7-25",
+      "estimated_year": -4000,
+      "category": "creation"
+    },
+    {
+      "key": "fall",
+      "event": "Kejatuhan",
+      "reference": "Kejadian 3:1-24",
+      "estimated_year": -3990,
+      "category": "creation"
+    },
+    {
+      "key": "cain_abel",
+      "event": "Kain dan Habel",
+      "reference": "Kejadian 4:1-16",
+      "estimated_year": -3980,
+      "category": "creation"
+    },
+    {
+      "key": "flood",
+      "event": "Air Bah yang Besar",
+      "reference": "Kejadian 6-9",
+      "estimated_year": -2500,
+      "category": "major_event"
+    },
+    {
+      "key": "babel",
+      "event": "Menara Babel",
+      "reference": "Kejadian 11:1-9",
+      "estimated_year": -2200,
+      "category": "major_event"
+    },
+    {
+      "key": "abraham_call",
+      "event": "Pemanggilan Abraham",
+      "reference": "Kejadian 12:1-9",
+      "estimated_year": -2000,
+      "category": "patriarchs"
+    },
+    {
+      "key": "abraham_sacrifice",
+      "event": "Abraham Hampir Mendatangkan Ishak",
+      "reference": "Kejadian 22:1-19",
+      "estimated_year": -1980,
+      "category": "patriarchs"
+    },
+    {
+      "key": "isaac_birth",
+      "event": "Kelahiran Ishak",
+      "reference": "Kejadian 21:1-7",
+      "estimated_year": -1960,
+      "category": "patriarchs"
+    },
+    {
+      "key": "jacob_esau",
+      "event": "Yakub dan Esau",
+      "reference": "Kejadian 25-36",
+      "estimated_year": -1900,
+      "category": "patriarchs"
+    },
+    {
+      "key": "joseph_dream",
+      "event": "Mimpi Yusuf",
+      "reference": "Kejadian 37:1-11",
+      "estimated_year": -1850,
+      "category": "patriarchs"
+    },
+    {
+      "key": "joseph_slavery",
+      "event": "Yusuf Dijual Menjadi Hamba",
+      "reference": "Kejadian 37:12-36",
+      "estimated_year": -1840,
+      "category": "patriarchs"
+    },
+    {
+      "key": "joseph_egypt",
+      "event": "Yusuf Meningkat di Mesir",
+      "reference": "Kejadian 39-41",
+      "estimated_year": -1830,
+      "category": "patriarchs"
+    },
+    {
+      "key": "joseph_reunion",
+      "event": "Yusuf Bersatu Kembali dengan Keluarga",
+      "reference": "Kejadian 42-50",
+      "estimated_year": -1800,
+      "category": "patriarchs"
+    },
+    {
+      "key": "exodus",
+      "event": "Keluar dari Mesir",
+      "reference": "Keluaran 12:37-51",
+      "estimated_year": -1446,
+      "category": "patriarchs"
+    },
+    {
+      "key": "red_sea",
+      "event": "Laut Merah Terbelah",
+      "reference": "Keluaran 14",
+      "estimated_year": -1446,
+      "category": "patriarchs"
+    },
+    {
+      "key": "sinai_law",
+      "event": "Pemberian Hukum di Sinai",
+      "reference": "Keluaran 19-20",
+      "estimated_year": -1446,
+      "category": "patriarchs"
+    },
+    {
+      "key": "tabernacle",
+      "event": "Pembuatan Kemah Suci",
+      "reference": "Keluaran 25-40",
+      "estimated_year": -1445,
+      "category": "patriarchs"
+    },
+    {
+      "key": "spies",
+      "event": "Pengintai Dikirim ke Kanaan",
+      "reference": "Bilangan 13",
+      "estimated_year": -1430,
+      "category": "wilderness"
+    },
+    {
+      "key": "wandering",
+      "event": "40 Tahun Mengembara di Padang",
+      "reference": "Bilangan 14:26-35",
+      "estimated_year": -1430,
+      "category": "wilderness"
+    },
+    {
+      "key": "balaam",
+      "event": "Nubuat Balaam",
+      "reference": "Bilangan 22-24",
+      "estimated_year": -1407,
+      "category": "wilderness"
+    },
+    {
+      "key": "joshua_leadership",
+      "event": "Yusua Memimpin Israel",
+      "reference": "Yosua 1",
+      "estimated_year": -1406,
+      "category": "history"
+    },
+    {
+      "key": "jericho",
+      "event": "Yerikho Jatuh",
+      "reference": "Yosua 6",
+      "estimated_year": -1406,
+      "category": "history"
+    },
+    {
+      "key": "conquest",
+      "event": "Penaklukan Kanaan",
+      "reference": "Yosua 10-12",
+      "estimated_year": -1406,
+      "category": "history"
+    },
+    {
+      "key": "judges_cycle",
+      "event": "Siklus Para Hakim",
+      "reference": "Hakim-Hakim 2:10-23",
+      "estimated_year": -1380,
+      "category": "history"
+    },
+    {
+      "key": "samson",
+      "event": "Kisah Samson",
+      "reference": "Hakim-Hakim 13-16",
+      "estimated_year": -1100,
+      "category": "history"
+    },
+    {
+      "key": "ruth",
+      "event": "Kisah Rut",
+      "reference": "Rut 1-4",
+      "estimated_year": -1150,
+      "category": "history"
+    },
+    {
+      "key": "samuel_call",
+      "event": "Panggilan Samuel",
+      "reference": "1 Samuel 3",
+      "estimated_year": -1100,
+      "category": "monarchy"
+    },
+    {
+      "key": "saul_king",
+      "event": "Saul Menjadi Raja Pertama",
+      "reference": "1 Samuel 10:1-25",
+      "estimated_year": -1050,
+      "category": "monarchy"
+    },
+    {
+      "key": "saul_rejected",
+      "event": "Saul Ditolak sebagai Raja",
+      "reference": "1 Samuel 15:10-35",
+      "estimated_year": -1040,
+      "category": "monarchy"
+    },
+    {
+      "key": "david_anointed",
+      "event": "Daud Dianugerahi",
+      "reference": "1 Samuel 16:1-13",
+      "estimated_year": -1030,
+      "category": "monarchy"
+    },
+    {
+      "key": "david_goliath",
+      "event": "Daud Melawan Goliat",
+      "reference": "1 Samuel 17",
+      "estimated_year": -1030,
+      "category": "monarchy"
+    },
+    {
+      "key": "david_saul_friendship",
+      "event": "Persahabatan Daud dan Yonatan",
+      "reference": "1 Samuel 18:1-4",
+      "estimated_year": -1030,
+      "category": "monarchy"
+    },
+    {
+      "key": "david_king_judah",
+      "event": "Daud Menjadi Raja atas Yehuda",
+      "reference": "2 Samuel 2:1-7",
+      "estimated_year": -1010,
+      "category": "monarchy"
+    },
+    {
+      "key": "david_king_all_israel",
+      "event": "Daud Menjadi Raja atas Seluruh Israel",
+      "reference": "2 Samuel 5:1-5",
+      "estimated_year": -1003,
+      "category": "monarchy"
+    },
+    {
+      "key": "ark_transferred",
+      "event": "Tabut Dibawa ke Yerusalem",
+      "reference": "2 Samuel 6",
+      "estimated_year": -1000,
+      "category": "monarchy"
+    },
+    {
+      "key": "david_covenant",
+      "event": "Perjanjian Daud",
+      "reference": "2 Samuel 7:8-17",
+      "estimated_year": -990,
+      "category": "monarchy"
+    },
+    {
+      "key": "temple_solomon",
+      "event": "Pembuatan Bait Allah oleh Sulaiman",
+      "reference": "1 Raja-raja 6",
+      "estimated_year": -966,
+      "category": "monarchy"
+    },
+    {
+      "key": "solomon_wisdom",
+      "event": "Kebijaksanaan Sulaiman",
+      "reference": "1 Raja-raja 3:1-15",
+      "estimated_year": -971,
+      "category": "monarchy"
+    },
+    {
+      "key": "queen_sheba",
+      "event": "Ratu Sheba Mengunjungi",
+      "reference": "1 Raja-raja 10:1-13",
+      "estimated_year": -950,
+      "category": "monarchy"
+    },
+    {
+      "key": "kingdom_split",
+      "event": "Kerajaan Terbelah",
+      "reference": "1 Raja-raja 12:1-24",
+      "estimated_year": -931,
+      "category": "monarchy"
+    },
+    {
+      "key": "elijah_ministry",
+      "event": "Ministry Elia",
+      "reference": "1 Raja-raja 17-19",
+      "estimated_year": -870,
+      "category": "kingdom"
+    },
+    {
+      "key": "carmel_showdown",
+      "event": "Kontes di Gunung Karmel",
+      "reference": "1 Raja-raja 18",
+      "estimated_year": -870,
+      "category": "kingdom"
+    },
+    {
+      "key": "naaman_healing",
+      "event": "Penyembuhan Naaman",
+      "reference": "2 Raja-raja 5",
+      "estimated_year": -850,
+      "category": "kingdom"
+    },
+    {
+      "key": "jonah_nineveh",
+      "event": "Yunus dan Niniwe",
+      "reference": "Yunus 1-4",
+      "estimated_year": -760,
+      "category": "kingdom"
+    },
+    {
+      "key": "amos_prophecy",
+      "event": "Nubuat Amos",
+      "reference": "Amos 1-9",
+      "estimated_year": -760,
+      "category": "kingdom"
+    },
+    {
+      "key": "hosea_marriage",
+      "event": "Perkawinan Hosea",
+      "reference": "Hosea 1-3",
+      "estimated_year": -755,
+      "category": "kingdom"
+    },
+    {
+      "key": "israel_exile",
+      "event": "Pembuangan Israel oleh Asyur",
+      "reference": "2 Raja-raja 17",
+      "estimated_year": -722,
+      "category": "exile"
+    },
+    {
+      "key": "hezekiah_reform",
+      "event": "Reformasi Hizkia",
+      "reference": "2 Raja-raja 18:1-8",
+      "estimated_year": -715,
+      "category": "kingdom"
+    },
+    {
+      "key": "senacherib",
+      "event": "Invasi Sanherib",
+      "reference": "2 Raja-raja 18:17-37",
+      "estimated_year": -701,
+      "category": "kingdom"
+    },
+    {
+      "key": "josiah_reform",
+      "event": "Reformasi Yosia",
+      "reference": "2 Raja-raja 22:1-23:30",
+      "estimated_year": -640,
+      "category": "kingdom"
+    },
+    {
+      "key": "jeremiah_ministry",
+      "event": "Ministry Yeremia",
+      "reference": "Yeremia 1:1-19",
+      "estimated_year": -627,
+      "category": "kingdom"
+    },
+    {
+      "key": "judah_exile",
+      "event": "Pembuangan Yehuda oleh Babilonia",
+      "reference": "2 Raja-raja 25",
+      "estimated_year": -586,
+      "category": "exile"
+    },
+    {
+      "key": "jeremiah_lament",
+      "event": "Ratapan Yeremia",
+      "reference": "Ratapan 1-5",
+      "estimated_year": -586,
+      "category": "exile"
+    },
+    {
+      "key": "ezekiel_exile",
+      "event": "Nubuat Yehezkiel",
+      "reference": "Yehezkiel 1-48",
+      "estimated_year": -573,
+      "category": "exile"
+    },
+    {
+      "key": "daniel_lions",
+      "event": "Daniel dalam Gua Singa",
+      "reference": "Daniel 6",
+      "estimated_year": -539,
+      "category": "exile"
+    },
+    {
+      "key": "nebuchadnezzar_dreams",
+      "event": "Mimpi Nebukadnezar",
+      "reference": "Daniel 2, 4",
+      "estimated_year": -605,
+      "category": "exile"
+    },
+    {
+      "key": "return_babylon",
+      "event": "Dekrit untuk Kembali dari Babilonia",
+      "reference": "Ezra 1:1-4",
+      "estimated_year": -538,
+      "category": "exile"
+    },
+    {
+      "key": "temple_rebuilt",
+      "event": "Bait Allah Dibangun Kembali",
+      "reference": "Ezra 6:13-22",
+      "estimated_year": -516,
+      "category": "exile"
+    },
+    {
+      "key": "ezra_reform",
+      "event": "Reformasi Ezra",
+      "reference": "Ezra 7-10",
+      "estimated_year": -458,
+      "category": "exile"
+    },
+    {
+      "key": "nehemiah_walls",
+      "event": "Nehemia Membangun Tembok",
+      "reference": "Nehemia 2-6",
+      "estimated_year": -445,
+      "category": "exile"
+    },
+    {
+      "key": "esther_queen",
+      "event": "Ester Menjadi Ratu",
+      "reference": "Ester 2:1-18",
+      "estimated_year": -483,
+      "category": "exile"
+    },
+    {
+      "key": "purim",
+      "event": "Hari Raya Purim Ditetapkan",
+      "reference": "Ester 9:20-32",
+      "estimated_year": -473,
+      "category": "exile"
+    },
+    {
+      "key": "malachi",
+      "event": "Nubuat Maleakhi",
+      "reference": "Maleakhi 1-4",
+      "estimated_year": -460,
+      "category": "exile"
+    },
+    {
+      "key": "silence_years",
+      "event": "400 Tahun Hening",
+      "reference": "Antara Maleakhi dan Matius",
+      "estimated_year": -460,
+      "category": "silence"
+    },
+    {
+      "key": "jesus_birth",
+      "event": "Kelahiran Yesus",
+      "reference": "Lukas 2:1-20",
+      "estimated_year": -4,
+      "category": "new_testament"
+    },
+    {
+      "key": "magi_worship",
+      "event": "Orang-orang Majus Sembahyang Yesus",
+      "reference": "Matius 2:1-12",
+      "estimated_year": -4,
+      "category": "new_testament"
+    },
+    {
+      "key": "jesus_flight",
+      "event": "Melarikan Diri ke Mesir",
+      "reference": "Matius 2:13-15",
+      "estimated_year": -4,
+      "category": "new_testament"
+    },
+    {
+      "key": "john_baptist_birth",
+      "event": "Kelahiran Yohanes Pembaptis",
+      "reference": "Lukas 1:57-80",
+      "estimated_year": -4,
+      "category": "new_testament"
+    },
+    {
+      "key": "jesus_grows",
+      "event": "Yesus Tumbuh di Nazaret",
+      "reference": "Lukas 2:39-52",
+      "estimated_year": 8,
+      "category": "new_testament"
+    },
+    {
+      "key": "jesus_baptism",
+      "event": "Baptisan Yesus",
+      "reference": "Markus 1:9-11",
+      "estimated_year": 27,
+      "category": "new_testament"
+    },
+    {
+      "key": "temptation",
+      "event": "Yesus Ditempa di Padang",
+      "reference": "Matius 4:1-11",
+      "estimated_year": 27,
+      "category": "new_testament"
+    },
+    {
+      "key": "wedding_canaan",
+      "event": "Pesta Perkawinan di Kana",
+      "reference": "Yohanes 2:1-12",
+      "estimated_year": 27,
+      "category": "new_testament"
+    },
+    {
+      "key": "jesus_ministry",
+      "event": "Ministry Umum Yesus Dimulai",
+      "reference": "Markus 1:14-15",
+      "estimated_year": 27,
+      "category": "new_testament"
+    },
+    {
+      "key": "sermon_mount",
+      "event": "Khotbah di Bukit",
+      "reference": "Matius 5-7",
+      "estimated_year": 28,
+      "category": "new_testament"
+    },
+    {
+      "key": "miracles",
+      "event": "Mukjizat Yesus Dimulai",
+      "reference": "Yohanes 2:23-3:36",
+      "estimated_year": 27,
+      "category": "new_testament"
+    },
+    {
+      "key": "feeding_5000",
+      "event": "Memberi Makan 5000 Orang",
+      "reference": "Yohanes 6:1-15",
+      "estimated_year": 29,
+      "category": "new_testament"
+    },
+    {
+      "key": "transfiguration",
+      "event": "Transfigurasi",
+      "reference": "Matius 17:1-13",
+      "estimated_year": 30,
+      "category": "new_testament"
+    },
+    {
+      "key": "lazarus",
+      "event": "Kebangkitan Lazarus",
+      "reference": "Yohanes 11:1-45",
+      "estimated_year": 30,
+      "category": "new_testament"
+    },
+    {
+      "key": "triumphal_entry",
+      "event": "Masuk dengan Mulia",
+      "reference": "Matius 21:1-11",
+      "estimated_year": 30,
+      "category": "new_testament"
+    },
+    {
+      "key": "jesus_crucifixion",
+      "event": "Penyaliban Yesus",
+      "reference": "Markus 15",
+      "estimated_year": 30,
+      "category": "new_testament"
+    },
+    {
+      "key": "jesus_resurrection",
+      "event": "Kebangkitan Yesus",
+      "reference": "Markus 16",
+      "estimated_year": 30,
+      "category": "new_testament"
+    },
+    {
+      "key": "ascension",
+      "event": "Yesus naik ke Surga",
+      "reference": "Kisah Para Rasul 1:1-11",
+      "estimated_year": 30,
+      "category": "new_testament"
+    },
+    {
+      "key": "pentecost",
+      "event": "Hari Pentakosta",
+      "reference": "Kisah Para Rasul 2",
+      "estimated_year": 30,
+      "category": "new_testament"
+    },
+    {
+      "key": "stephen_martyr",
+      "event": "Kemartiran Stefanus",
+      "reference": "Kisah Para Rasul 7",
+      "estimated_year": 34,
+      "category": "new_testament"
+    },
+    {
+      "key": "saul_conversion",
+      "event": "Konversi Saulus",
+      "reference": "Kisah Para Rasul 9:1-31",
+      "estimated_year": 34,
+      "category": "new_testament"
+    },
+    {
+      "key": "cornelius",
+      "event": "Koronelius dan Vision Petrus",
+      "reference": "Kisah Para Rasul 10",
+      "estimated_year": 40,
+      "category": "new_testament"
+    },
+    {
+      "key": "paul_barnabas",
+      "event": "Paulus dan Barnabas Dikirim",
+      "reference": "Kisah Para Rasul 13:1-3",
+      "estimated_year": 45,
+      "category": "new_testament"
+    },
+    {
+      "key": "paul_missions",
+      "event": "Perjalanan Misi Paulus",
+      "reference": "Kisah Para Rasul 13-21",
+      "estimated_year": 45,
+      "category": "new_testament"
+    },
+    {
+      "key": "james_martyr",
+      "event": "Kemartiran Yakobus",
+      "reference": "Kisah Para Rasul 12:1-2",
+      "estimated_year": 44,
+      "category": "new_testament"
+    },
+    {
+      "key": "nicolaitans",
+      "event": "Dewan di Yerusalem",
+      "reference": "Kisah Para Rasul 15",
+      "estimated_year": 49,
+      "category": "new_testament"
+    },
+    {
+      "key": "paul_arrested",
+      "event": "Paulus Ditangkap di Yerusalem",
+      "reference": "Kisah Para Rasul 21:27-36",
+      "estimated_year": 58,
+      "category": "new_testament"
+    },
+    {
+      "key": "paul_shipwreck",
+      "event": "Kapal Paulus Tenggelam",
+      "reference": "Kisah Para Rasul 27",
+      "estimated_year": 60,
+      "category": "new_testament"
+    },
+    {
+      "key": "paul_rome",
+      "event": "Paulus Tiba di Roma",
+      "reference": "Kisah Para Rasul 28",
+      "estimated_year": 60,
+      "category": "new_testament"
+    },
+    {
+      "key": "peter_letters",
+      "event": "Surat Petrus Ditulis",
+      "reference": "1 Petrus, 2 Petrus",
+      "estimated_year": 63,
+      "category": "new_testament"
+    },
+    {
+      "key": "paul_letters",
+      "event": "Surat Paulus Ditulis",
+      "reference": "Roma melalui Filemon",
+      "estimated_year": 50,
+      "category": "new_testament"
+    },
+    {
+      "key": "hebrews_written",
+      "event": "Surat Ibrani Ditulis",
+      "reference": "Ibrani",
+      "estimated_year": 67,
+      "category": "new_testament"
+    },
+    {
+      "key": "james_written",
+      "event": "Surat Yakobus Ditulis",
+      "reference": "Yakobus",
+      "estimated_year": 45,
+      "category": "new_testament"
+    },
+    {
+      "key": "temple_destroyed",
+      "event": "Perusakan Bait Allah Yerusalem",
+      "reference": "Matius 24:1-35",
+      "estimated_year": 70,
+      "category": "new_testament"
+    },
+    {
+      "key": "revelation_written",
+      "event": "Kitab Wahyu Ditulis",
+      "reference": "Wahyu 1",
+      "estimated_year": 95,
+      "category": "new_testament"
+    }
+  ],
+  "books": {
+    "kejadian": {
+      "characters": [
+        {"key": "adam", "name": "Adam"},
+        {"key": "hawa", "name": "Hawa"},
+        {"key": "kain", "name": "Kain"},
+        {"key": "habel", "name": "Habel"},
+        {"key": "set", "name": "Set"},
+        {"key": "enos", "name": "Enos"},
+        {"key": "henokh", "name": "Henokh"},
+        {"key": "metusalah", "name": "Metusalah"},
+        {"key": "nuh", "name": "Nuh"},
+        {"key": "sem", "name": "Sem"},
+        {"key": "ham", "name": "Ham"},
+        {"key": "yefet", "name": "Yefet"},
+        {"key": "brahim", "name": "Abraham"},
+        {"key": "sarah", "name": "Sarah"},
+        {"key": "lot", "name": "Lot"},
+        {"key": "ishak", "name": "Ishak"},
+        {"key": "ribka", "name": "Rebekah"},
+        {"key": "yakub", "name": "Yakub"},
+        {"key": "rachel", "name": "Rachel"},
+        {"key": "lea", "name": "Lea"},
+        {"key": "yusuf", "name": "Yusuf"}
+      ],
+      "relationships": [
+        {"type": "diciptakan", "from": "tuhan", "to": "adam"},
+        {"type": "diciptakan", "from": "tuhan", "to": "hawa"},
+        {"type": "pasangan", "from": "adam", "to": "hawa"},
+        {"type": "orang_tua", "from": "adam", "to": "kain"},
+        {"type": "orang_tua", "from": "adam", "to": "habel"},
+        {"type": "orang_tua", "from": "adam", "to": "set"},
+        {"type": "saudara", "from": "kain", "to": "habel"},
+        {"type": "orang_tua", "from": "nuh", "to": "sem"},
+        {"type": "orang_tua", "from": "nuh", "to": "ham"},
+        {"type": "orang_tua", "from": "nuh", "to": "yefet"},
+        {"type": "pasangan", "from": "brahim", "to": "sarah"},
+        {"type": "keponakan", "from": "lot", "to": "brahim"},
+        {"type": "orang_tua", "from": "brahim", "to": "ishak"},
+        {"type": "pasangan", "from": "ishak", "to": "ribka"},
+        {"type": "orang_tua", "from": "ishak", "to": "yakub"},
+        {"type": "orang_tua", "from": "ishak", "to": "esau"},
+        {"type": "pasangan", "from": "yakub", "to": "rachel"},
+        {"type": "pasangan", "from": "yakub", "to": "lea"},
+        {"type": "orang_tua", "from": "yakub", "to": "yusuf"},
+        {"type": "orang_tua", "from": "yakub", "to": "benyamin"},
+        {"type": "saudara", "from": "yusuf", "to": "saudara-saudaranya"},
+        {"type": "anak", "from": "yusuf", "to": "yakub"}
+      ]
+    },
+    "keluaran": {
+      "characters": [
+        {"key": "musa", "name": "Musa"},
+        {"key": "harun", "name": "Harun"},
+        {"key": "maria", "name": "Miriam"},
+        {"key": "zipora", "name": "Zippora"},
+        {"key": "firaun", "name": "Firaun"},
+        {"key": "yusua", "name": "Yusua"},
+        {"key": "korah", "name": "Korah"},
+        {"key": "balaam", "name": "Balaam"}
+      ],
+      "relationships": [
+        {"type": "saudara_laki-laki", "from": "musa", "to": "harun"},
+        {"type": "adik_perempuan", "from": "musa", "to": "maria"},
+        {"type": "pasangan", "from": "musa", "to": "zipora"},
+        {"type": "penentang", "from": "musa", "to": "firaun"},
+        {"type": "pembantu", "from": "harun", "to": "musa"},
+        {"type": "adik_perempuan", "from": "harun", "to": "maria"},
+        {"type": "pemimpin", "from": "musa", "to": "yusua"}
+      ]
+    },
+    "imamat": {
+      "characters": [
+        {"key": "musa", "name": "Musa"},
+        {"key": "harun", "name": "Harun"},
+        {"key": "nadab", "name": "Nadab"},
+        {"key": "abihu", "name": "Abihu"},
+        {"key": "eleadar", "name": "Eleazar"},
+        {"key": "itamar", "name": "Itamar"}
+      ],
+      "relationships": [
+        {"type": "pemimpin", "from": "musa", "to": "harun"},
+        {"type": "anak-anak", "from": "harun", "to": "nadab"},
+        {"type": "anak-anak", "from": "harun", "to": "abihu"},
+        {"type": "anak-anak", "from": "harun", "to": "eleadar"},
+        {"type": "anak-anak", "from": "harun", "to": "itamar"}
+      ]
+    },
+    "bilangan": {
+      "characters": [
+        {"key": "musa", "name": "Musa"},
+        {"key": "harun", "name": "Harun"},
+        {"key": "maria", "name": "Miriam"},
+        {"key": "yusua", "name": "Yusua"},
+        {"key": "kaleb", "name": "Kaleb"},
+        {"key": "balaam", "name": "Balaam"},
+        {"key": "balak", "name": "Balak"},
+        {"key": "korah", "name": "Korah"}
+      ],
+      "relationships": [
+        {"type": "pemimpin", "from": "musa", "to": "yusua"},
+        {"type": "pengintai", "from": "kaleb", "to": "yusua"},
+        {"type": "penentang", "from": "balak", "to": "israel"},
+        {"type": "nabi", "from": "balaam", "to": "balak"}
+      ]
+    },
+    "ulangan": {
+      "characters": [
+        {"key": "musa", "name": "Musa"},
+        {"key": "yusua", "name": "Yusua"},
+        {"key": "sihon", "name": "Sihon"},
+        {"key": "og", "name": "Og"}
+      ],
+      "relationships": [
+        {"type": "guru", "from": "musa", "to": "yusua"},
+        {"type": "penentang", "from": "sihon", "to": "israel"},
+        {"type": "penentang", "from": "og", "to": "israel"}
+      ]
+    },
+    "yosua": {
+      "characters": [
+        {"key": "yusua", "name": "Yusua"},
+        {"key": "rahab", "name": "Rahab"},
+        {"key": "kaleb", "name": "Kaleb"}
+      ],
+      "relationships": [
+        {"type": "pemimpin", "from": "yusua", "to": "israel"},
+        {"type": "pembantu", "from": "rahab", "to": "pengintai"}
+      ]
+    },
+    "hakim-hakim": {
+      "characters": [
+        {"key": "yusua", "name": "Yusua"},
+        {"key": "debora", "name": "Debora"},
+        {"key": "barak", "name": "Barak"},
+        {"key": "sisera", "name": "Sisera"},
+        {"key": "yael", "name": "Yael"},
+        {"key": "gideon", "name": "Gideon"},
+        {"key": "samson", "name": "Samson"},
+        {"key": "delila", "name": "Delila"},
+        {"key": "rut", "name": "Rut"},
+        {"key": "naomi", "name": "Naomi"},
+        {"key": "boas", "name": "Boas"}
+      ],
+      "relationships": [
+        {"type": "hakim", "from": "debora", "to": "israel"},
+        {"type": "pejuang", "from": "barak", "to": "debora"},
+        {"type": "musuh", "from": "sisera", "to": "israel"},
+        {"type": "pahlawan", "from": "yael", "to": "sisera"},
+        {"type": "hakim", "from": "gideon", "to": "israel"},
+        {"type": "hakim", "from": "samson", "to": "israel"},
+        {"type": "penipu", "from": "delila", "to": "samson"},
+        {"type": "menantu_perempuan", "from": "rut", "to": "naomi"},
+        {"type": "keluarga_dekat", "from": "boas", "to": "rut"}
+      ]
+    },
+    "rut": {
+      "characters": [
+        {"key": "rut", "name": "Rut"},
+        {"key": "naomi", "name": "Naomi"},
+        {"key": "boas", "name": "Boas"},
+        {"key": "elimelekh", "name": "Elimelekh"}
+      ],
+      "relationships": [
+        {"type": "menantu_perempuan", "from": "rut", "to": "naomi"},
+        {"type": "suami", "from": "boas", "to": "rut"},
+        {"type": "keluarga_dekat", "from": "boas", "to": "naomi"}
+      ]
+    },
+    "1 samuel": {
+      "characters": [
+        {"key": "samuel", "name": "Samuel"},
+        {"key": "elkana", "name": "Elkana"},
+        {"key": "hana", "name": "Hana"},
+        {"key": "eli", "name": "Eli"},
+        {"key": "saul", "name": "Saul"},
+        {"key": "daud", "name": "Daud"},
+        {"key": "yonatan", "name": "Yonatan"},
+        {"key": "natan", "name": "Natan"},
+        {"key": "gad", "name": "Gad"},
+        {"key": "abigael", "name": "Abigael"},
+        {"key": "mikal", "name": "Mikhal"}
+      ],
+      "relationships": [
+        {"type": "anak", "from": "samuel", "to": "elkana"},
+        {"type": "ibu", "from": "hana", "to": "samuel"},
+        {"type": "guru", "from": "eli", "to": "samuel"},
+        {"type": "nabi_guru", "from": "samuel", "to": "saul"},
+        {"type": "raja", "from": "saul", "to": "israel"},
+        {"type": "dianugerahi", "from": "samuel", "to": "daud"},
+        {"type": "teman", "from": "daud", "to": "yonatan"},
+        {"type": "musuh", "from": "saul", "to": "daud"},
+        {"type": "nabi", "from": "natan", "to": "daud"}
+      ]
+    },
+    "2 samuel": {
+      "characters": [
+        {"key": "daud", "name": "Daud"},
+        {"key": "absalom", "name": "Absalom"},
+        {"key": "amnon", "name": "Amnon"},
+        {"key": "yoab", "name": "Yoab"},
+        {"key": "natan", "name": "Natan"},
+        {"key": "batsyeba", "name": "Batsyeba"},
+        {"key": "salomo", "name": "Salomo"}
+      ],
+      "relationships": [
+        {"type": "raja", "from": "daud", "to": "israel"},
+        {"type": "anak", "from": "absalom", "to": "daud"},
+        {"type": "anak", "from": "amnon", "to": "daud"},
+        {"type": "anak", "from": "salomo", "to": "daud"},
+        {"type": "panglima", "from": "yoab", "to": "daud"},
+        {"type": "istri", "from": "daud", "to": "batsyeba"},
+        {"type": "nabi", "from": "natan", "to": "daud"}
+      ]
+    },
+    "1 raja-raja": {
+      "characters": [
+        {"key": "salomo", "name": "Salomo"},
+        {"key": "yerobeam", "name": "Yerobeam"},
+        {"key": "elia", "name": "Elia"},
+        {"key": "nabot", "name": "Nabot"},
+        {"key": "izebel", "name": "Izebel"},
+        {"key": "ahia", "name": "Ahaja"}
+      ],
+      "relationships": [
+        {"type": "raja", "from": "salomo", "to": "israel"},
+        {"type": "hamba", "from": "yerobeam", "to": "salomo"},
+        {"type": "nabi", "from": "elia", "to": "israel"},
+        {"type": "istri", "from": "yerobeam", "to": "izebel"},
+        {"type": "penentang", "from": "elia", "to": "izebel"}
+      ]
+    },
+    "2 raja-raja": {
+      "characters": [
+        {"key": "elia", "name": "Elia"},
+        {"key": "elisa", "name": "Elisa"},
+        {"key": "naaman", "name": "Naaman"},
+        {"key": "gehazi", "name": "Gehazi"},
+        {"key": "yehu", "name": "Yehu"},
+        {"key": "yosia", "name": "Yosia"},
+        {"key": "hizkia", "name": "Hizkia"},
+        {"key": "sanherib", "name": "Sanherib"},
+        {"key": "yesaya", "name": "Yesaya"}
+      ],
+      "relationships": [
+        {"type": "nabi", "from": "elia", "to": "israel"},
+        {"type": "pengganti", "from": "elisa", "to": "elia"},
+        {"type": "orang_kusta", "from": "naaman", "to": "elisa"},
+        {"type": "hamba", "from": "gehazi", "to": "elisa"},
+        {"type": "raja", "from": "yehu", "to": "israel"}
+      ]
+    },
+    "1 tawarikh": {
+      "characters": [
+        {"key": "daud", "name": "Daud"},
+        {"key": "yoab", "name": "Yoab"}
+      ],
+      "relationships": [
+        {"type": "raja", "from": "daud", "to": "israel"},
+        {"type": "panglima", "from": "yoab", "to": "daud"}
+      ]
+    },
+    "2 tawarikh": {
+      "characters": [
+        {"key": "salomo", "name": "Salomo"},
+        {"key": "hizkia", "name": "Hizkia"},
+        {"key": "yosia", "name": "Yosia"},
+        {"key": "manasye", "name": "Manasye"},
+        {"key": "yesaya", "name": "Yesaya"}
+      ],
+      "relationships": [
+        {"type": "raja", "from": "salomo", "to": "israel"},
+        {"type": "raja", "from": "hizkia", "to": "Yehuda"},
+        {"type": "raja", "from": "yosia", "to": "Yehuda"},
+        {"type": "nabi", "from": "yesaya", "to": "hizkia"}
+      ]
+    },
+    "ezra": {
+      "characters": [
+        {"key": "ezra", "name": "Ezra"},
+        {"key": "artahsasta", "name": "Artahsasta"},
+        {"key": "nehemia", "name": "Nehemia"},
+        {"key": "zakharia", "name": "Zakharia"}
+      ],
+      "relationships": [
+        {"type": "ahli_tulis", "from": "ezra", "to": "israel"},
+        {"type": "raja", "from": "artahsasta", "to": "persia"},
+        {"type": "gubernur", "from": "nehemia", "to": "Yehuda"}
+      ]
+    },
+    "nehemia": {
+      "characters": [
+        {"key": "nehemia", "name": "Nehemia"},
+        {"key": "artahsasta", "name": "Artahsasta"},
+        {"key": "ezra", "name": "Ezra"},
+        {"key": "sanbalat", "name": "Sanbalat"},
+        {"key": "tobia", "name": "Tobia"}
+      ],
+      "relationships": [
+        {"type": "pembantu", "from": "nehemia", "to": "artahsasta"},
+        {"type": "gubernur", "from": "nehemia", "to": "Yehuda"},
+        {"type": "musuh", "from": "sanbalat", "to": "nehemia"},
+        {"type": "musuh", "from": "tobia", "to": "nehemia"}
+      ]
+    },
+    "ester": {
+      "characters": [
+        {"key": "ester", "name": "Ester"},
+        {"key": "ahaswerus", "name": "Ahaswerus"},
+        {"key": "mordekhai", "name": "Mordekhai"},
+        {"key": "haman", "name": "Haman"},
+        {"key": "zeres", "name": "Zeres"}
+      ],
+      "relationships": [
+        {"type": "ratu", "from": "ester", "to": "ahaswerus"},
+        {"type": "keponakan", "from": "ester", "to": "mordekhai"},
+        {"type": "ayah_angkat", "from": "mordekhai", "to": "ester"},
+        {"type": "musuh", "from": "mordekhai", "to": "haman"}
+      ]
+    },
+    "ayub": {
+      "characters": [
+        {"key": "ayub", "name": "Ayub"},
+        {"key": "iblis", "name": "Iblis"},
+        {"key": "elifas", "name": "Elifas"},
+        {"key": "bildad", "name": "Bildad"},
+        {"key": "zofar", "name": "Zofar"},
+        {"key": "elihu", "name": "Elihu"}
+      ],
+      "relationships": [
+        {"type": "teman", "from": "elifas", "to": "ayub"},
+        {"type": "teman", "from": "bildad", "to": "ayub"},
+        {"type": "teman", "from": "zofar", "to": "ayub"}
+      ]
+    },
+    "mzuri": {
+      "characters": [
+        {"key": "daud", "name": "Daud"},
+        {"key": "asaf", "name": "Asaf"},
+        {"key": "anak-anak_korah", "name": "Anak-anak Korah"},
+        {"key": "etan", "name": "Etan"},
+        {"key": "musa", "name": "Musa"}
+      ],
+      "relationships": [
+        {"type": "penulis", "from": "daud", "to": "mazmur"},
+        {"type": "penulis", "from": "asaf", "to": "mazmur"}
+      ]
+    },
+    "amsal": {
+      "characters": [
+        {"key": "salomo", "name": "Salomo"},
+        {"key": "bezaleel", "name": "Bezaleel"}
+      ],
+      "relationships": [
+        {"type": "penulis", "from": "salomo", "to": "amsal"}
+      ]
+    },
+    "pengkhutbah": {
+      "characters": [
+        {"key": "salomo", "name": "Salomo"}
+      ],
+      "relationships": [
+        {"type": "penulis", "from": "salomo", "to": "pengkhutbah"}
+      ]
+    },
+    "pujian": {
+      "characters": [
+        {"key": "salomo", "name": "Salomo"},
+        {"key": "sulami", "name": "Sulami"}
+      ],
+      "relationships": [
+        {"type": "yang_dicintai", "from": "salomo", "to": "sulami"}
+      ]
+    },
+    "yesaya": {
+      "characters": [
+        {"key": "yesaya", "name": "Yesaya"},
+        {"key": "ahas", "name": "Ahas"},
+        {"key": "hizkia", "name": "Hizkia"},
+        {"key": "manasye", "name": "Manasye"},
+        {"key": "sanherib", "name": "Sanherib"}
+      ],
+      "relationships": [
+        {"type": "nabi", "from": "yesaya", "to": "Yehuda"},
+        {"type": "raja", "from": "ahas", "to": "Yehuda"},
+        {"type": "raja", "from": "hizkia", "to": "Yehuda"},
+        {"type": "raja", "from": "manasye", "to": "Yehuda"}
+      ]
+    },
+    "yeremia": {
+      "characters": [
+        {"key": "yeremia", "name": "Yeremia"},
+        {"key": "raja_yehuda", "name": "Raja Yehuda"},
+        {"key": "barukh", "name": "Barukh"},
+        {"key": "zakharia", "name": "Zakharia"},
+        {"key": "efraim", "name": "Efraim"}
+      ],
+      "relationships": [
+        {"type": "nabi", "from": "yeremia", "to": "Yehuda"},
+        {"type": "ahli_tulis", "from": "barukh", "to": "yeremia"}
+      ]
+    },
+    "ratapan": {
+      "characters": [
+        {"key": "yeremia", "name": "Yeremia"}
+      ],
+      "relationships": [
+        {"type": "penulis", "from": "yeremia", "to": "ratapan"}
+      ]
+    },
+    "yehezkiel": {
+      "characters": [
+        {"key": "yehezkiel", "name": "Yehezkiel"},
+        {"key": "raja_yehuda", "name": "Raja Yehuda"},
+        {"key": "glafira", "name": "Glafira"}
+      ],
+      "relationships": [
+        {"type": "nabi", "from": "yehezkiel", "to": "israel"}
+      ]
+    },
+    "daniel": {
+      "characters": [
+        {"key": "daniel", "name": "Daniel"},
+        {"key": "nebuchadnezar", "name": "Nebukadnezar"},
+        {"key": "belsyazar", "name": "Belsyazar"},
+        {"key": "sadrak", "name": "Sadrak"},
+        {"key": "mesak", "name": "Mesak"},
+        {"key": "abednego", "name": "Abednego"},
+        {"key": "mordekhai", "name": "Mordekhai"}
+      ],
+      "relationships": [
+        {"type": "nabi", "from": "daniel", "to": "babilonia"},
+        {"type": "raja", "from": "nebuchadnezar", "to": "babilonia"},
+        {"type": "teman", "from": "daniel", "to": "sadrak"},
+        {"type": "teman", "from": "daniel", "to": "mesak"},
+        {"type": "teman", "from": "daniel", "to": "abednego"}
+      ]
+    },
+    "hosea": {
+      "characters": [
+        {"key": "hosea", "name": "Hosea"},
+        {"key": "gomer", "name": "Gomer"},
+        {"key": "yizreel", "name": "Yizreel"},
+        {"key": "looruhama", "name": "Lo-ruhama"},
+        {"key": "loammi", "name": "Lo-ammi"}
+      ],
+      "relationships": [
+        {"type": "nabi", "from": "hosea", "to": "israel"},
+        {"type": "istri", "from": "gomer", "to": "hosea"}
+      ]
+    },
+    "yoel": {
+      "characters": [
+        {"key": "yoel", "name": "Yoel"}
+      ],
+      "relationships": [
+        {"type": "nabi", "from": "yoel", "to": "Yehuda"}
+      ]
+    },
+    "amos": {
+      "characters": [
+        {"key": "amos", "name": "Amos"},
+        {"key": "yerobeam", "name": "Yerobeam"},
+        {"key": "amasia", "name": "Amasia"}
+      ],
+      "relationships": [
+        {"type": "nabi", "from": "amos", "to": "israel"},
+        {"type": "raja", "from": "yerobeam", "to": "israel"},
+        {"type": "imam", "from": "amasia", "to": "amos"}
+      ]
+    },
+    "obaja": {
+      "characters": [
+        {"key": "obaja", "name": "Obaja"}
+      ],
+      "relationships": [
+        {"type": "nabi", "from": "obaja", "to": "edom"}
+      ]
+    },
+    "yunus": {
+      "characters": [
+        {"key": "yunus", "name": "Yunus"},
+        {"key": "raja_ninive", "name": "Raja Ninive"}
+      ],
+      "relationships": [
+        {"type": "nabi", "from": "yunus", "to": "ninive"}
+      ]
+    },
+    "mika": {
+      "characters": [
+        {"key": "mika", "name": "Mika"}
+      ],
+      "relationships": [
+        {"type": "nabi", "from": "mika", "to": "Yehuda"}
+      ]
+    },
+    "nahum": {
+      "characters": [
+        {"key": "nahum", "name": "Nahum"}
+      ],
+      "relationships": [
+        {"type": "nabi", "from": "nahum", "to": "ninive"}
+      ]
+    },
+    "habakuk": {
+      "characters": [
+        {"key": "habakuk", "name": "Habakuk"}
+      ],
+      "relationships": [
+        {"type": "nabi", "from": "habakuk", "to": "Yehuda"}
+      ]
+    },
+    "zefanya": {
+      "characters": [
+        {"key": "zefanya", "name": "Zefanya"}
+      ],
+      "relationships": [
+        {"type": "nabi", "from": "zefanya", "to": "Yehuda"}
+      ]
+    },
+    "hagai": {
+      "characters": [
+        {"key": "hagai", "name": "Hagai"},
+        {"key": "zerubabel", "name": "Zerubabel"},
+        {"key": "yusua", "name": "Yusua"}
+      ],
+      "relationships": [
+        {"type": "nabi", "from": "hagai", "to": "Yehuda"},
+        {"type": "gubernur", "from": "zerubabel", "to": "Yehuda"},
+        {"type": "imam_besar", "from": "yusua", "to": "Yehuda"}
+      ]
+    },
+    "zakharia": {
+      "characters": [
+        {"key": "zakharia", "name": "Zakharia"},
+        {"key": "zerubabel", "name": "Zerubabel"},
+        {"key": "yusua", "name": "Yusua"}
+      ],
+      "relationships": [
+        {"type": "nabi", "from": "zakharia", "to": "Yehuda"}
+      ]
+    },
+    "maleakhi": {
+      "characters": [
+        {"key": "maleakhi", "name": "Maleakhi"}
+      ],
+      "relationships": [
+        {"type": "nabi", "from": "maleakhi", "to": "Yehuda"}
+      ]
+    },
+    "matius": {
+      "characters": [
+        {"key": "yesus", "name": "Yesus"},
+        {"key": "maria", "name": "Maria"},
+        {"key": "yosef", "name": "Yosef"},
+        {"key": "herodes", "name": "Herodes"},
+        {"key": "petrus", "name": "Petrus"},
+        {"key": "andreas", "name": "Andreas"},
+        {"key": "yakobus", "name": "Yakobus"},
+        {"key": "yohanes", "name": "Yohanes"},
+        {"key": "filipus", "name": "Filpus"},
+        {"key": "bartolomeus", "name": "Bartolomeus"},
+        {"key": "tomas", "name": "Tomas"},
+        {"key": "matius", "name": "Matius"},
+        {"key": "yakobus_alfeus", "name": "Yakobus (Alfeus)"},
+        {"key": "tadeus", "name": "Tadeus"},
+        {"key": "simon_zealot", "name": "Simon (Zealot)"},
+        {"key": "yudas_iskariot", "name": "Yudas Iskariot"},
+        {"key": "yohanes_pembaptis", "name": "Yohanes Pembaptis"},
+        {"key": "pilatus", "name": "Pilatus"},
+        {"key": "sersan", "name": "Sersan"}
+      ],
+      "relationships": [
+        {"type": "anak", "from": "yesus", "to": "maria"},
+        {"type": "anak", "from": "yesus", "to": "yosef"},
+        {"type": "raja", "from": "herodes", "to": "Yudea"},
+        {"type": "murid", "from": "petrus", "to": "yesus"},
+        {"type": "murid", "from": "andreas", "to": "yesus"},
+        {"type": "murid", "from": "yakobus", "to": "yesus"},
+        {"type": "murid", "from": "yohanes", "to": "yesus"},
+        {"type": "murid", "from": "filipus", "to": "yesus"},
+        {"type": "murid", "from": "bartolomeus", "to": "yesus"},
+        {"type": "murid", "from": "tomas", "to": "yesus"},
+        {"type": "murid", "from": "matius", "to": "yesus"},
+        {"type": "murid", "from": "yakobus_alfeus", "to": "yesus"},
+        {"type": "murid", "from": "tadeus", "to": "yesus"},
+        {"type": "murid", "from": "simon_zealot", "to": "yesus"},
+        {"type": "pengkhianat", "from": "yudas_iskariot", "to": "yesus"},
+        {"type": "pendahulu", "from": "yohanes_pembaptis", "to": "yesus"},
+        {"type": "wali", "from": "pilatus", "to": "yudea"}
+      ]
+    },
+    "markus": {
+      "characters": [
+        {"key": "yesus", "name": "Yesus"},
+        {"key": "yohanes_pembaptis", "name": "Yohanes Pembaptis"},
+        {"key": "petrus", "name": "Petrus"},
+        {"key": "andreas", "name": "Andreas"},
+        {"key": "yakobus", "name": "Yakobus"},
+        {"key": "yohanes", "name": "Yohanes"},
+        {"key": "filipus", "name": "Filpus"},
+        {"key": "bartolomeus", "name": "Bartolomeus"},
+        {"key": "tomas", "name": "Tomas"},
+        {"key": "matius", "name": "Matius"},
+        {"key": "yakobus_alfeus", "name": "Yakobus (Alfeus)"},
+        {"key": "tadeus", "name": "Tadeus"},
+        {"key": "simon_zealot", "name": "Simon (Zealot)"},
+        {"key": "yudas_iskariot", "name": "Yudas Iskariot"},
+        {"key": "herodes_antipas", "name": "Herodes Antipas"},
+        {"key": "pilatus", "name": "Pilatus"},
+        {"key": "barabas", "name": "Barabas"},
+        {"key": "pasukan_romawi", "name": "Pasukan Romawi"}
+      ],
+      "relationships": [
+        {"type": "pendahulu", "from": "yohanes_pembaptis", "to": "yesus"},
+        {"type": "murid", "from": "petrus", "to": "yesus"},
+        {"type": "murid", "from": "andreas", "to": "yesus"},
+        {"type": "murid", "from": "yakobus", "to": "yesus"},
+        {"type": "murid", "from": "yohanes", "to": "yesus"},
+        {"type": "murid", "from": "filipus", "to": "yesus"},
+        {"type": "murid", "from": "bartolomeus", "to": "yesus"},
+        {"type": "murid", "from": "tomas", "to": "yesus"},
+        {"type": "murid", "from": "matius", "to": "yesus"},
+        {"type": "murid", "from": "yakobus_alfeus", "to": "yesus"},
+        {"type": "murid", "from": "tadeus", "to": "yesus"},
+        {"type": "murid", "from": "simon_zealot", "to": "yesus"},
+        {"type": "pengkhianat", "from": "yudas_iskariot", "to": "yesus"},
+        {"type": "pemimpin", "from": "herodes_antipas", "to": "galilea"}
+      ]
+    },
+    "lukas": {
+      "characters": [
+        {"key": "yesus", "name": "Yesus"},
+        {"key": "maria", "name": "Maria"},
+        {"key": "yosef", "name": "Yosef"},
+        {"key": "elisabet", "name": "Elisabet"},
+        {"key": "zakharia", "name": "Zakharia"},
+        {"key": "yohanes_pembaptis", "name": "Yohanes Pembaptis"},
+        {"key": "anna", "name": "Anna"},
+        {"key": "simeon", "name": "Simeon"},
+        {"key": "petrus", "name": "Petrus"},
+        {"key": "yohanes", "name": "Yohanes"},
+        {"key": "yakobus", "name": "Yakobus"},
+        {"key": "andreas", "name": "Andreas"},
+        {"key": "filipus", "name": "Filpus"},
+        {"key": "natanael", "name": "Natanael"},
+        {"key": "tomas", "name": "Tomas"},
+        {"key": "matius", "name": "Matius"},
+        {"key": "yakobus_alfeus", "name": "Yakobus (Alfeus)"},
+        {"key": "simon_zealot", "name": "Simon (Zealot)"},
+        {"key": "yudas_iskariot", "name": "Yudas Iskariot"},
+        {"key": "martha", "name": "Martha"},
+        {"key": "maria_magdalena", "name": "Maria Magdalena"},
+        {"key": "nikodemus", "name": "Nikodemus"},
+        {"key": "samaritan_yang_baik", "name": "Samaritan yang Baik"},
+        {"key": "maria_betania", "name": "Maria dari Betania"},
+        {"key": "lazarus", "name": "Lazarus"},
+        {"key": "pilatus", "name": "Pilatus"},
+        {"key": "herodes_antipas", "name": "Herodes Antipas"}
+      ],
+      "relationships": [
+        {"type": "anak", "from": "yesus", "to": "maria"},
+        {"type": "anak", "from": "yesus", "to": "yosef"},
+        {"type": "sepupu", "from": "yesus", "to": "yohanes_pembaptis"},
+        {"type": "keluarga", "from": "maria", "to": "elisabet"},
+        {"type": "murid", "from": "petrus", "to": "yesus"},
+        {"type": "murid", "from": "yohanes", "to": "yesus"},
+        {"type": "murid", "from": "yakobus", "to": "yesus"},
+        {"type": "murid", "from": "andreas", "to": "yesus"},
+        {"type": "murid", "from": "filipus", "to": "yesus"},
+        {"type": "murid", "from": "natanael", "to": "yesus"},
+        {"type": "murid", "from": "tomas", "to": "yesus"},
+        {"type": "murid", "from": "matius", "to": "yesus"},
+        {"type": "murid", "from": "yakobus_alfeus", "to": "yesus"},
+        {"type": "murid", "from": "simon_zealot", "to": "yesus"},
+        {"type": "pengkhianat", "from": "yudas_iskariot", "to": "yesus"},
+        {"type": "teman", "from": "yesus", "to": "lazarus"},
+        {"type": "teman", "from": "yesus", "to": "martha"},
+        {"type": "pengikut", "from": "maria_magdalena", "to": "yesus"}
+      ]
+    },
+    "yohanes": {
+      "characters": [
+        {"key": "yesus", "name": "Yesus"},
+        {"key": "yohanes", "name": "Yohanes"},
+        {"key": "petrus", "name": "Petrus"},
+        {"key": "andreas", "name": "Andreas"},
+        {"key": "filipus", "name": "Filpus"},
+        {"key": "natanael", "name": "Natanael"},
+        {"key": "tomas", "name": "Tomas"},
+        {"key": "matius", "name": "Matius"},
+        {"key": "yakobus", "name": "Yakobus"},
+        {"key": "simon_zealot", "name": "Simon (Zealot)"},
+        {"key": "yudas_iskariot", "name": "Yudas Iskariot"},
+        {"key": "maria_magdalena", "name": "Maria Magdalena"},
+        {"key": "martha", "name": "Martha"},
+        {"key": "lazarus", "name": "Lazarus"},
+        {"key": "nikodemus", "name": "Nikodemus"},
+        {"key": "perempuan_samaria", "name": "Perempuan Samaria"},
+        {"key": "yohanes_pembaptis", "name": "Yohanes Pembaptis"},
+        {"key": "pilatus", "name": "Pilatus"},
+        {"key": "kaifas", "name": "Kaifas"}
+      ],
+      "relationships": [
+        {"type": "murid", "from": "yohanes", "to": "yesus"},
+        {"type": "murid", "from": "petrus", "to": "yesus"},
+        {"type": "murid", "from": "andreas", "to": "yesus"},
+        {"type": "murid", "from": "filipus", "to": "yesus"},
+        {"type": "murid", "from": "natanael", "to": "yesus"},
+        {"type": "murid", "from": "tomas", "to": "yesus"},
+        {"type": "murid", "from": "matius", "to": "yesus"},
+        {"type": "murid", "from": "yakobus", "to": "yesus"},
+        {"type": "murid", "from": "simon_zealot", "to": "yesus"},
+        {"type": "pengkhianat", "from": "yudas_iskariot", "to": "yesus"},
+        {"type": "teman", "from": "yesus", "to": "lazarus"},
+        {"type": "guru", "from": "yesus", "to": "nikodemus"},
+        {"type": "yang_dicintai", "from": "yohanes", "to": "yesus"}
+      ]
+    },
+    "kisah_para_rasul": {
+      "characters": [
+        {"key": "petrus", "name": "Petrus"},
+        {"key": "yohanes", "name": "Yohanes"},
+        {"key": "yakobus", "name": "Yakobus"},
+        {"key": "andreas", "name": "Andreas"},
+        {"key": "filipus", "name": "Filpus"},
+        {"key": "tomas", "name": "Tomas"},
+        {"key": "bartolomeus", "name": "Bartolomeus"},
+        {"key": "matius", "name": "Matius"},
+        {"key": "yakobus_alfeus", "name": "Yakobus (Alfeus)"},
+        {"key": "simon_zealot", "name": "Simon (Zealot)"},
+        {"key": "yudas_iskariot", "name": "Yudas Iskariot"},
+        {"key": "matias", "name": "Matias"},
+        {"key": "paulus", "name": "Paulus"},
+        {"key": "barnabas", "name": "Barnabas"},
+        {"key": "silas", "name": "Silas"},
+        {"key": "timotius", "name": "Timotius"},
+        {"key": "stefanus", "name": "Stefanus"},
+        {"key": "filipus_penginjil", "name": "Filpus (Penginjil)"},
+        {"key": "saulus", "name": "Saulus"},
+        {"key": "hanania", "name": "Hanania"},
+        {"key": "koronelius", "name": "Koronelius"},
+        {"key": "agabus", "name": "Agabus"},
+        {"key": "lydia", "name": "Lydia"},
+        {"key": "priskila", "name": "Priskila"},
+        {"key": "akila", "name": "Akila"},
+        {"key": "apollos", "name": "Apollos"},
+        {"key": "festus", "name": "Festus"},
+        {"key": "feliks", "name": "Feliks"},
+        {"key": "raja_agrippa", "name": "Raja Agrippa"}
+      ],
+      "relationships": [
+        {"type": "rasul", "from": "petrus", "to": "yerusalem"},
+        {"type": "rasul", "from": "yohanes", "to": "yerusalem"},
+        {"type": "rasul", "from": "yakobus", "to": "yerusalem"},
+        {"type": "menggantikan", "from": "matias", "to": "yudas_iskariot"},
+        {"type": "penganiaya", "from": "saulus", "to": "kristen"},
+        {"type": "konversi", "from": "hanania", "to": "saulus"},
+        {"type": "rasul", "from": "paulus", "to": "bangsa-bangsa"},
+        {"type": "teman_misi", "from": "barnabas", "to": "paulus"},
+        {"type": "teman_misi", "from": "silas", "to": "paulus"},
+        {"type": "guru_bimbing", "from": "paulus", "to": "timotius"},
+        {"type": "martir", "from": "stefanus", "to": "paulus"},
+        {"type": "penginjil", "from": "filipus_penginjil", "to": "samaria"}
+      ]
+    },
+    "roma": {
+      "characters": [
+        {"key": "paulus", "name": "Paulus"},
+        {"key": "timotius", "name": "Timotius"},
+        {"key": "silas", "name": "Silas"},
+        {"key": "foibe", "name": "Foibe"},
+        {"key": "priskila", "name": "Priskila"},
+        {"key": "akila", "name": "Akila"}
+      ],
+      "relationships": [
+        {"type": "penulis", "from": "paulus", "to": "roma"},
+        {"type": "guru_bimbing", "from": "paulus", "to": "timotius"},
+        {"type": "teman_misi", "from": "paulus", "to": "silas"},
+        {"type": "penderma", "from": "foibe", "to": "paulus"}
+      ]
+    },
+    "1 korintus": {
+      "characters": [
+        {"key": "paulus", "name": "Paulus"},
+        {"key": "sostenes", "name": "Sostenes"},
+        {"key": "apollos", "name": "Apollos"},
+        {"key": "kefas", "name": "Kefas"},
+        {"key": "klemens", "name": "Klemens"}
+      ],
+      "relationships": [
+        {"type": "penulis", "from": "paulus", "to": "korintus"},
+        {"type": "guru_bimbing", "from": "paulus", "to": "apollos"},
+        {"type": "rasul_sejawat", "from": "paulus", "to": "kefas"}
+      ]
+    },
+    "2 korintus": {
+      "characters": [
+        {"key": "paulus", "name": "Paulus"},
+        {"key": "timotius", "name": "Timotius"},
+        {"key": "barnabas", "name": "Barnabas"},
+        {"key": "titus", "name": "Titus"}
+      ],
+      "relationships": [
+        {"type": "penulis", "from": "paulus", "to": "korintus"},
+        {"type": "guru_bimbing", "from": "paulus", "to": "timotius"},
+        {"type": "teman_misi", "from": "paulus", "to": "barnabas"},
+        {"type": "perwakilan", "from": "titus", "to": "paulus"}
+      ]
+    },
+    "galatia": {
+      "characters": [
+        {"key": "paulus", "name": "Paulus"},
+        {"key": "barnabas", "name": "Barnabas"},
+        {"key": "kefas", "name": "Kefas"},
+        {"key": "yohanes", "name": "Yohanes"},
+        {"key": "yakobus", "name": "Yakobus"}
+      ],
+      "relationships": [
+        {"type": "penulis", "from": "paulus", "to": "galatia"},
+        {"type": "teman_misi", "from": "paulus", "to": "barnabas"},
+        {"type": "rasul", "from": "kefas", "to": "orang_yahudi"},
+        {"type": "rasul", "from": "paulus", "to": "orang_bangsa"}
+      ]
+    },
+    "efesus": {
+      "characters": [
+        {"key": "paulus", "name": "Paulus"},
+        {"key": "timotius", "name": "Timotius"},
+        {"key": "tikhikus", "name": "Tikhikus"},
+        {"key": "onessimus", "name": "Onesimus"}
+      ],
+      "relationships": [
+        {"type": "penulis", "from": "paulus", "to": "efesus"},
+        {"type": "guru_bimbing", "from": "paulus", "to": "timotius"},
+        {"type": "pesuruh", "from": "tikhikus", "to": "efesus"}
+      ]
+    },
+    "filipi": {
+      "characters": [
+        {"key": "paulus", "name": "Paulus"},
+        {"key": "timotius", "name": "Timotius"},
+        {"key": "efraproditus", "name": "Efraproditus"},
+        {"key": "euodia", "name": "Euodia"},
+        {"key": "sintikhe", "name": "Sintikhe"}
+      ],
+      "relationships": [
+        {"type": "penulis", "from": "paulus", "to": "filipi"},
+        {"type": "guru_bimbing", "from": "paulus", "to": "timotius"},
+        {"type": "pesuruh", "from": "efraproditus", "to": "paulus"}
+      ]
+    },
+    "kolose": {
+      "characters": [
+        {"key": "paulus", "name": "Paulus"},
+        {"key": "timotius", "name": "Timotius"},
+        {"key": "tikhikus", "name": "Tikhikus"},
+        {"key": "onessimus", "name": "Onesimus"},
+        {"key": "arkhipus", "name": "Arkhipus"}
+      ],
+      "relationships": [
+        {"type": "penulis", "from": "paulus", "to": "kolose"},
+        {"type": "guru_bimbing", "from": "paulus", "to": "timotius"},
+        {"type": "hamba", "from": "onessimus", "to": "filemon"}
+      ]
+    },
+    "1 tesalonika": {
+      "characters": [
+        {"key": "paulus", "name": "Paulus"},
+        {"key": "silas", "name": "Silas"},
+        {"key": "timotius", "name": "Timotius"}
+      ],
+      "relationships": [
+        {"type": "penulis", "from": "paulus", "to": "tesalonika"},
+        {"type": "teman_misi", "from": "paulus", "to": "silas"},
+        {"type": "guru_bimbing", "from": "paulus", "to": "timotius"}
+      ]
+    },
+    "2 tesalonika": {
+      "characters": [
+        {"key": "paulus", "name": "Paulus"},
+        {"key": "silas", "name": "Silas"},
+        {"key": "timotius", "name": "Timotius"}
+      ],
+      "relationships": [
+        {"type": "penulis", "from": "paulus", "to": "tesalonika"},
+        {"type": "teman_misi", "from": "paulus", "to": "silas"},
+        {"type": "guru_bimbing", "from": "paulus", "to": "timotius"}
+      ]
+    },
+    "1 timotius": {
+      "characters": [
+        {"key": "paulus", "name": "Paulus"},
+        {"key": "timotius", "name": "Timotius"},
+        {"key": "filemon", "name": "Filemon"}
+      ],
+      "relationships": [
+        {"type": "penulis", "from": "paulus", "to": "timotius"},
+        {"type": "guru_bimbing", "from": "paulus", "to": "timotius"},
+        {"type": "penerima", "from": "timotius", "to": "paulus"}
+      ]
+    },
+    "2 timotius": {
+      "characters": [
+        {"key": "paulus", "name": "Paulus"},
+        {"key": "timotius", "name": "Timotius"},
+        {"key": "priska", "name": "Priska"},
+        {"key": "akila", "name": "Akila"},
+        {"key": "himenius", "name": "Himenius"}
+      ],
+      "relationships": [
+        {"type": "penulis", "from": "paulus", "to": "timotius"},
+        {"type": "guru_bimbing", "from": "paulus", "to": "timotius"},
+        {"type": "guru", "from": "priska", "to": "akila"}
+      ]
+    },
+    "titus": {
+      "characters": [
+        {"key": "paulus", "name": "Paulus"},
+        {"key": "titus", "name": "Titus"},
+        {"key": "artemas", "name": "Artemas"},
+        {"key": "zenas", "name": "Zenas"}
+      ],
+      "relationships": [
+        {"type": "penulis", "from": "paulus", "to": "titus"},
+        {"type": "guru_bimbing", "from": "paulus", "to": "titus"},
+        {"type": "penerima", "from": "titus", "to": "paulus"}
+      ]
+    },
+    "filemon": {
+      "characters": [
+        {"key": "paulus", "name": "Paulus"},
+        {"key": "timotius", "name": "Timotius"},
+        {"key": "filemon", "name": "Filemon"},
+        {"key": "onessimus", "name": "Onesimus"},
+        {"key": "arkhipus", "name": "Arkhipus"}
+      ],
+      "relationships": [
+        {"type": "penulis", "from": "paulus", "to": "filemon"},
+        {"type": "guru_bimbing", "from": "paulus", "to": "filemon"},
+        {"type": "hamba", "from": "onessimus", "to": "filemon"},
+        {"type": "teman_seperjuangan", "from": "arkhipus", "to": "paulus"}
+      ]
+    },
+    "ibrani": {
+      "characters": [
+        {"key": "paulus", "name": "Paulus"},
+        {"key": "timotius", "name": "Timotius"},
+        {"key": "brahim", "name": "Abraham"},
+        {"key": "musa", "name": "Musa"},
+        {"key": "harun", "name": "Harun"},
+        {"key": "yusua", "name": "Yusua"},
+        {"key": "melkisedek", "name": "Melkisedek"}
+      ],
+      "relationships": [
+        {"type": "penulis", "from": "paulus", "to": "ibrani"},
+        {"type": "guru_bimbing", "from": "paulus", "to": "timotius"},
+        {"type": "nenek_moyang", "from": "brahim", "to": "israel"},
+        {"type": "pemimpin", "from": "musa", "to": "israel"}
+      ]
+    },
+    "yakobus": {
+      "characters": [
+        {"key": "yakobus", "name": "Yakobus"},
+        {"key": "yesus", "name": "Yesus"}
+      ],
+      "relationships": [
+        {"type": "penulis", "from": "yakobus", "to": "orang_yahudi"},
+        {"type": "saudara", "from": "yakobus", "to": "yesus"}
+      ]
+    },
+    "1 petrus": {
+      "characters": [
+        {"key": "petrus", "name": "Petrus"},
+        {"key": "silas", "name": "Silas"},
+        {"key": "markus", "name": "Markus"}
+      ],
+      "relationships": [
+        {"type": "penulis", "from": "petrus", "to": "orang_asing"},
+        {"type": "rasul", "from": "petrus", "to": "kristen"},
+        {"type": "rekan_kerja", "from": "silas", "to": "petrus"},
+        {"type": "rekan_kerja", "from": "markus", "to": "petrus"}
+      ]
+    },
+    "2 petrus": {
+      "characters": [
+        {"key": "petrus", "name": "Petrus"},
+        {"key": "paulus", "name": "Paulus"},
+        {"key": "silas", "name": "Silas"}
+      ],
+      "relationships": [
+        {"type": "penulis", "from": "petrus", "to": "kristen"},
+        {"type": "rasul", "from": "petrus", "to": "kristen"}
+      ]
+    },
+    "1 yohanes": {
+      "characters": [
+        {"key": "yohanes", "name": "Yohanes"},
+        {"key": "yesus", "name": "Yesus"}
+      ],
+      "relationships": [
+        {"type": "penulis", "from": "yohanes", "to": "kristen"},
+        {"type": "murid", "from": "yohanes", "to": "yesus"}
+      ]
+    },
+    "2 yohanes": {
+      "characters": [
+        {"key": "yohanes", "name": "Yohanes"},
+        {"key": "nyonya_terpilih", "name": "Nyonya Terpilih"}
+      ],
+      "relationships": [
+        {"type": "penulis", "from": "yohanes", "to": "nyonya_terpilih"}
+      ]
+    },
+    "3 yohanes": {
+      "characters": [
+        {"key": "yohanes", "name": "Yohanes"},
+        {"key": "gaius", "name": "Gaius"},
+        {"key": "diotrefes", "name": "Diotrefes"},
+        {"key": "demetrius", "name": "Demetrius"}
+      ],
+      "relationships": [
+        {"type": "penulis", "from": "yohanes", "to": "gaius"},
+        {"type": "tuan_rumah", "from": "gaius", "to": "yohanes"},
+        {"type": "penentang", "from": "diotrefes", "to": "yohanes"}
+      ]
+    },
+    "yudas": {
+      "characters": [
+        {"key": "yudas", "name": "Yudas"},
+        {"key": "yesus", "name": "Yesus"}
+      ],
+      "relationships": [
+        {"type": "penulis", "from": "yudas", "to": "kristen"},
+        {"type": "saudara", "from": "yudas", "to": "yesus"}
+      ]
+    },
+    "wahyu": {
+      "characters": [
+        {"key": "yohanes", "name": "Yohanes"},
+        {"key": "yesus", "name": "Yesus"},
+        {"key": "domba", "name": "Anak Domba (Yesus)"},
+        {"key": "naga", "name": "Naga (Iblis)"},
+        {"key": "binatang", "name": "Binatang"},
+        {"key": "nabi_palsu", "name": "Nabi Palsu"},
+        {"key": "antikhristus", "name": "Antikhristus"},
+        {"key": "mikael", "name": "Mikael"},
+        {"key": "gabriel", "name": "Gabriel"},
+        {"key": "babilonia", "name": "Babilonia"},
+        {"key": "yerusalem_baru", "name": "Yerusalem Baru"},
+        {"key": "takhta", "name": "Takhta Allah"}
+      ],
+      "relationships": [
+        {"type": "penulis", "from": "yohanes", "to": "jemaat-jemaat"},
+        {"type": "penerang", "from": "yesus", "to": "yohanes"},
+        {"type": "penentang", "from": "naga", "to": "tuhan"},
+        {"type": "pekerja_utama", "from": "mikael", "to": "naga"},
+        {"type": "simbol", "from": "binatang", "to": "antikhristus"},
+        {"type": "kota", "from": "yerusalem_baru", "to": "tuhan"}
+      ]
+    }
+  }
+}

@@ -1,0 +1,104 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://bible-api.example.com/schemas/visualize.schema.json",
+  "title": "VisualizeLocale",
+  "description": "Schema for Bible visualize locale data including timeline events and character relationships",
+  "type": "object",
+  "properties": {
+    "language": {
+      "type": "string",
+      "description": "Language code (e.g., 'en', 'id')"
+    },
+    "language_name": {
+      "type": "string",
+      "description": "Human-readable language name"
+    },
+    "timeline": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/TimelineEventJson" },
+      "default": []
+    },
+    "books": {
+      "type": "object",
+      "additionalProperties": { "$ref": "#/$defs/BookRelationshipsJson" },
+      "default": {}
+    }
+  },
+  "required": ["language", "language_name", "timeline", "books"],
+  "$defs": {
+    "TimelineEventJson": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string",
+          "description": "Unique identifier for the event"
+        },
+        "event": {
+          "type": "string",
+          "description": "Event description"
+        },
+        "reference": {
+          "type": "string",
+          "description": "Biblical reference (e.g., 'Genesis 1:1')"
+        },
+        "estimated_year": {
+          "type": "integer",
+          "description": "Estimated year (negative for BCE)"
+        },
+        "category": {
+          "type": "string",
+          "description": "Event category (e.g., 'creation', 'patriarchs', 'new_testament')"
+        }
+      },
+      "required": ["key", "event", "reference", "estimated_year", "category"]
+    },
+    "BookRelationshipsJson": {
+      "type": "object",
+      "properties": {
+        "characters": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/CharacterJson" },
+          "default": []
+        },
+        "relationships": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/RelationshipJson" },
+          "default": []
+        }
+      },
+      "required": ["characters", "relationships"]
+    },
+    "CharacterJson": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string",
+          "description": "Unique identifier for the character"
+        },
+        "name": {
+          "type": "string",
+          "description": "Character name"
+        }
+      },
+      "required": ["key", "name"]
+    },
+    "RelationshipJson": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "Relationship type (e.g., 'parent', 'spouse', 'brother')"
+        },
+        "from": {
+          "type": "string",
+          "description": "Source character key"
+        },
+        "to": {
+          "type": "string",
+          "description": "Target character key"
+        }
+      },
+      "required": ["type", "from", "to"]
+    }
+  }
+}

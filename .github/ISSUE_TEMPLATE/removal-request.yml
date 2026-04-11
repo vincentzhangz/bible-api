@@ -1,0 +1,31 @@
+---
+name: Translation Removal Request
+about: Request removal of a Bible translation due to copyright concerns
+title: "[REMOVAL] Translation name"
+labels: removal-request
+assignees: ''
+---
+
+## Translation Details
+
+- **Translation ID**: (e.g., `en-kjv`)
+- **Translation Name**: (e.g., "King James Version")
+- **Language**: (e.g., "English")
+
+## Copyright Ownership
+
+I certify that I am the legitimate copyright holder or authorized representative for this translation.
+
+## Evidence of Ownership
+
+Please provide documentation supporting your copyright claim (e.g., publishing rights, work for hire agreement, etc.)
+
+## Confirmation
+
+- [ ] I understand that this request is for removal from the public repository only
+- [ ] I understand that cached copies or forks of this repository may still contain the translation
+- [ ] I will provide additional evidence of ownership if requested
+
+## Additional Context
+
+Any other relevant information about the copyright or ownership.
