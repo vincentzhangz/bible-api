@@ -18,7 +18,7 @@ pub async fn list_translations(State(pool): State<PgPool>) -> Json<Vec<Translati
             id: t.id,
             name: t.name,
             language: t.language,
-            license: t.license_id.map(|_| "unknown".to_string()).unwrap_or_else(|| "none".to_string()),
+            license: t.license_id.unwrap_or_else(|| "none".to_string()),
             source: t.source,
         })
         .collect();
