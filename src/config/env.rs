@@ -17,7 +17,7 @@ pub struct AppConfig {
 }
 
 impl AppConfig {
-/// Loads application configuration from environment variables.
+    /// Loads application configuration from environment variables.
     pub fn from_env() -> Self {
         dotenvy::dotenv().ok();
 
