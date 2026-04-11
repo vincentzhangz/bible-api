@@ -4,7 +4,7 @@ use std::fs;
 use std::path::Path;
 use tracing::{error, info};
 
-use super::hash_sync::{calculate_hash, SyncStatus, check_and_sync_translation};
+use super::hash_sync::{SyncStatus, calculate_hash, check_and_sync_translation};
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct TranslationJson {
@@ -68,12 +68,20 @@ pub struct VerseJson {
     pub text: String,
 }
 
-pub async fn ingest_json_file(pool: &PgPool, path: &Path) -> Result<(), Box<dyn std::error::Error>> {
+/// Ingests a single translation JSON file into the database.
+pub async fn ingest_json_file(
+    pool: &PgPool,
+    path: &Path,
+) -> Result<(), Box<dyn std::error::Error>> {
     let content = fs::read(path)?;
     let hash = calculate_hash(&content);
 
     let translation: TranslationJson = serde_json::from_slice(&content)?;
-    let source = translation.metadata.source.clone().unwrap_or_else(|| "community".to_string());
+    let source = translation
+        .metadata
+        .source
+        .clone()
+        .unwrap_or_else(|| "community".to_string());
 
     let sync_status = check_and_sync_translation(pool, &translation.id, &hash).await?;
 
@@ -140,7 +148,8 @@ pub async fn ingest_json_file(pool: &PgPool, path: &Path) -> Result<(), Box<dyn 
         let book_id = get_or_create_book(pool, &book_json.name, &book_json.testament).await?;
 
         for chapter_json in &book_json.chapters {
-            let chapter_id = insert_chapter(pool, &translation.id, book_id, chapter_json.chapter).await?;
+            let chapter_id =
+                insert_chapter(pool, &translation.id, book_id, chapter_json.chapter).await?;
 
             for verse_json in &chapter_json.verses {
                 insert_verse(pool, chapter_id, verse_json.verse, &verse_json.text).await?;
@@ -152,14 +161,15 @@ pub async fn ingest_json_file(pool: &PgPool, path: &Path) -> Result<(), Box<dyn 
     Ok(())
 }
 
-async fn get_or_create_license(pool: &PgPool, license_id: &str) -> Result<Option<String>, sqlx::Error> {
+async fn get_or_create_license(
+    pool: &PgPool,
+    license_id: &str,
+) -> Result<Option<String>, sqlx::Error> {
     // Look up existing license by id
-    let existing: Option<String> = sqlx::query_scalar(
-        "SELECT id FROM licenses WHERE id = $1",
-    )
-    .bind(license_id)
-    .fetch_optional(pool)
-    .await?;
+    let existing: Option<String> = sqlx::query_scalar("SELECT id FROM licenses WHERE id = $1")
+        .bind(license_id)
+        .fetch_optional(pool)
+        .await?;
 
     if let Some(id) = existing {
         return Ok(Some(id));
@@ -181,25 +191,26 @@ async fn get_or_create_license(pool: &PgPool, license_id: &str) -> Result<Option
     Ok(Some(license_id.to_string()))
 }
 
-async fn get_or_create_book(pool: &PgPool, name: &str, testament: &str) -> Result<i32, sqlx::Error> {
-    let existing = sqlx::query_scalar::<_, Option<i32>>(
-        "SELECT id FROM books WHERE LOWER(name) = LOWER($1)",
-    )
-    .bind(name)
-    .fetch_optional(pool)
-    .await?;
+async fn get_or_create_book(
+    pool: &PgPool,
+    name: &str,
+    testament: &str,
+) -> Result<i32, sqlx::Error> {
+    let existing =
+        sqlx::query_scalar::<_, Option<i32>>("SELECT id FROM books WHERE LOWER(name) = LOWER($1)")
+            .bind(name)
+            .fetch_optional(pool)
+            .await?;
 
     if let Some(id) = existing.flatten() {
         return Ok(id);
     }
 
-    let max_order = sqlx::query_scalar::<_, Option<i32>>(
-        "SELECT MAX(ord) FROM books",
-    )
-    .fetch_optional(pool)
-    .await?
-    .flatten()
-    .unwrap_or(0);
+    let max_order = sqlx::query_scalar::<_, Option<i32>>("SELECT MAX(ord) FROM books")
+        .fetch_optional(pool)
+        .await?
+        .flatten()
+        .unwrap_or(0);
 
     let new_order = max_order + 1;
 
@@ -219,7 +230,12 @@ async fn get_or_create_book(pool: &PgPool, name: &str, testament: &str) -> Resul
     Ok(id)
 }
 
-async fn insert_chapter(pool: &PgPool, translation_id: &str, book_id: i32, chapter_number: i32) -> Result<i32, sqlx::Error> {
+async fn insert_chapter(
+    pool: &PgPool,
+    translation_id: &str,
+    book_id: i32,
+    chapter_number: i32,
+) -> Result<i32, sqlx::Error> {
     let id = sqlx::query_scalar::<_, i32>(
         r#"
         INSERT INTO chapters (translation_id, book_id, chapter_number)
@@ -237,7 +253,12 @@ async fn insert_chapter(pool: &PgPool, translation_id: &str, book_id: i32, chapt
     Ok(id)
 }
 
-async fn insert_verse(pool: &PgPool, chapter_id: i32, verse_number: i32, text: &str) -> Result<(), sqlx::Error> {
+async fn insert_verse(
+    pool: &PgPool,
+    chapter_id: i32,
+    verse_number: i32,
+    text: &str,
+) -> Result<(), sqlx::Error> {
     sqlx::query(
         r#"
         INSERT INTO verses (chapter_id, verse_number, text)
@@ -279,7 +300,11 @@ async fn truncate_translation(pool: &PgPool, translation_id: &str) -> Result<(),
     Ok(())
 }
 
-pub async fn ingest_all_json_files(pool: &PgPool, data_dir: &Path) -> Result<(), Box<dyn std::error::Error>> {
+/// Ingests all JSON translation files from a directory.
+pub async fn ingest_all_json_files(
+    pool: &PgPool,
+    data_dir: &Path,
+) -> Result<(), Box<dyn std::error::Error>> {
     let translations_dir = data_dir.join("translations");
 
     if !translations_dir.exists() {

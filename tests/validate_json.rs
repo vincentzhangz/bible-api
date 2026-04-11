@@ -14,8 +14,8 @@ fn data_dir() -> PathBuf {
 
 /// Load a JSON file, returning (data, errors)
 fn load_json(path: &Path) -> Result<serde_json::Value, String> {
-    let content =
-        fs::read_to_string(path).map_err(|e| format!("Failed to read {}: {}", path.display(), e))?;
+    let content = fs::read_to_string(path)
+        .map_err(|e| format!("Failed to read {}: {}", path.display(), e))?;
     serde_json::from_str(&content).map_err(|e| format!("Invalid JSON in {}: {}", path.display(), e))
 }
 
@@ -41,19 +41,27 @@ fn load_licenses() -> HashSet<String> {
 }
 
 /// Validate a translation JSON file
-fn validate_translation(data: &serde_json::Value, translation_id: &str, licenses: &HashSet<String>) -> Vec<String> {
+fn validate_translation(
+    data: &serde_json::Value,
+    translation_id: &str,
+    licenses: &HashSet<String>,
+) -> Vec<String> {
     let mut errors = Vec::new();
 
     // Required top-level fields
     let required = ["id", "metadata", "books"];
     for field in required {
         if !data.get(field).is_some() {
-            errors.push(format!("[{}] Missing required field: '{}'", translation_id, field));
+            errors.push(format!(
+                "[{}] Missing required field: '{}'",
+                translation_id, field
+            ));
         }
     }
 
     // Can't continue without these
-    if !data.get("id").is_some() || !data.get("metadata").is_some() || !data.get("books").is_some() {
+    if !data.get("id").is_some() || !data.get("metadata").is_some() || !data.get("books").is_some()
+    {
         return errors;
     }
 
@@ -123,7 +131,10 @@ fn validate_book(
 
     // Check for duplicate book ID
     if seen_books.contains(book_id) {
-        errors.push(format!("[{}] Duplicate book id: '{}'", translation_id, book_id));
+        errors.push(format!(
+            "[{}] Duplicate book id: '{}'",
+            translation_id, book_id
+        ));
     }
     seen_books.insert(book_id.to_string());
 
@@ -138,7 +149,10 @@ fn validate_book(
     // Validate chapters
     if let Some(chapters) = book.get("chapters").and_then(|c| c.as_array()) {
         if chapters.is_empty() {
-            errors.push(format!("[{}] Book '{}' has no chapters", translation_id, book_id));
+            errors.push(format!(
+                "[{}] Book '{}' has no chapters",
+                translation_id, book_id
+            ));
         }
 
         for (j, chapter) in chapters.iter().enumerate() {
@@ -194,7 +208,10 @@ fn validate_visualize(data: &serde_json::Value, file_name: &str) -> Vec<String> 
     let required = ["language", "language_name", "timeline", "books"];
     for field in required {
         if !data.get(field).is_some() {
-            errors.push(format!("[{}] Missing required field: '{}'", file_name, field));
+            errors.push(format!(
+                "[{}] Missing required field: '{}'",
+                file_name, field
+            ));
             return errors;
         }
     }
@@ -238,7 +255,11 @@ fn validate_timeline_event(event: &serde_json::Value, language: &str, index: usi
 }
 
 /// Validate book relationships data
-fn validate_book_relationships(book_data: &serde_json::Value, language: &str, book_key: &str) -> Vec<String> {
+fn validate_book_relationships(
+    book_data: &serde_json::Value,
+    language: &str,
+    book_key: &str,
+) -> Vec<String> {
     let mut errors = Vec::new();
 
     let required = ["characters", "relationships"];
@@ -408,7 +429,10 @@ fn test_validate_all_visualize_files() {
                     continue;
                 }
             };
-            let file_name = path.file_name().and_then(|s| s.to_str()).unwrap_or("unknown");
+            let file_name = path
+                .file_name()
+                .and_then(|s| s.to_str())
+                .unwrap_or("unknown");
             let errors = validate_visualize(&data, file_name);
             all_errors.extend(errors);
         }
@@ -443,8 +467,5 @@ fn test_translations_directory_exists() {
 #[test]
 fn test_visualize_directory_exists() {
     let visualize_dir = data_dir().join("visualize");
-    assert!(
-        visualize_dir.is_dir(),
-        "visualize directory should exist"
-    );
+    assert!(visualize_dir.is_dir(), "visualize directory should exist");
 }

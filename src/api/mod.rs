@@ -1,21 +1,25 @@
 pub mod health;
+pub mod middleware;
 pub mod search;
 pub mod translations;
 pub mod verses;
 pub mod visualize;
 
-use axum::routing::get;
+use crate::config::env::AppConfig;
 use axum::Router;
 use axum::extract::Extension;
+use axum::routing::get;
 use sqlx::PgPool;
 use std::sync::Arc;
-use crate::config::env::AppConfig;
 
+/// Creates the API routes for the application.
 pub fn create_routes(pool: PgPool, config: AppConfig) -> Router {
     let app_config = Arc::new(config);
 
     Router::new()
         .route("/health", get(health::health_check))
+        .route("/health/live", get(health::liveness))
+        .route("/health/ready", get(health::readiness))
         .route("/translations", get(translations::list_translations))
         .route(
             "/translations/{translation}/books/{book}/chapters/{chapter}/verses/{verse}",

@@ -1,7 +1,8 @@
-use sqlx::postgres::PgPoolOptions;
 use sqlx::PgPool;
+use sqlx::postgres::PgPoolOptions;
 use std::time::Duration;
 
+/// Creates a PostgreSQL connection pool.
 pub async fn create_pool(
     database_url: &str,
     max_connections: u32,
@@ -14,6 +15,7 @@ pub async fn create_pool(
         .await
 }
 
+/// Checks the database connection is alive.
 pub async fn check_connection(pool: &PgPool) -> Result<(), sqlx::Error> {
     sqlx::query("SELECT 1").execute(pool).await?;
     Ok(())

@@ -1,7 +1,11 @@
-use axum::{extract::{Path, State}, Json};
+use axum::{
+    Json,
+    extract::{Path, State},
+};
 use serde::Deserialize;
 use sqlx::PgPool;
 
+use crate::error::AppError;
 use crate::models::{ChapterResponse, VerseResponse};
 
 #[derive(Debug, Deserialize)]
@@ -12,10 +16,11 @@ pub struct VersePathParams {
     pub verse: i32,
 }
 
+/// Gets a specific verse by translation, book, chapter, and verse number.
 pub async fn get_verse(
     State(pool): State<PgPool>,
     Path(params): Path<VersePathParams>,
-) -> Result<Json<VerseResponse>, (axum::http::StatusCode, String)> {
+) -> Result<Json<VerseResponse>, AppError> {
     let result = sqlx::query_as::<_, (String, String, i32, i32, String)>(
         r#"
         SELECT t.id, b.name, c.chapter_number, v.verse_number, v.text
@@ -32,7 +37,7 @@ pub async fn get_verse(
     .bind(params.verse)
     .fetch_optional(&pool)
     .await
-    .map_err(|_| (axum::http::StatusCode::INTERNAL_SERVER_ERROR, "Database error".to_string()))?;
+    .map_err(AppError::Database)?;
 
     match result {
         Some((translation, book, chapter, verse_num, text)) => Ok(Json(VerseResponse {
@@ -42,7 +47,7 @@ pub async fn get_verse(
             verse: verse_num,
             text,
         })),
-        None => Err((axum::http::StatusCode::NOT_FOUND, "Verse not found".to_string())),
+        None => Err(AppError::NotFound("Verse not found".to_string())),
     }
 }
 
@@ -53,10 +58,11 @@ pub struct ChapterPathParams {
     pub chapter: i32,
 }
 
+/// Gets all verses in a chapter by translation, book, and chapter number.
 pub async fn get_chapter(
     State(pool): State<PgPool>,
     Path(params): Path<ChapterPathParams>,
-) -> Result<Json<ChapterResponse>, (axum::http::StatusCode, String)> {
+) -> Result<Json<ChapterResponse>, AppError> {
     let result = sqlx::query_as::<_, (String, String, i32)>(
         r#"
         SELECT t.id, b.name, c.chapter_number
@@ -71,11 +77,11 @@ pub async fn get_chapter(
     .bind(params.chapter)
     .fetch_optional(&pool)
     .await
-    .map_err(|_| (axum::http::StatusCode::INTERNAL_SERVER_ERROR, "Database error".to_string()))?;
+    .map_err(AppError::Database)?;
 
     let (translation, book, chapter) = match result {
         Some(r) => r,
-        None => return Err((axum::http::StatusCode::NOT_FOUND, "Chapter not found".to_string())),
+        None => return Err(AppError::NotFound("Chapter not found".to_string())),
     };
 
     let verses = sqlx::query_as::<_, (i32, String)>(
@@ -86,7 +92,7 @@ pub async fn get_chapter(
     .bind(params.chapter)
     .fetch_all(&pool)
     .await
-    .map_err(|_| (axum::http::StatusCode::INTERNAL_SERVER_ERROR, "Database error".to_string()))?;
+    .map_err(AppError::Database)?;
 
     let verse_responses: Vec<VerseResponse> = verses
         .into_iter()

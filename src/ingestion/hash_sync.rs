@@ -1,7 +1,8 @@
-use sha2::{Sha256, Digest};
+use sha2::{Digest, Sha256};
 use sqlx::PgPool;
 use tracing::info;
 
+/// Calculates SHA-256 hash of content.
 pub fn calculate_hash(content: &[u8]) -> String {
     let mut hasher = Sha256::new();
     hasher.update(content);
@@ -64,17 +65,17 @@ mod tests {
     }
 }
 
+/// Checks if a translation needs syncing based on its hash.
 pub async fn check_and_sync_translation(
     pool: &PgPool,
     translation_id: &str,
     file_hash: &str,
 ) -> Result<SyncStatus, sqlx::Error> {
-    let existing = sqlx::query_scalar::<_, Option<String>>(
-        "SELECT json_hash FROM translations WHERE id = $1",
-    )
-    .bind(translation_id)
-    .fetch_optional(pool)
-    .await?;
+    let existing =
+        sqlx::query_scalar::<_, Option<String>>("SELECT json_hash FROM translations WHERE id = $1")
+            .bind(translation_id)
+            .fetch_optional(pool)
+            .await?;
 
     match existing {
         Some(Some(stored_hash)) if stored_hash == file_hash => {

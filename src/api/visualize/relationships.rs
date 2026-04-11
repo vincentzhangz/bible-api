@@ -1,10 +1,13 @@
-use axum::{extract::{Extension, Path, Query}, Json};
+use axum::{
+    Json,
+    extract::{Extension, Path, Query},
+};
 use serde::{Deserialize, Serialize};
 use std::path::Path as StdPath;
 use std::sync::Arc;
 
-use crate::config::env::AppConfig;
 use super::language_from_translation;
+use crate::config::env::AppConfig;
 
 #[derive(Debug, Serialize)]
 pub struct CharacterRelationship {
@@ -35,6 +38,7 @@ pub struct RelationshipsQuery {
     pub lang: Option<String>,
 }
 
+/// Gets character relationships for a book.
 pub async fn relationships(
     Extension(config): Extension<Arc<AppConfig>>,
     Path((translation, book)): Path<(String, String)>,
@@ -62,7 +66,10 @@ pub async fn relationships(
             let characters: Vec<CharacterInfo> = book_data
                 .characters
                 .into_iter()
-                .map(|c| CharacterInfo { key: c.key, name: c.name })
+                .map(|c| CharacterInfo {
+                    key: c.key,
+                    name: c.name,
+                })
                 .collect();
 
             let char_names: std::collections::HashMap<_, _> = characters
@@ -80,7 +87,10 @@ pub async fn relationships(
                         .cloned()
                         .unwrap_or_else(|| r.from.clone()),
                     to: r.to.clone(),
-                    to_name: char_names.get(&r.to).cloned().unwrap_or_else(|| r.to.clone()),
+                    to_name: char_names
+                        .get(&r.to)
+                        .cloned()
+                        .unwrap_or_else(|| r.to.clone()),
                     relationship_type: r.relationship_type,
                 })
                 .collect();

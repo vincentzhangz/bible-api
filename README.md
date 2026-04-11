@@ -7,6 +7,8 @@ A RESTful API for Bible translations, built with Rust and PostgreSQL.
 - Multiple Bible translations support
 - Full-text search across verses
 - Chapter and verse navigation
+- Rate limiting for production protection
+- Graceful shutdown support
 
 ## Quick Start
 
@@ -34,32 +36,34 @@ cargo run
 ## API Endpoints
 
 ### Health
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET    | `/api/v1/health` | Health check |
+| Method | Endpoint               | Description           |
+| ------ | ---------------------- | --------------------- |
+| GET    | `/api/v1/health`       | Combined health check |
+| GET    | `/api/v1/health/live`  | Liveness probe        |
+| GET    | `/api/v1/health/ready` | Readiness probe       |
 
 ### Translations
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET    | `/api/v1/translations` | List all translations |
-| GET    | `/api/v1/translations/{id}` | Get translation details |
-| GET    | `/api/v1/translations/{id}/books` | List books in translation |
-| GET    | `/api/v1/translations/{id}/books/{book}` | Get book chapters |
-| GET    | `/api/v1/translations/{id}/books/{book}/chapters/{chapter}` | Get verses |
-| GET    | `/api/v1/translations/{id}/books/{book}/chapters/{chapter}/verses/{verse}` | Get specific verse |
+| Method | Endpoint                                                                   | Description               |
+| ------ | -------------------------------------------------------------------------- | ------------------------- |
+| GET    | `/api/v1/translations`                                                     | List all translations     |
+| GET    | `/api/v1/translations/{id}`                                                | Get translation details   |
+| GET    | `/api/v1/translations/{id}/books`                                          | List books in translation |
+| GET    | `/api/v1/translations/{id}/books/{book}`                                   | Get book chapters         |
+| GET    | `/api/v1/translations/{id}/books/{book}/chapters/{chapter}`                | Get verses                |
+| GET    | `/api/v1/translations/{id}/books/{book}/chapters/{chapter}/verses/{verse}` | Get specific verse        |
 
 ### Search
-| Method | Endpoint | Description |
-|--------|----------|-------------|
+| Method | Endpoint                   | Description   |
+| ------ | -------------------------- | ------------- |
 | GET    | `/api/v1/search?q={query}` | Search verses |
 
 ### Visualization
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | `/api/v1/visualize/word-frequency/{translation}/{book}` | Word frequency analysis |
-| GET | `/api/v1/visualize/cross-references/{translation}/{book}/{chapter}/{verse}` | Cross references for a verse |
-| GET | `/api/v1/visualize/timeline/{translation}?lang={lang}` | Timeline of biblical events (i18n) |
-| GET | `/api/v1/visualize/relationships/{translation}/{book}?lang={lang}` | Character relationships (i18n) |
+| Method | Endpoint                                                                    | Description                        |
+| ------ | --------------------------------------------------------------------------- | ---------------------------------- |
+| GET    | `/api/v1/visualize/word-frequency/{translation}/{book}`                     | Word frequency analysis            |
+| GET    | `/api/v1/visualize/cross-references/{translation}/{book}/{chapter}/{verse}` | Cross references for a verse       |
+| GET    | `/api/v1/visualize/timeline/{translation}?lang={lang}`                      | Timeline of biblical events (i18n) |
+| GET    | `/api/v1/visualize/relationships/{translation}/{book}?lang={lang}`          | Character relationships (i18n)     |
 
 **i18n Support:** The `timeline` and `relationships` endpoints support localization via the `lang` query parameter. Supported languages: `en` (English), `id` (Indonesian). If not specified, the language is inferred from the translation ID (e.g., `en-kjv` uses `en`).
 
@@ -149,14 +153,17 @@ cargo build --release
 
 ## Environment Variables
 
-| Variable               | Description                          | Default   |
-| ---------------------- | ------------------------------------ | --------- |
-| `DATABASE_URL`         | PostgreSQL connection string         | Required  |
-| `API_HOST`             | API bind address                     | `0.0.0.0` |
-| `API_PORT`             | API port                             | `8080`    |
-| `DATA_DIR`             | Directory for JSON data files        | `data/`   |
-| `DB_MAX_CONNECTIONS`   | Database pool max connections         | `10`      |
+| Variable                  | Description                        | Default   |
+| ------------------------- | ---------------------------------- | --------- |
+| `DATABASE_URL`            | PostgreSQL connection string       | Required  |
+| `API_HOST`                | API bind address                   | `0.0.0.0` |
+| `API_PORT`                | API port                           | `8080`    |
+| `DATA_DIR`                | Directory for JSON data files      | `data/`   |
+| `DB_MAX_CONNECTIONS`      | Database pool max connections      | `10`      |
 | `DB_ACQUIRE_TIMEOUT_SECS` | Database acquire timeout (seconds) | `30`      |
-| `SEARCH_LIMIT`         | Max search results                   | `50`      |
-| `WORD_FREQUENCY_LIMIT` | Max word frequency results           | `100`     |
-| `RUST_LOG`             | Log level                            | `info`    |
+| `SEARCH_LIMIT`            | Max search results                 | `50`      |
+| `WORD_FREQUENCY_LIMIT`    | Max word frequency results         | `100`     |
+| `CORS_ALLOWED_ORIGINS`    | CORS allowed origins (comma-sep)   | `*`       |
+| `RATE_LIMIT_PER_SECOND`   | Normal rate limit (requests/sec)   | `10`      |
+| `RATE_LIMIT_BURST`        | Burst rate limit (requests/sec)    | `20`      |
+| `RUST_LOG`                | Log level                          | `info`    |

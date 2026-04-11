@@ -1,22 +1,19 @@
-use axum::{extract::State, Json};
+use axum::{Json, extract::State};
 use sqlx::PgPool;
 
+use crate::error::AppError;
 use crate::models::{Translation, TranslationResponse};
 
+/// Lists all available Bible translations.
 pub async fn list_translations(
     State(pool): State<PgPool>,
-) -> Result<Json<Vec<TranslationResponse>>, (axum::http::StatusCode, String)> {
+) -> Result<Json<Vec<TranslationResponse>>, AppError> {
     let translations = sqlx::query_as::<_, Translation>(
         "SELECT id, name, language, license_id, source, json_hash FROM translations ORDER BY name",
     )
     .fetch_all(&pool)
     .await
-    .map_err(|_| {
-        (
-            axum::http::StatusCode::INTERNAL_SERVER_ERROR,
-            "Database error".to_string(),
-        )
-    })?;
+    .map_err(AppError::Database)?;
 
     let response: Vec<TranslationResponse> = translations
         .into_iter()

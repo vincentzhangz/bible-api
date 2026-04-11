@@ -1,10 +1,13 @@
-use axum::{extract::{Extension, Path, Query}, Json};
+use axum::{
+    Json,
+    extract::{Extension, Path, Query},
+};
 use serde::{Deserialize, Serialize};
 use std::path::Path as StdPath;
 use std::sync::Arc;
 
-use crate::config::env::AppConfig;
 use super::language_from_translation;
+use crate::config::env::AppConfig;
 
 #[derive(Debug, Serialize)]
 pub struct TimelineEvent {
@@ -21,6 +24,7 @@ pub struct TimelineQuery {
     pub lang: Option<String>,
 }
 
+/// Gets timeline events for a translation.
 pub async fn timeline(
     Extension(config): Extension<Arc<AppConfig>>,
     Path(translation): Path<String>,

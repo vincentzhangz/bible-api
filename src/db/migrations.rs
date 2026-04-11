@@ -1,6 +1,7 @@
 use sqlx::PgPool;
 use tracing::info;
 
+/// Runs database migrations.
 pub async fn run_migrations(pool: &PgPool) -> Result<(), sqlx::Error> {
     info!("Running database migrations...");
 

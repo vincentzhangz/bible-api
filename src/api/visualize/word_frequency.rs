@@ -1,9 +1,13 @@
-use axum::{extract::{Extension, Path, State}, Json};
+use axum::{
+    Json,
+    extract::{Extension, Path, State},
+};
 use serde::{Deserialize, Serialize};
 use sqlx::PgPool;
 use std::sync::Arc;
 
 use crate::config::env::AppConfig;
+use crate::error::AppError;
 
 #[derive(Debug, Serialize)]
 pub struct WordFrequency {
@@ -17,15 +21,15 @@ pub struct WordFrequencyPath {
     pub book: String,
 }
 
+/// Gets word frequency analysis for a book.
 pub async fn word_frequency(
     State(pool): State<PgPool>,
     Extension(config): Extension<Arc<AppConfig>>,
     Path(params): Path<WordFrequencyPath>,
-) -> Result<Json<Vec<WordFrequency>>, (axum::http::StatusCode, String)> {
+) -> Result<Json<Vec<WordFrequency>>, AppError> {
     let limit = config.word_frequency_limit;
-    let results = sqlx::query_as::<_, (String, i64)>(
-        &format!(
-            r#"
+    let results = sqlx::query_as::<_, (String, i64)>(&format!(
+        r#"
             SELECT word, count
             FROM (
                 SELECT unnest(string_to_array(lower(v.text), ' ')) as word
@@ -40,19 +44,13 @@ pub async fn word_frequency(
             ORDER BY count DESC
             LIMIT {}
             "#,
-            limit
-        ),
-    )
+        limit
+    ))
     .bind(&params.translation)
     .bind(&params.book)
     .fetch_all(&pool)
     .await
-    .map_err(|_| {
-        (
-            axum::http::StatusCode::INTERNAL_SERVER_ERROR,
-            "Database error".to_string(),
-        )
-    })?;
+    .map_err(AppError::Database)?;
 
     let frequency: Vec<WordFrequency> = results
         .into_iter()

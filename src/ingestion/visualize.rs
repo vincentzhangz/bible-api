@@ -37,7 +37,11 @@ pub struct RelationshipJson {
     pub to: String,
 }
 
-pub fn load_visualize_locale(data_dir: &std::path::Path, language: &str) -> Option<VisualizeLocale> {
+/// Loads visualization locale data for a language.
+pub fn load_visualize_locale(
+    data_dir: &std::path::Path,
+    language: &str,
+) -> Option<VisualizeLocale> {
     let visualize_dir = data_dir.join("visualize");
 
     // Try exact language match first

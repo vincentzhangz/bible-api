@@ -1,9 +1,13 @@
-use axum::{extract::{Extension, Query, State}, Json};
+use axum::{
+    Json,
+    extract::{Extension, Query, State},
+};
 use serde::Deserialize;
 use sqlx::PgPool;
 use std::sync::Arc;
 
 use crate::config::env::AppConfig;
+use crate::error::AppError;
 use crate::models::SearchResult;
 
 #[derive(Debug, Deserialize)]
@@ -12,18 +16,18 @@ pub struct SearchQuery {
     pub translation: Option<String>,
 }
 
+/// Searches verses by query text.
 pub async fn search(
     State(pool): State<PgPool>,
     Extension(config): Extension<Arc<AppConfig>>,
     Query(params): Query<SearchQuery>,
-) -> Result<Json<Vec<SearchResult>>, (axum::http::StatusCode, String)> {
+) -> Result<Json<Vec<SearchResult>>, AppError> {
     let query = &params.q;
     let limit = config.search_limit;
 
     let results = if let Some(ref translation_id) = params.translation {
-        sqlx::query_as::<_, (String, String, i32, i32, String)>(
-            &format!(
-                r#"
+        sqlx::query_as::<_, (String, String, i32, i32, String)>(&format!(
+            r#"
                 SELECT t.id, b.name, c.chapter_number, v.verse_number, v.text
                 FROM verses v
                 JOIN chapters c ON v.chapter_id = c.id
@@ -33,17 +37,15 @@ pub async fn search(
                 ORDER BY ts_rank(to_tsvector('english', v.text), plainto_tsquery('english', $2))
                 LIMIT {}
                 "#,
-                limit
-            ),
-        )
+            limit
+        ))
         .bind(translation_id)
         .bind(query)
         .fetch_all(&pool)
         .await
     } else {
-        sqlx::query_as::<_, (String, String, i32, i32, String)>(
-            &format!(
-                r#"
+        sqlx::query_as::<_, (String, String, i32, i32, String)>(&format!(
+            r#"
                 SELECT t.id, b.name, c.chapter_number, v.verse_number, v.text
                 FROM verses v
                 JOIN chapters c ON v.chapter_id = c.id
@@ -53,19 +55,13 @@ pub async fn search(
                 ORDER BY ts_rank(to_tsvector('english', v.text), plainto_tsquery('english', $1))
                 LIMIT {}
                 "#,
-                limit
-            ),
-        )
+            limit
+        ))
         .bind(query)
         .fetch_all(&pool)
         .await
     }
-    .map_err(|_| {
-        (
-            axum::http::StatusCode::INTERNAL_SERVER_ERROR,
-            "Database error".to_string(),
-        )
-    })?;
+    .map_err(AppError::Database)?;
 
     let search_results: Vec<SearchResult> = results
         .into_iter()

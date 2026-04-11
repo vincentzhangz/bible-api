@@ -1,6 +1,11 @@
-use axum::{extract::{Path, State}, Json};
+use axum::{
+    Json,
+    extract::{Path, State},
+};
 use serde::{Deserialize, Serialize};
 use sqlx::PgPool;
+
+use crate::error::AppError;
 
 #[derive(Debug, Serialize)]
 pub struct CrossReferenceTarget {
@@ -31,10 +36,11 @@ pub struct CrossRefPath {
     pub verse: i32,
 }
 
+/// Gets cross-references for a specific verse.
 pub async fn cross_references(
     State(pool): State<PgPool>,
     Path(params): Path<CrossRefPath>,
-) -> Result<Json<CrossReferenceResponse>, (axum::http::StatusCode, String)> {
+) -> Result<Json<CrossReferenceResponse>, AppError> {
     let source_result = sqlx::query_as::<_, (String, i32, i32)>(
         r#"
         SELECT b.name, c.chapter_number, v.verse_number
@@ -51,16 +57,10 @@ pub async fn cross_references(
     .bind(params.verse)
     .fetch_optional(&pool)
     .await
-    .map_err(|_| {
-        (
-            axum::http::StatusCode::INTERNAL_SERVER_ERROR,
-            "Database error".to_string(),
-        )
-    })?;
+    .map_err(AppError::Database)?;
 
-    let (source_book, source_chapter, source_verse) = source_result.unwrap_or_else(|| {
-        (params.book.clone(), params.chapter, params.verse)
-    });
+    let (source_book, source_chapter, source_verse) =
+        source_result.unwrap_or_else(|| (params.book.clone(), params.chapter, params.verse));
 
     let references_result = sqlx::query_as::<_, (String, i32, i32, String)>(
         r#"
@@ -84,21 +84,18 @@ pub async fn cross_references(
     .bind(params.verse)
     .fetch_all(&pool)
     .await
-    .map_err(|_| {
-        (
-            axum::http::StatusCode::INTERNAL_SERVER_ERROR,
-            "Database error".to_string(),
-        )
-    })?;
+    .map_err(AppError::Database)?;
 
     let references: Vec<CrossReferenceTarget> = references_result
         .into_iter()
-        .map(|(book, chapter, verse, relationship)| CrossReferenceTarget {
-            book,
-            chapter,
-            verse,
-            relationship,
-        })
+        .map(
+            |(book, chapter, verse, relationship)| CrossReferenceTarget {
+                book,
+                chapter,
+                verse,
+                relationship,
+            },
+        )
         .collect();
 
     Ok(Json(CrossReferenceResponse {
