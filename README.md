@@ -1,5 +1,7 @@
 # Bible API
 
+![Build](https://github.com/vincentzhangz/bible-api/actions/workflows/ci.yml/badge.svg)
+
 A RESTful API for Bible translations, built with Rust and PostgreSQL.
 
 ## Features
