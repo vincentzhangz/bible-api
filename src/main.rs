@@ -22,7 +22,12 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let config = config::AppConfig::from_env();
 
     tracing::info!("Connecting to database...");
-    let pool = db::create_pool(&config.database_url).await?;
+    let pool = db::create_pool(
+        &config.database_url,
+        config.db_max_connections,
+        config.db_acquire_timeout_secs,
+    )
+    .await?;
 
     tracing::info!("Running migrations...");
     db::run_migrations(&pool).await?;

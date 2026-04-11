@@ -149,9 +149,14 @@ cargo build --release
 
 ## Environment Variables
 
-| Variable       | Description                  | Default   |
-| -------------- | ---------------------------- | --------- |
-| `DATABASE_URL` | PostgreSQL connection string | Required  |
-| `API_HOST`     | API bind address             | `0.0.0.0` |
-| `API_PORT`     | API port                     | `8080`    |
-| `RUST_LOG`     | Log level                    | `info`    |
+| Variable               | Description                          | Default   |
+| ---------------------- | ------------------------------------ | --------- |
+| `DATABASE_URL`         | PostgreSQL connection string         | Required  |
+| `API_HOST`             | API bind address                     | `0.0.0.0` |
+| `API_PORT`             | API port                             | `8080`    |
+| `DATA_DIR`             | Directory for JSON data files        | `data/`   |
+| `DB_MAX_CONNECTIONS`   | Database pool max connections         | `10`      |
+| `DB_ACQUIRE_TIMEOUT_SECS` | Database acquire timeout (seconds) | `30`      |
+| `SEARCH_LIMIT`         | Max search results                   | `50`      |
+| `WORD_FREQUENCY_LIMIT` | Max word frequency results           | `100`     |
+| `RUST_LOG`             | Log level                            | `info`    |

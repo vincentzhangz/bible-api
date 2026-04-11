@@ -31,7 +31,7 @@ impl From<Translation> for TranslationResponse {
             id: t.id,
             name: t.name,
             language: t.language,
-            license: t.license_id.map(|_| "unknown".to_string()).unwrap_or_else(|| "none".to_string()),
+            license: t.license_id.unwrap_or_else(|| "none".to_string()),
             source: t.source,
         }
     }
@@ -57,7 +57,7 @@ mod tests {
         assert_eq!(response.id, "tst");
         assert_eq!(response.name, "Translation Name");
         assert_eq!(response.language, "en");
-        assert_eq!(response.license, "unknown");
+        assert_eq!(response.license, "cc-by");
         assert_eq!(response.source, "example.com");
     }
 
