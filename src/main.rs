@@ -23,18 +23,13 @@ use tracing_subscriber::{layer::SubscriberExt, util::SubscriberInitExt};
 use utoipa::OpenApi;
 
 use api::middleware::{create_rate_limiter, rate_limit};
-use api::{search, translations, verses};
 use api::visualize::{
-    self,
-    cross_references::CrossReferenceResponse,
-    relationships::RelationshipsResponse,
-    timeline::TimelineEvent,
-    word_frequency::WordFrequency,
-    CharacterInfo, CharacterRelationship, CrossReferenceSource, CrossReferenceTarget,
+    self, CharacterInfo, CharacterRelationship, CrossReferenceSource, CrossReferenceTarget,
+    cross_references::CrossReferenceResponse, relationships::RelationshipsResponse,
+    timeline::TimelineEvent, word_frequency::WordFrequency,
 };
-use models::{
-    BookResponse, BooksResponse, ChapterResponse, TranslationResponse, VerseResponse,
-};
+use api::{search, translations, verses};
+use models::{BookResponse, BooksResponse, ChapterResponse, TranslationResponse, VerseResponse};
 
 #[derive(OpenApi)]
 #[openapi(
@@ -51,23 +46,21 @@ use models::{
         visualize::timeline::timeline,
         visualize::relationships::relationships,
     ),
-    components(
-        schemas(
-            TranslationResponse,
-            BookResponse,
-            BooksResponse,
-            ChapterResponse,
-            VerseResponse,
-            WordFrequency,
-            CrossReferenceSource,
-            CrossReferenceTarget,
-            CrossReferenceResponse,
-            TimelineEvent,
-            CharacterInfo,
-            CharacterRelationship,
-            RelationshipsResponse,
-        )
-    ),
+    components(schemas(
+        TranslationResponse,
+        BookResponse,
+        BooksResponse,
+        ChapterResponse,
+        VerseResponse,
+        WordFrequency,
+        CrossReferenceSource,
+        CrossReferenceTarget,
+        CrossReferenceResponse,
+        TimelineEvent,
+        CharacterInfo,
+        CharacterRelationship,
+        RelationshipsResponse,
+    )),
     info(
         title = "Bible API",
         version = "0.2.0",
