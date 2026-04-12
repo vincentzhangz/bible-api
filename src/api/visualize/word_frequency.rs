@@ -42,7 +42,7 @@ pub async fn word_frequency(
     let limit = config.word_frequency_limit;
     let results = sqlx::query_as::<_, (String, i64)>(&format!(
         r#"
-            SELECT word, count
+            SELECT word, COUNT(*) as count
             FROM (
                 SELECT unnest(string_to_array(lower(v.text), ' ')) as word
                 FROM verses v
