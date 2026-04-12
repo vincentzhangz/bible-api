@@ -16,7 +16,28 @@ pub struct VersePathParams {
     pub verse: i32,
 }
 
+#[derive(Debug, Deserialize)]
+pub struct ChapterPathParams {
+    pub translation: String,
+    pub book: String,
+    pub chapter: i32,
+}
+
 /// Gets a specific verse by translation, book, chapter, and verse number.
+#[utoipa::path(
+    get,
+    path = "/api/v1/translations/{translation}/books/{book}/chapters/{chapter}/verses/{verse}",
+    params(
+        ("translation" = String, Path, description = "Translation ID"),
+        ("book" = String, Path, description = "Book name"),
+        ("chapter" = i32, Path, description = "Chapter number"),
+        ("verse" = i32, Path, description = "Verse number")
+    ),
+    responses(
+        (status = 200, description = "Verse details", body = VerseResponse),
+        (status = 404, description = "Verse not found")
+    )
+)]
 pub async fn get_verse(
     State(pool): State<PgPool>,
     Path(params): Path<VersePathParams>,
@@ -51,14 +72,20 @@ pub async fn get_verse(
     }
 }
 
-#[derive(Debug, Deserialize)]
-pub struct ChapterPathParams {
-    pub translation: String,
-    pub book: String,
-    pub chapter: i32,
-}
-
 /// Gets all verses in a chapter by translation, book, and chapter number.
+#[utoipa::path(
+    get,
+    path = "/api/v1/translations/{translation}/books/{book}/chapters/{chapter}",
+    params(
+        ("translation" = String, Path, description = "Translation ID"),
+        ("book" = String, Path, description = "Book name"),
+        ("chapter" = i32, Path, description = "Chapter number")
+    ),
+    responses(
+        (status = 200, description = "Chapter with verses", body = ChapterResponse),
+        (status = 404, description = "Chapter not found")
+    )
+)]
 pub async fn get_chapter(
     State(pool): State<PgPool>,
     Path(params): Path<ChapterPathParams>,
@@ -85,7 +112,7 @@ pub async fn get_chapter(
     };
 
     let verses = sqlx::query_as::<_, (i32, String)>(
-        "SELECT verse_number, text FROM verses WHERE chapter_id = (SELECT id FROM chapters WHERE translation_id = $1 AND book_id = (SELECT id FROM books WHERE LOWER(name) = LOWER($2)) AND chapter_number = $3) ORDER BY verse_number"
+        "SELECT verse_number, text FROM verses WHERE chapter_id = (SELECT id FROM chapters WHERE translation_id = $1 AND book_id = (SELECT id FROM books WHERE LOWER(name) = LOWER($2)) AND chapter_number = $3) ORDER BY verse_number",
     )
     .bind(&params.translation)
     .bind(&params.book)

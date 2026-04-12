@@ -6,10 +6,12 @@ mod ingestion;
 mod models;
 
 use axum::{
-    Router,
+    Json, Router,
     extract::Extension,
     http::header::{HeaderName, HeaderValue},
     middleware as axum_middleware,
+    response::Html,
+    routing::get,
 };
 use std::net::SocketAddr;
 use tower_http::{
@@ -18,8 +20,61 @@ use tower_http::{
     trace::TraceLayer,
 };
 use tracing_subscriber::{layer::SubscriberExt, util::SubscriberInitExt};
+use utoipa::OpenApi;
 
 use api::middleware::{create_rate_limiter, rate_limit};
+use api::{search, translations, verses};
+use api::visualize::{
+    self,
+    cross_references::CrossReferenceResponse,
+    relationships::RelationshipsResponse,
+    timeline::TimelineEvent,
+    word_frequency::WordFrequency,
+    CharacterInfo, CharacterRelationship, CrossReferenceSource, CrossReferenceTarget,
+};
+use models::{
+    BookResponse, BooksResponse, ChapterResponse, TranslationResponse, VerseResponse,
+};
+
+#[derive(OpenApi)]
+#[openapi(
+    paths(
+        translations::list_translations,
+        translations::get_translation,
+        translations::list_books,
+        translations::get_book_chapters,
+        verses::get_chapter,
+        verses::get_verse,
+        search::search,
+        visualize::word_frequency::word_frequency,
+        visualize::cross_references::cross_references,
+        visualize::timeline::timeline,
+        visualize::relationships::relationships,
+    ),
+    components(
+        schemas(
+            TranslationResponse,
+            BookResponse,
+            BooksResponse,
+            ChapterResponse,
+            VerseResponse,
+            WordFrequency,
+            CrossReferenceSource,
+            CrossReferenceTarget,
+            CrossReferenceResponse,
+            TimelineEvent,
+            CharacterInfo,
+            CharacterRelationship,
+            RelationshipsResponse,
+        )
+    ),
+    info(
+        title = "Bible API",
+        version = "0.2.0",
+        description = "API for browsing and searching the Bible"
+    )
+)]
+struct ApiDoc;
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
@@ -77,13 +132,64 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let x_frame_options = HeaderName::from_static("x-frame-options");
     let strict_transport_security = HeaderName::from_static("strict-transport-security");
 
+    let openapi = ApiDoc::openapi();
+
     let app = Router::new()
         .nest("/api/v1", api::create_routes(pool.clone(), config.clone()))
+        .route("/", get(|| async move {
+            Html(r#"<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bible API</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-slate-900 to-slate-800 min-h-screen flex items-center justify-center text-white">
+    <div class="text-center px-6 py-12">
+        <h1 class="text-5xl font-bold mb-3">Bible API</h1>
+        <p class="text-gray-400 text-lg mb-8">A RESTful API for Bible translations, built with Rust and PostgreSQL</p>
+        <a href="/swagger-ui"
+           class="inline-block bg-violet-600 hover:bg-violet-700 text-white font-semibold px-8 py-3 rounded-lg transition-colors">
+            View Documentation
+        </a>
+    </div>
+</body>
+</html>"#)
+        }))
+        .route("/api-docs/openapi.json", get({
+            let openapi = openapi.clone();
+            move || async move { Json(openapi) }
+        }))
+        .route("/swagger-ui", get(|| async move {
+            Html(r##"<!DOCTYPE html>
+<html>
+<head>
+    <title>Bible API - Swagger UI</title>
+    <link rel="stylesheet" href="https://unpkg.com/swagger-ui-dist@5/swagger-ui.css" />
+    <script src="https://unpkg.com/swagger-ui-dist@5/swagger-ui-bundle.js"></script>
+</head>
+<body>
+    <div id="swagger-ui"></div>
+    <script>
+        window.onload = function() {
+            SwaggerUIBundle({
+                url: "/api-docs/openapi.json",
+                dom_id: "#swagger-ui",
+                presets: [SwaggerUIBundle.presets.apis, SwaggerUIBundle.SwaggerUIStandalonePreset],
+                layout: "BaseLayout"
+            });
+        };
+    </script>
+</body>
+</html>"##)
+        }))
         .layer(axum_middleware::from_fn(rate_limit))
         .layer(axum_middleware::from_fn(api::middleware::request_id))
         .layer(TraceLayer::new_for_http())
         .layer(cors_layer)
         .layer(Extension(rate_limiter))
+        .layer(Extension(openapi))
         .layer(SetResponseHeaderLayer::if_not_present(
             x_content_type_options,
             HeaderValue::from_static("nosniff"),

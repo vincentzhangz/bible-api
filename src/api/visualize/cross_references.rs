@@ -4,10 +4,11 @@ use axum::{
 };
 use serde::{Deserialize, Serialize};
 use sqlx::PgPool;
+use utoipa::ToSchema;
 
 use crate::error::AppError;
 
-#[derive(Debug, Serialize)]
+#[derive(Debug, Serialize, ToSchema)]
 pub struct CrossReferenceTarget {
     pub book: String,
     pub chapter: i32,
@@ -15,13 +16,13 @@ pub struct CrossReferenceTarget {
     pub relationship: String,
 }
 
-#[derive(Debug, Serialize)]
+#[derive(Debug, Serialize, ToSchema)]
 pub struct CrossReferenceResponse {
     pub source: CrossReferenceSource,
     pub references: Vec<CrossReferenceTarget>,
 }
 
-#[derive(Debug, Serialize)]
+#[derive(Debug, Serialize, ToSchema)]
 pub struct CrossReferenceSource {
     pub book: String,
     pub chapter: i32,
@@ -37,6 +38,19 @@ pub struct CrossRefPath {
 }
 
 /// Gets cross-references for a specific verse.
+#[utoipa::path(
+    get,
+    path = "/api/v1/visualize/cross-references/{translation}/{book}/{chapter}/{verse}",
+    params(
+        ("translation" = String, Path, description = "Translation ID"),
+        ("book" = String, Path, description = "Book name"),
+        ("chapter" = i32, Path, description = "Chapter number"),
+        ("verse" = i32, Path, description = "Verse number")
+    ),
+    responses(
+        (status = 200, description = "Cross-references for verse", body = CrossReferenceResponse)
+    )
+)]
 pub async fn cross_references(
     State(pool): State<PgPool>,
     Path(params): Path<CrossRefPath>,

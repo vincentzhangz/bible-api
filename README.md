@@ -12,6 +12,14 @@ A RESTful API for Bible translations, built with Rust and PostgreSQL.
 - Rate limiting for production protection
 - Graceful shutdown support
 
+## Base URL
+
+The public API is available at `https://api.bibles.my.id`
+
+Interactive documentation (Swagger UI) is available at `https://api.bibles.my.id/swagger-ui`
+
+OpenAPI spec: `https://api.bibles.my.id/api-docs/openapi.json`
+
 ## Quick Start
 
 ### Using Docker Compose
@@ -34,6 +42,9 @@ sqlx migrate run
 # Start the API
 cargo run
 ```
+
+The API will be available at `http://localhost:8080`
+Interactive docs at `http://localhost:8080/swagger-ui`
 
 ## API Endpoints
 

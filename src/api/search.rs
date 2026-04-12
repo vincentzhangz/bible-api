@@ -5,18 +5,29 @@ use axum::{
 use serde::Deserialize;
 use sqlx::PgPool;
 use std::sync::Arc;
+use utoipa::IntoParams;
 
 use crate::config::env::AppConfig;
 use crate::error::AppError;
 use crate::models::SearchResult;
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, IntoParams)]
 pub struct SearchQuery {
     pub q: String,
     pub translation: Option<String>,
 }
 
 /// Searches verses by query text.
+#[utoipa::path(
+    get,
+    path = "/api/v1/search",
+    params(
+        SearchQuery
+    ),
+    responses(
+        (status = 200, description = "Search results", body = Vec<SearchResult>)
+    )
+)]
 pub async fn search(
     State(pool): State<PgPool>,
     Extension(config): Extension<Arc<AppConfig>>,

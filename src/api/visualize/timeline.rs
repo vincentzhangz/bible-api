@@ -5,11 +5,12 @@ use axum::{
 use serde::{Deserialize, Serialize};
 use std::path::Path as StdPath;
 use std::sync::Arc;
+use utoipa::{IntoParams, ToSchema};
 
 use super::language_from_translation;
 use crate::config::env::AppConfig;
 
-#[derive(Debug, Serialize)]
+#[derive(Debug, Serialize, ToSchema)]
 pub struct TimelineEvent {
     pub key: String,
     pub event: String,
@@ -19,12 +20,22 @@ pub struct TimelineEvent {
     pub category: String,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, IntoParams)]
 pub struct TimelineQuery {
     pub lang: Option<String>,
 }
 
 /// Gets timeline events for a translation.
+#[utoipa::path(
+    get,
+    path = "/api/v1/visualize/timeline/{translation}",
+    params(
+        ("translation" = String, Path, description = "Translation ID")
+    ),
+    responses(
+        (status = 200, description = "Timeline events", body = Vec<TimelineEvent>)
+    )
+)]
 pub async fn timeline(
     Extension(config): Extension<Arc<AppConfig>>,
     Path(translation): Path<String>,

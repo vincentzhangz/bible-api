@@ -22,6 +22,18 @@ pub fn create_routes(pool: PgPool, config: AppConfig) -> Router {
         .route("/health/ready", get(health::readiness))
         .route("/translations", get(translations::list_translations))
         .route(
+            "/translations/{translation}",
+            get(translations::get_translation),
+        )
+        .route(
+            "/translations/{translation}/books",
+            get(translations::list_books),
+        )
+        .route(
+            "/translations/{translation}/books/{book}",
+            get(translations::get_book_chapters),
+        )
+        .route(
             "/translations/{translation}/books/{book}/chapters/{chapter}/verses/{verse}",
             get(verses::get_verse),
         )

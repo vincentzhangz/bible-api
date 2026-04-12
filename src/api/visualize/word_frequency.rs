@@ -5,11 +5,12 @@ use axum::{
 use serde::{Deserialize, Serialize};
 use sqlx::PgPool;
 use std::sync::Arc;
+use utoipa::ToSchema;
 
 use crate::config::env::AppConfig;
 use crate::error::AppError;
 
-#[derive(Debug, Serialize)]
+#[derive(Debug, Serialize, ToSchema)]
 pub struct WordFrequency {
     pub word: String,
     pub count: i64,
@@ -22,6 +23,17 @@ pub struct WordFrequencyPath {
 }
 
 /// Gets word frequency analysis for a book.
+#[utoipa::path(
+    get,
+    path = "/api/v1/visualize/word-frequency/{translation}/{book}",
+    params(
+        ("translation" = String, Path, description = "Translation ID"),
+        ("book" = String, Path, description = "Book name")
+    ),
+    responses(
+        (status = 200, description = "Word frequency analysis", body = Vec<WordFrequency>)
+    )
+)]
 pub async fn word_frequency(
     State(pool): State<PgPool>,
     Extension(config): Extension<Arc<AppConfig>>,

@@ -5,11 +5,12 @@ use axum::{
 use serde::{Deserialize, Serialize};
 use std::path::Path as StdPath;
 use std::sync::Arc;
+use utoipa::{IntoParams, ToSchema};
 
 use super::language_from_translation;
 use crate::config::env::AppConfig;
 
-#[derive(Debug, Serialize)]
+#[derive(Debug, Serialize, ToSchema)]
 pub struct CharacterRelationship {
     pub from: String,
     pub from_name: String,
@@ -19,7 +20,7 @@ pub struct CharacterRelationship {
     pub relationship_type: String,
 }
 
-#[derive(Debug, Serialize)]
+#[derive(Debug, Serialize, ToSchema)]
 pub struct RelationshipsResponse {
     pub language: String,
     pub book: String,
@@ -27,38 +28,55 @@ pub struct RelationshipsResponse {
     pub relationships: Vec<CharacterRelationship>,
 }
 
-#[derive(Debug, Serialize)]
+#[derive(Debug, Serialize, ToSchema)]
 pub struct CharacterInfo {
     pub key: String,
     pub name: String,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, IntoParams)]
 pub struct RelationshipsQuery {
     pub lang: Option<String>,
 }
 
+#[derive(Debug, Deserialize, IntoParams)]
+pub struct RelationshipsPath {
+    pub translation: String,
+    pub book: String,
+}
+
 /// Gets character relationships for a book.
+#[utoipa::path(
+    get,
+    path = "/api/v1/visualize/relationships/{translation}/{book}",
+    params(
+        ("translation" = String, Path, description = "Translation ID"),
+        ("book" = String, Path, description = "Book name")
+    ),
+    responses(
+        (status = 200, description = "Character relationships", body = RelationshipsResponse)
+    )
+)]
 pub async fn relationships(
     Extension(config): Extension<Arc<AppConfig>>,
-    Path((translation, book)): Path<(String, String)>,
+    Path(params): Path<RelationshipsPath>,
     Query(query): Query<RelationshipsQuery>,
 ) -> Json<RelationshipsResponse> {
     let language = query
         .lang
         .clone()
-        .unwrap_or_else(|| language_from_translation(&translation));
+        .unwrap_or_else(|| language_from_translation(&params.translation));
 
     let data_dir = StdPath::new(&config.data_dir);
     let locale = crate::ingestion::visualize::load_visualize_locale(data_dir, &language);
 
     let book_data = locale
         .as_ref()
-        .and_then(|l| l.books.get(&book))
+        .and_then(|l| l.books.get(&params.book))
         .cloned()
         .or_else(|| {
             crate::ingestion::visualize::load_visualize_locale(data_dir, "en")
-                .and_then(|l| l.books.get(&book).cloned())
+                .and_then(|l| l.books.get(&params.book).cloned())
         });
 
     match book_data {
@@ -97,14 +115,14 @@ pub async fn relationships(
 
             Json(RelationshipsResponse {
                 language,
-                book,
+                book: params.book,
                 characters,
                 relationships,
             })
         }
         None => Json(RelationshipsResponse {
             language,
-            book,
+            book: params.book,
             characters: vec![],
             relationships: vec![],
         }),
