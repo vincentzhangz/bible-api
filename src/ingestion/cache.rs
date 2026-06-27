@@ -53,11 +53,7 @@ impl VisualizeCache {
             .or_else(|| self.locales.get("en"))
     }
 
-    pub fn get_book_data(
-        &self,
-        language: &str,
-        book: &str,
-    ) -> Option<&BookRelationshipsJson> {
+    pub fn get_book_data(&self, language: &str, book: &str) -> Option<&BookRelationshipsJson> {
         self.get_locale(language)
             .and_then(|l| l.books.get(book))
             .or_else(|| self.locales.get("en").and_then(|l| l.books.get(book)))

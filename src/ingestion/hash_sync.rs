@@ -1,6 +1,6 @@
 use sha2::{Digest, Sha256};
-use sqlx::postgres::Postgres;
 use sqlx::Transaction;
+use sqlx::postgres::Postgres;
 use tracing::info;
 
 pub fn calculate_hash(content: &[u8]) -> String {

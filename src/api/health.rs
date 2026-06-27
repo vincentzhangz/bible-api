@@ -38,9 +38,7 @@ pub async fn liveness() -> Json<LivenessResponse> {
     })
 }
 
-pub async fn readiness(
-    State(pool): State<PgPool>,
-) -> (StatusCode, Json<ReadinessResponse>) {
+pub async fn readiness(State(pool): State<PgPool>) -> (StatusCode, Json<ReadinessResponse>) {
     let db_status = check_db_status(&pool).await;
     let is_ready = db_status == "connected";
 

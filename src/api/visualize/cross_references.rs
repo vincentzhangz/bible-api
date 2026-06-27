@@ -64,13 +64,8 @@ pub async fn cross_references(
     )
     .await?;
 
-    let (source_book, source_chapter, source_verse) = source_result.unwrap_or_else(|| {
-        (
-            params.book.clone(),
-            params.chapter,
-            params.verse,
-        )
-    });
+    let (source_book, source_chapter, source_verse) =
+        source_result.unwrap_or_else(|| (params.book.clone(), params.chapter, params.verse));
 
     let verse_id = db::find_verse_id(
         &pool,
