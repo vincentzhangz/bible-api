@@ -75,7 +75,7 @@ mod tests {
     fn test_chapter_response_empty_verses() {
         let chapter = ChapterResponse {
             translation: "kjv".to_string(),
-            book: " Esther".to_string(),
+            book: "Esther".to_string(),
             chapter: 3,
             verses: vec![],
         };

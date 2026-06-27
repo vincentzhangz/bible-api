@@ -6,14 +6,18 @@ pub mod verses;
 pub mod visualize;
 
 use crate::config::env::AppConfig;
+use crate::ingestion::VisualizeCache;
 use axum::Router;
 use axum::extract::Extension;
 use axum::routing::get;
 use sqlx::PgPool;
 use std::sync::Arc;
 
-/// Creates the API routes for the application.
-pub fn create_routes(pool: PgPool, config: AppConfig) -> Router {
+pub fn create_routes(
+    pool: PgPool,
+    config: AppConfig,
+    visualize_cache: Arc<VisualizeCache>,
+) -> Router {
     let app_config = Arc::new(config);
 
     Router::new()
@@ -59,5 +63,6 @@ pub fn create_routes(pool: PgPool, config: AppConfig) -> Router {
             get(visualize::relationships),
         )
         .layer(Extension(app_config))
+        .layer(Extension(visualize_cache))
         .with_state(pool)
 }

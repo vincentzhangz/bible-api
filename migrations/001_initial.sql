@@ -67,44 +67,6 @@ CREATE TABLE IF NOT EXISTS cross_references (
     relationship_type TEXT
 );
 
--- Create visualize_timeline table for i18n timeline events
-CREATE TABLE IF NOT EXISTS visualize_timeline (
-    id SERIAL PRIMARY KEY,
-    language TEXT NOT NULL,
-    event_key TEXT NOT NULL,
-    event_text TEXT NOT NULL,
-    reference TEXT NOT NULL,
-    estimated_year INTEGER,
-    category TEXT NOT NULL,
-    UNIQUE(language, event_key)
-);
-
--- Create visualize_relationships table for i18n character relationships
-CREATE TABLE IF NOT EXISTS visualize_relationships (
-    id SERIAL PRIMARY KEY,
-    language TEXT NOT NULL,
-    book_key TEXT NOT NULL,
-    character_key TEXT NOT NULL,
-    character_name TEXT NOT NULL,
-    UNIQUE(language, book_key, character_key)
-);
-
--- Create visualize_character_relations table for i18n relationship data
-CREATE TABLE IF NOT EXISTS visualize_character_relations (
-    id SERIAL PRIMARY KEY,
-    language TEXT NOT NULL,
-    book_key TEXT NOT NULL,
-    rel_type TEXT NOT NULL,
-    from_key TEXT NOT NULL,
-    to_key TEXT NOT NULL,
-    UNIQUE(language, book_key, rel_type, from_key, to_key)
-);
-
--- Create indexes for visualize tables
-CREATE INDEX IF NOT EXISTS idx_visualize_timeline_language ON visualize_timeline(language);
-CREATE INDEX IF NOT EXISTS idx_visualize_relationships_lookup ON visualize_relationships(language, book_key);
-CREATE INDEX IF NOT EXISTS idx_visualize_character_relations_lookup ON visualize_character_relations(language, book_key);
-
 -- Create indexes for performance
 CREATE INDEX IF NOT EXISTS idx_verses_chapter_id ON verses(chapter_id);
 CREATE INDEX IF NOT EXISTS idx_verses_text ON verses USING GIN (to_tsvector('english', text));
@@ -112,3 +74,5 @@ CREATE INDEX IF NOT EXISTS idx_chapters_lookup ON chapters(translation_id, book_
 CREATE INDEX IF NOT EXISTS idx_translations_language ON translations(language);
 CREATE INDEX IF NOT EXISTS idx_translations_hash ON translations(json_hash);
 CREATE INDEX IF NOT EXISTS idx_cross_references_source ON cross_references(source_verse_id);
+CREATE INDEX IF NOT EXISTS idx_cross_references_target ON cross_references(target_verse_id);
+CREATE INDEX IF NOT EXISTS idx_books_lower_name ON books(LOWER(name));

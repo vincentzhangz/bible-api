@@ -1,5 +1,8 @@
 use serde::{Deserialize, Serialize};
 use sqlx::PgPool;
+use sqlx::QueryBuilder;
+use sqlx::postgres::Postgres;
+use sqlx::Transaction;
 use std::fs;
 use std::path::Path;
 use tracing::{error, info};
@@ -68,7 +71,6 @@ pub struct VerseJson {
     pub text: String,
 }
 
-/// Ingests a single translation JSON file into the database.
 pub async fn ingest_json_file(
     pool: &PgPool,
     path: &Path,
@@ -83,19 +85,21 @@ pub async fn ingest_json_file(
         .clone()
         .unwrap_or_else(|| "community".to_string());
 
-    let sync_status = check_and_sync_translation(pool, &translation.id, &hash).await?;
+    let mut tx = pool.begin().await?;
+
+    let sync_status = check_and_sync_translation(&mut tx, &translation.id, &hash).await?;
 
     match sync_status {
         SyncStatus::Skipped => {
             return Ok(());
         }
         SyncStatus::Updated => {
-            truncate_translation(pool, &translation.id).await?;
+            truncate_translation(&mut tx, &translation.id).await?;
         }
         SyncStatus::Ingested => {}
     }
 
-    let license_id = get_or_create_license(pool, &translation.metadata.license).await?;
+    let license_id = get_or_create_license(&mut tx, &translation.metadata.license).await?;
 
     sqlx::query(
         r#"
@@ -141,41 +145,39 @@ pub async fn ingest_json_file(
     .bind(translation.metadata.official.unwrap_or(false))
     .bind(translation.metadata.research.unwrap_or(false))
     .bind(&translation.metadata.version)
-    .execute(pool)
+    .execute(&mut *tx)
     .await?;
 
     for book_json in &translation.books {
-        let book_id = get_or_create_book(pool, &book_json.name, &book_json.testament).await?;
+        let book_id = get_or_create_book(&mut tx, &book_json.name, &book_json.testament).await?;
 
         for chapter_json in &book_json.chapters {
             let chapter_id =
-                insert_chapter(pool, &translation.id, book_id, chapter_json.chapter).await?;
+                insert_chapter(&mut tx, &translation.id, book_id, chapter_json.chapter).await?;
 
-            for verse_json in &chapter_json.verses {
-                insert_verse(pool, chapter_id, verse_json.verse, &verse_json.text).await?;
-            }
+            batch_insert_verses(&mut tx, chapter_id, &chapter_json.verses).await?;
         }
     }
+
+    tx.commit().await?;
 
     info!("Ingested translation: {}", translation.id);
     Ok(())
 }
 
 async fn get_or_create_license(
-    pool: &PgPool,
+    tx: &mut Transaction<'_, Postgres>,
     license_id: &str,
 ) -> Result<Option<String>, sqlx::Error> {
-    // Look up existing license by id
     let existing: Option<String> = sqlx::query_scalar("SELECT id FROM licenses WHERE id = $1")
         .bind(license_id)
-        .fetch_optional(pool)
+        .fetch_optional(&mut **tx)
         .await?;
 
     if let Some(id) = existing {
         return Ok(Some(id));
     }
 
-    // License doesn't exist - create it with the given id
     sqlx::query(
         r#"
         INSERT INTO licenses (id, name, attribution_required, commercial_use)
@@ -185,21 +187,21 @@ async fn get_or_create_license(
     )
     .bind(license_id)
     .bind(license_id)
-    .execute(pool)
+    .execute(&mut **tx)
     .await?;
 
     Ok(Some(license_id.to_string()))
 }
 
 async fn get_or_create_book(
-    pool: &PgPool,
+    tx: &mut Transaction<'_, Postgres>,
     name: &str,
     testament: &str,
 ) -> Result<i32, sqlx::Error> {
     let existing =
         sqlx::query_scalar::<_, Option<i32>>("SELECT id FROM books WHERE LOWER(name) = LOWER($1)")
             .bind(name)
-            .fetch_optional(pool)
+            .fetch_optional(&mut **tx)
             .await?;
 
     if let Some(id) = existing.flatten() {
@@ -207,7 +209,7 @@ async fn get_or_create_book(
     }
 
     let max_order = sqlx::query_scalar::<_, Option<i32>>("SELECT MAX(ord) FROM books")
-        .fetch_optional(pool)
+        .fetch_optional(&mut **tx)
         .await?
         .flatten()
         .unwrap_or(0);
@@ -224,14 +226,14 @@ async fn get_or_create_book(
     .bind(name)
     .bind(testament)
     .bind(new_order)
-    .fetch_one(pool)
+    .fetch_one(&mut **tx)
     .await?;
 
     Ok(id)
 }
 
 async fn insert_chapter(
-    pool: &PgPool,
+    tx: &mut Transaction<'_, Postgres>,
     translation_id: &str,
     book_id: i32,
     chapter_number: i32,
@@ -247,35 +249,53 @@ async fn insert_chapter(
     .bind(translation_id)
     .bind(book_id)
     .bind(chapter_number)
-    .fetch_one(pool)
+    .fetch_one(&mut **tx)
     .await?;
 
     Ok(id)
 }
 
-async fn insert_verse(
-    pool: &PgPool,
+async fn batch_insert_verses(
+    tx: &mut Transaction<'_, Postgres>,
     chapter_id: i32,
-    verse_number: i32,
-    text: &str,
+    verses: &[VerseJson],
 ) -> Result<(), sqlx::Error> {
-    sqlx::query(
-        r#"
-        INSERT INTO verses (chapter_id, verse_number, text)
-        VALUES ($1, $2, $3)
-        ON CONFLICT (chapter_id, verse_number) DO UPDATE SET text = EXCLUDED.text
-        "#,
-    )
-    .bind(chapter_id)
-    .bind(verse_number)
-    .bind(text)
-    .execute(pool)
-    .await?;
+    if verses.is_empty() {
+        return Ok(());
+    }
+
+    const BATCH_SIZE: usize = 1000;
+
+    for chunk in verses.chunks(BATCH_SIZE) {
+        let mut builder = QueryBuilder::<Postgres>::new(
+            "INSERT INTO verses (chapter_id, verse_number, text) VALUES ",
+        );
+
+        for (i, verse) in chunk.iter().enumerate() {
+            if i > 0 {
+                builder.push(", ");
+            }
+            builder.push("(");
+            builder.push_bind(chapter_id);
+            builder.push(", ");
+            builder.push_bind(verse.verse);
+            builder.push(", ");
+            builder.push_bind(verse.text.as_str());
+            builder.push(")");
+        }
+
+        builder.push(" ON CONFLICT (chapter_id, verse_number) DO UPDATE SET text = EXCLUDED.text");
+
+        builder.build().execute(&mut **tx).await?;
+    }
 
     Ok(())
 }
 
-async fn truncate_translation(pool: &PgPool, translation_id: &str) -> Result<(), sqlx::Error> {
+async fn truncate_translation(
+    tx: &mut Transaction<'_, Postgres>,
+    translation_id: &str,
+) -> Result<(), sqlx::Error> {
     sqlx::query(
         r#"
         DELETE FROM verses WHERE chapter_id IN (
@@ -284,23 +304,22 @@ async fn truncate_translation(pool: &PgPool, translation_id: &str) -> Result<(),
         "#,
     )
     .bind(translation_id)
-    .execute(pool)
+    .execute(&mut **tx)
     .await?;
 
     sqlx::query("DELETE FROM chapters WHERE translation_id = $1")
         .bind(translation_id)
-        .execute(pool)
+        .execute(&mut **tx)
         .await?;
 
     sqlx::query("DELETE FROM translations WHERE id = $1")
         .bind(translation_id)
-        .execute(pool)
+        .execute(&mut **tx)
         .await?;
 
     Ok(())
 }
 
-/// Ingests all JSON translation files from a directory.
 pub async fn ingest_all_json_files(
     pool: &PgPool,
     data_dir: &Path,

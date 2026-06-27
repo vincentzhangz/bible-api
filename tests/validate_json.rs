@@ -51,7 +51,7 @@ fn validate_translation(
     // Required top-level fields
     let required = ["id", "metadata", "books"];
     for field in required {
-        if !data.get(field).is_some() {
+        if data.get(field).is_none() {
             errors.push(format!(
                 "[{}] Missing required field: '{}'",
                 translation_id, field
@@ -60,8 +60,7 @@ fn validate_translation(
     }
 
     // Can't continue without these
-    if !data.get("id").is_some() || !data.get("metadata").is_some() || !data.get("books").is_some()
-    {
+    if data.get("id").is_none() || data.get("metadata").is_none() || data.get("books").is_none() {
         return errors;
     }
 
@@ -69,7 +68,7 @@ fn validate_translation(
     if let Some(metadata) = data.get("metadata") {
         let meta_required = ["name", "language", "license"];
         for field in meta_required {
-            if !metadata.get(field).is_some() {
+            if metadata.get(field).is_none() {
                 errors.push(format!(
                     "[{}] Missing metadata field: '{}'",
                     translation_id, field
@@ -78,13 +77,13 @@ fn validate_translation(
         }
 
         // Check license exists
-        if let Some(license) = metadata.get("license").and_then(|l| l.as_str()) {
-            if !licenses.contains(license) {
-                errors.push(format!(
-                    "[{}] Unknown license: '{}' (not in licenses.json)",
-                    translation_id, license
-                ));
-            }
+        if let Some(license) = metadata.get("license").and_then(|l| l.as_str())
+            && !licenses.contains(license)
+        {
+            errors.push(format!(
+                "[{}] Unknown license: '{}' (not in licenses.json)",
+                translation_id, license
+            ));
         }
     }
 
@@ -116,7 +115,7 @@ fn validate_book(
 
     let required = ["id", "name", "testament", "chapters"];
     for field in required {
-        if !book.get(field).is_some() {
+        if book.get(field).is_none() {
             errors.push(format!(
                 "[{}] Book[{}] missing field: '{}'",
                 translation_id, index, field
@@ -156,13 +155,13 @@ fn validate_book(
         }
 
         for (j, chapter) in chapters.iter().enumerate() {
-            if !chapter.get("chapter").is_some() {
+            if chapter.get("chapter").is_none() {
                 errors.push(format!(
                     "[{}] Book '{}' chapter[{}] missing 'chapter' number",
                     translation_id, book_id, j
                 ));
             }
-            if !chapter.get("verses").is_some() {
+            if chapter.get("verses").is_none() {
                 errors.push(format!(
                     "[{}] Book '{}' chapter[{}] missing 'verses'",
                     translation_id, book_id, j
@@ -171,23 +170,23 @@ fn validate_book(
             }
 
             if let Some(verses) = chapter.get("verses").and_then(|v| v.as_array()) {
-                if verses.is_empty() {
-                    if let Some(chapter_num) = chapter.get("chapter").and_then(|c| c.as_i64()) {
-                        errors.push(format!(
-                            "[{}] Book '{}' chapter {} has no verses",
-                            translation_id, book_id, chapter_num
-                        ));
-                    }
+                if verses.is_empty()
+                    && let Some(chapter_num) = chapter.get("chapter").and_then(|c| c.as_i64())
+                {
+                    errors.push(format!(
+                        "[{}] Book '{}' chapter {} has no verses",
+                        translation_id, book_id, chapter_num
+                    ));
                 }
 
                 for (k, verse) in verses.iter().enumerate() {
-                    if !verse.get("verse").is_some() {
+                    if verse.get("verse").is_none() {
                         errors.push(format!(
                             "[{}] Book '{}' chapter[{}] verse[{}] missing 'verse' number",
                             translation_id, book_id, j, k
                         ));
                     }
-                    if !verse.get("text").is_some() {
+                    if verse.get("text").is_none() {
                         errors.push(format!(
                             "[{}] Book '{}' chapter[{}] verse[{}] missing 'text'",
                             translation_id, book_id, j, k
@@ -207,7 +206,7 @@ fn validate_visualize(data: &serde_json::Value, file_name: &str) -> Vec<String> 
 
     let required = ["language", "language_name", "timeline", "books"];
     for field in required {
-        if !data.get(field).is_some() {
+        if data.get(field).is_none() {
             errors.push(format!(
                 "[{}] Missing required field: '{}'",
                 file_name, field
@@ -243,7 +242,7 @@ fn validate_timeline_event(event: &serde_json::Value, language: &str, index: usi
 
     let required = ["key", "event", "reference", "estimated_year", "category"];
     for field in required {
-        if !event.get(field).is_some() {
+        if event.get(field).is_none() {
             errors.push(format!(
                 "[{}] Timeline[{}] missing field: '{}'",
                 language, index, field
@@ -264,7 +263,7 @@ fn validate_book_relationships(
 
     let required = ["characters", "relationships"];
     for field in required {
-        if !book_data.get(field).is_some() {
+        if book_data.get(field).is_none() {
             errors.push(format!(
                 "[{}] Book '{}' missing field: '{}'",
                 language, book_key, field
@@ -276,13 +275,13 @@ fn validate_book_relationships(
     // Validate characters
     if let Some(characters) = book_data.get("characters").and_then(|c| c.as_array()) {
         for (i, char) in characters.iter().enumerate() {
-            if !char.get("key").is_some() {
+            if char.get("key").is_none() {
                 errors.push(format!(
                     "[{}] Book '{}' character[{}] missing 'key'",
                     language, book_key, i
                 ));
             }
-            if !char.get("name").is_some() {
+            if char.get("name").is_none() {
                 errors.push(format!(
                     "[{}] Book '{}' character[{}] missing 'name'",
                     language, book_key, i
@@ -295,7 +294,7 @@ fn validate_book_relationships(
     if let Some(relationships) = book_data.get("relationships").and_then(|r| r.as_array()) {
         for (i, rel) in relationships.iter().enumerate() {
             for field in &["type", "from", "to"] {
-                if !rel.get(*field).is_some() {
+                if rel.get(*field).is_none() {
                     errors.push(format!(
                         "[{}] Book '{}' relationship[{}] missing '{}'",
                         language, book_key, i, field

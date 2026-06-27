@@ -23,7 +23,6 @@ pub struct ChapterPathParams {
     pub chapter: i32,
 }
 
-/// Gets a specific verse by translation, book, chapter, and verse number.
 #[utoipa::path(
     get,
     path = "/api/v1/translations/{translation}/books/{book}/chapters/{chapter}/verses/{verse}",
@@ -61,18 +60,11 @@ pub async fn get_verse(
     .map_err(AppError::Database)?;
 
     match result {
-        Some((translation, book, chapter, verse_num, text)) => Ok(Json(VerseResponse {
-            translation,
-            book,
-            chapter,
-            verse: verse_num,
-            text,
-        })),
+        Some(row) => Ok(Json(VerseResponse::from(row))),
         None => Err(AppError::NotFound("Verse not found".to_string())),
     }
 }
 
-/// Gets all verses in a chapter by translation, book, and chapter number.
 #[utoipa::path(
     get,
     path = "/api/v1/translations/{translation}/books/{book}/chapters/{chapter}",
@@ -112,7 +104,15 @@ pub async fn get_chapter(
     };
 
     let verses = sqlx::query_as::<_, (i32, String)>(
-        "SELECT verse_number, text FROM verses WHERE chapter_id = (SELECT id FROM chapters WHERE translation_id = $1 AND book_id = (SELECT id FROM books WHERE LOWER(name) = LOWER($2)) AND chapter_number = $3) ORDER BY verse_number",
+        r#"
+        SELECT v.verse_number, v.text
+        FROM verses v
+        JOIN chapters c ON v.chapter_id = c.id
+        JOIN translations t ON c.translation_id = t.id
+        JOIN books b ON c.book_id = b.id
+        WHERE t.id = $1 AND LOWER(b.name) = LOWER($2) AND c.chapter_number = $3
+        ORDER BY v.verse_number
+        "#,
     )
     .bind(&params.translation)
     .bind(&params.book)

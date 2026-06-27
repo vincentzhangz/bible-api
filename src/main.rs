@@ -1,10 +1,3 @@
-mod api;
-mod config;
-mod db;
-mod error;
-mod ingestion;
-mod models;
-
 use axum::{
     Json, Router,
     extract::Extension,
@@ -14,6 +7,7 @@ use axum::{
     routing::get,
 };
 use std::net::SocketAddr;
+use std::sync::Arc;
 use tower_http::{
     cors::{Any, CorsLayer},
     set_header::SetResponseHeaderLayer,
@@ -22,14 +16,19 @@ use tower_http::{
 use tracing_subscriber::{layer::SubscriberExt, util::SubscriberInitExt};
 use utoipa::OpenApi;
 
-use api::middleware::{create_rate_limiter, rate_limit};
-use api::visualize::{
+use bible_api::api::middleware::{create_rate_limiter, rate_limit};
+use bible_api::api::visualize::{
     self, CharacterInfo, CharacterRelationship, CrossReferenceSource, CrossReferenceTarget,
     cross_references::CrossReferenceResponse, relationships::RelationshipsResponse,
     timeline::TimelineEvent, word_frequency::WordFrequency,
 };
-use api::{search, translations, verses};
-use models::{BookResponse, BooksResponse, ChapterResponse, TranslationResponse, VerseResponse};
+use bible_api::api::{search, translations, verses};
+use bible_api::config::AppConfig;
+use bible_api::ingestion::{VisualizeCache, ingest_all_json_files};
+use bible_api::models::{
+    BookResponse, BooksResponse, ChapterResponse, TranslationResponse, VerseResponse,
+};
+use bible_api::{api, db};
 
 #[derive(OpenApi)]
 #[openapi(
@@ -71,14 +70,9 @@ struct ApiDoc;
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
-    tracing_subscriber::registry()
-        .with(tracing_subscriber::EnvFilter::new(
-            std::env::var("RUST_LOG").unwrap_or_else(|_| "info".to_string()),
-        ))
-        .with(tracing_subscriber::fmt::layer())
-        .init();
+    setup_logging();
 
-    let config = config::AppConfig::from_env();
+    let config = AppConfig::from_env();
 
     tracing::info!("Connecting to database...");
     let pool = db::create_pool(
@@ -92,7 +86,10 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     db::run_migrations(&pool).await?;
 
     tracing::info!("Ingesting JSON files...");
-    ingestion::ingest_all_json_files(&pool, &config.data_dir).await?;
+    ingest_all_json_files(&pool, &config.data_dir).await?;
+
+    tracing::info!("Loading visualize cache...");
+    let visualize_cache = Arc::new(VisualizeCache::load(&config.data_dir).await);
 
     tracing::info!(
         "Starting API server on {}:{} with rate limit {}/{}",
@@ -102,35 +99,50 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         config.rate_limit_burst
     );
 
-    let cors_layer = if config.cors_allowed_origins.iter().any(|o| o == "*") {
-        CorsLayer::new()
-            .allow_origin(Any)
-            .allow_methods(Any)
-            .allow_headers(Any)
-    } else {
-        let origins: Vec<_> = config
-            .cors_allowed_origins
-            .iter()
-            .filter_map(|o| o.parse().ok())
-            .collect();
-        CorsLayer::new()
-            .allow_origin(origins)
-            .allow_methods(Any)
-            .allow_headers(Any)
-    };
+    let app = build_app(pool.clone(), config.clone(), visualize_cache);
 
+    let addr: SocketAddr = format!("{}:{}", config.api_host, config.api_port)
+        .parse()
+        .expect("Invalid address");
+
+    let listener = tokio::net::TcpListener::bind(addr).await?;
+    tracing::info!("Server listening on {}", addr);
+
+    axum::serve(listener, app)
+        .with_graceful_shutdown(shutdown_signal())
+        .await?;
+
+    Ok(())
+}
+
+fn setup_logging() {
+    tracing_subscriber::registry()
+        .with(tracing_subscriber::EnvFilter::new(
+            std::env::var("RUST_LOG").unwrap_or_else(|_| "info".to_string()),
+        ))
+        .with(tracing_subscriber::fmt::layer())
+        .init();
+}
+
+fn build_app(
+    pool: sqlx::PgPool,
+    config: AppConfig,
+    visualize_cache: Arc<VisualizeCache>,
+) -> Router {
+    let cors_layer = build_cors_layer(&config);
     let rate_limiter = create_rate_limiter(config.rate_limit_per_second, config.rate_limit_burst);
-
-    let x_content_type_options = HeaderName::from_static("x-content-type-options");
-    let x_frame_options = HeaderName::from_static("x-frame-options");
-    let strict_transport_security = HeaderName::from_static("strict-transport-security");
-
     let openapi = ApiDoc::openapi();
 
-    let app = Router::new()
-        .nest("/api/v1", api::create_routes(pool.clone(), config.clone()))
-        .route("/", get(|| async move {
-            Html(r#"<!DOCTYPE html>
+    Router::new()
+        .nest(
+            "/api/v1",
+            api::create_routes(pool, config, visualize_cache),
+        )
+        .route(
+            "/",
+            get(|| async move {
+                Html(
+                    r#"<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -148,14 +160,22 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         </a>
     </div>
 </body>
-</html>"#)
-        }))
-        .route("/api-docs/openapi.json", get({
-            let openapi = openapi.clone();
-            move || async move { Json(openapi) }
-        }))
-        .route("/swagger-ui", get(|| async move {
-            Html(r##"<!DOCTYPE html>
+</html>"#,
+                )
+            }),
+        )
+        .route(
+            "/api-docs/openapi.json",
+            get({
+                let openapi = openapi.clone();
+                move || async move { Json(openapi) }
+            }),
+        )
+        .route(
+            "/swagger-ui",
+            get(|| async move {
+                Html(
+                    r##"<!DOCTYPE html>
 <html>
 <head>
     <title>Bible API - Swagger UI</title>
@@ -175,8 +195,10 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         };
     </script>
 </body>
-</html>"##)
-        }))
+</html>"##,
+                )
+            }),
+        )
         .layer(axum_middleware::from_fn(rate_limit))
         .layer(axum_middleware::from_fn(api::middleware::request_id))
         .layer(TraceLayer::new_for_http())
@@ -184,30 +206,36 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         .layer(Extension(rate_limiter))
         .layer(Extension(openapi))
         .layer(SetResponseHeaderLayer::if_not_present(
-            x_content_type_options,
+            HeaderName::from_static("x-content-type-options"),
             HeaderValue::from_static("nosniff"),
         ))
         .layer(SetResponseHeaderLayer::if_not_present(
-            x_frame_options,
+            HeaderName::from_static("x-frame-options"),
             HeaderValue::from_static("DENY"),
         ))
         .layer(SetResponseHeaderLayer::if_not_present(
-            strict_transport_security,
+            HeaderName::from_static("strict-transport-security"),
             HeaderValue::from_static("max-age=31536000"),
-        ));
+        ))
+}
 
-    let addr: SocketAddr = format!("{}:{}", config.api_host, config.api_port)
-        .parse()
-        .expect("Invalid address");
-
-    let listener = tokio::net::TcpListener::bind(addr).await?;
-    tracing::info!("Server listening on {}", addr);
-
-    axum::serve(listener, app)
-        .with_graceful_shutdown(shutdown_signal())
-        .await?;
-
-    Ok(())
+fn build_cors_layer(config: &AppConfig) -> CorsLayer {
+    if config.cors_allowed_origins.iter().any(|o| o == "*") {
+        CorsLayer::new()
+            .allow_origin(Any)
+            .allow_methods(Any)
+            .allow_headers(Any)
+    } else {
+        let origins: Vec<_> = config
+            .cors_allowed_origins
+            .iter()
+            .filter_map(|o| o.parse().ok())
+            .collect();
+        CorsLayer::new()
+            .allow_origin(origins)
+            .allow_methods(Any)
+            .allow_headers(Any)
+    }
 }
 
 async fn shutdown_signal() {

@@ -8,7 +8,7 @@ pub struct VisualizeLocale {
     pub books: std::collections::HashMap<String, BookRelationshipsJson>,
 }
 
-#[derive(Debug, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
 pub struct TimelineEventJson {
     pub key: String,
     pub event: String,

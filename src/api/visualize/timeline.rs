@@ -3,12 +3,11 @@ use axum::{
     extract::{Extension, Path, Query},
 };
 use serde::{Deserialize, Serialize};
-use std::path::Path as StdPath;
 use std::sync::Arc;
 use utoipa::{IntoParams, ToSchema};
 
 use super::language_from_translation;
-use crate::config::env::AppConfig;
+use crate::ingestion::cache::VisualizeCache;
 
 #[derive(Debug, Serialize, ToSchema)]
 pub struct TimelineEvent {
@@ -25,7 +24,6 @@ pub struct TimelineQuery {
     pub lang: Option<String>,
 }
 
-/// Gets timeline events for a translation.
 #[utoipa::path(
     get,
     path = "/api/v1/visualize/timeline/{translation}",
@@ -37,31 +35,30 @@ pub struct TimelineQuery {
     )
 )]
 pub async fn timeline(
-    Extension(config): Extension<Arc<AppConfig>>,
+    Extension(cache): Extension<Arc<VisualizeCache>>,
     Path(translation): Path<String>,
     Query(query): Query<TimelineQuery>,
 ) -> Json<Vec<TimelineEvent>> {
     let language = query
         .lang
-        .clone()
         .unwrap_or_else(|| language_from_translation(&translation));
 
-    let data_dir = StdPath::new(&config.data_dir);
+    let events = cache
+        .get_locale(&language)
+        .map(|locale| {
+            locale
+                .timeline
+                .iter()
+                .map(|e| TimelineEvent {
+                    key: e.key.clone(),
+                    event: e.event.clone(),
+                    reference: e.reference.clone(),
+                    estimated_year: e.estimated_year,
+                    category: e.category.clone(),
+                })
+                .collect()
+        })
+        .unwrap_or_default();
 
-    if let Some(locale) = crate::ingestion::visualize::load_visualize_locale(data_dir, &language) {
-        let events: Vec<TimelineEvent> = locale
-            .timeline
-            .into_iter()
-            .map(|e| TimelineEvent {
-                key: e.key,
-                event: e.event,
-                reference: e.reference,
-                estimated_year: e.estimated_year,
-                category: e.category,
-            })
-            .collect();
-        Json(events)
-    } else {
-        Json(vec![])
-    }
+    Json(events)
 }

@@ -22,7 +22,6 @@ pub struct WordFrequencyPath {
     pub book: String,
 }
 
-/// Gets word frequency analysis for a book.
 #[utoipa::path(
     get,
     path = "/api/v1/visualize/word-frequency/{translation}/{book}",
@@ -39,27 +38,27 @@ pub async fn word_frequency(
     Extension(config): Extension<Arc<AppConfig>>,
     Path(params): Path<WordFrequencyPath>,
 ) -> Result<Json<Vec<WordFrequency>>, AppError> {
-    let limit = config.word_frequency_limit;
-    let results = sqlx::query_as::<_, (String, i64)>(&format!(
+    let limit = config.word_frequency_limit as i64;
+    let results = sqlx::query_as::<_, (String, i64)>(
         r#"
-            SELECT word, COUNT(*) as count
-            FROM (
-                SELECT unnest(string_to_array(lower(v.text), ' ')) as word
-                FROM verses v
-                JOIN chapters c ON v.chapter_id = c.id
-                JOIN translations t ON c.translation_id = t.id
-                JOIN books b ON c.book_id = b.id
-                WHERE t.id = $1 AND LOWER(b.name) = LOWER($2)
-            ) words
-            WHERE length(word) > 3
-            GROUP BY word
-            ORDER BY count DESC
-            LIMIT {}
-            "#,
-        limit
-    ))
+        SELECT word, COUNT(*) as count
+        FROM (
+            SELECT unnest(string_to_array(lower(v.text), ' ')) as word
+            FROM verses v
+            JOIN chapters c ON v.chapter_id = c.id
+            JOIN translations t ON c.translation_id = t.id
+            JOIN books b ON c.book_id = b.id
+            WHERE t.id = $1 AND LOWER(b.name) = LOWER($2)
+        ) words
+        WHERE length(word) > 3
+        GROUP BY word
+        ORDER BY count DESC
+        LIMIT $3
+        "#,
+    )
     .bind(&params.translation)
     .bind(&params.book)
+    .bind(limit)
     .fetch_all(&pool)
     .await
     .map_err(AppError::Database)?;

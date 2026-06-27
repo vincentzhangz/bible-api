@@ -12,7 +12,6 @@ pub struct BookPathParams {
     pub book: String,
 }
 
-/// Lists all available Bible translations.
 #[utoipa::path(
     get,
     path = "/api/v1/translations",
@@ -30,21 +29,11 @@ pub async fn list_translations(
     .await
     .map_err(AppError::Database)?;
 
-    let response: Vec<TranslationResponse> = translations
-        .into_iter()
-        .map(|t| TranslationResponse {
-            id: t.id,
-            name: t.name,
-            language: t.language,
-            license: t.license_id.unwrap_or_else(|| "none".to_string()),
-            source: t.source,
-        })
-        .collect();
+    let response: Vec<TranslationResponse> = translations.into_iter().map(Into::into).collect();
 
     Ok(Json(response))
 }
 
-/// Gets a specific translation by ID.
 #[utoipa::path(
     get,
     path = "/api/v1/translations/{translation}",
@@ -69,18 +58,11 @@ pub async fn get_translation(
     .map_err(AppError::Database)?;
 
     match translation {
-        Some(t) => Ok(Json(TranslationResponse {
-            id: t.id,
-            name: t.name,
-            language: t.language,
-            license: t.license_id.unwrap_or_else(|| "none".to_string()),
-            source: t.source,
-        })),
+        Some(t) => Ok(Json(t.into())),
         None => Err(AppError::NotFound(format!("translation {} not found", id))),
     }
 }
 
-/// Lists all books in a translation.
 #[utoipa::path(
     get,
     path = "/api/v1/translations/{translation}/books",
@@ -110,7 +92,6 @@ pub async fn list_books(
     Ok(Json(BooksResponse { translation, books }))
 }
 
-/// Gets all chapters in a book of a translation.
 #[utoipa::path(
     get,
     path = "/api/v1/translations/{translation}/books/{book}",
