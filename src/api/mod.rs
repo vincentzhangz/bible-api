@@ -1,7 +1,11 @@
+pub mod books;
+pub mod daily;
 pub mod health;
 pub mod middleware;
+pub mod parallel;
 pub mod search;
 pub mod translations;
+pub mod verse_context;
 pub mod verses;
 pub mod visualize;
 
@@ -42,10 +46,19 @@ pub fn create_routes(
             get(verses::get_verse),
         )
         .route(
+            "/translations/{translation}/books/{book}/chapters/{chapter}/verses/{verse}/context",
+            get(verse_context::verse_context),
+        )
+        .route(
             "/translations/{translation}/books/{book}/chapters/{chapter}",
             get(verses::get_chapter),
         )
+        .route("/books", get(books::list_books))
+        .route("/books/{book}", get(books::get_book))
         .route("/search", get(search::search))
+        .route("/search/results", get(search::search_results))
+        .route("/parallel/{book}/{chapter}", get(parallel::parallel))
+        .route("/reading/daily", get(daily::daily))
         .route(
             "/visualize/word-frequency/{translation}/{book}",
             get(visualize::word_frequency),

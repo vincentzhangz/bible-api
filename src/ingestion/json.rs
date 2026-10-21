@@ -8,6 +8,7 @@ use std::path::Path;
 use tracing::{error, info};
 
 use super::hash_sync::{SyncStatus, calculate_hash, check_and_sync_translation};
+use crate::canonical;
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct TranslationJson {
@@ -148,8 +149,18 @@ pub async fn ingest_json_file(
     .execute(&mut *tx)
     .await?;
 
+    let mut skipped: Vec<&str> = Vec::new();
+
     for book_json in &translation.books {
-        let book_id = get_or_create_book(&mut tx, &book_json.name, &book_json.testament).await?;
+        // Books are matched by name. A translation may rename a book, and it
+        // may also carry apocryphal works that are not part of the canon; those
+        // are left out rather than forced onto a canonical book.
+        let Some(book_id) = canonical_book_id(&book_json.name) else {
+            skipped.push(&book_json.name);
+            continue;
+        };
+
+        record_book_name(&mut tx, &translation.id, book_id, &book_json.name).await?;
 
         for chapter_json in &book_json.chapters {
             let chapter_id =
@@ -161,7 +172,47 @@ pub async fn ingest_json_file(
 
     tx.commit().await?;
 
-    info!("Ingested translation: {}", translation.id);
+    if skipped.is_empty() {
+        info!("Ingested translation: {}", translation.id);
+    } else {
+        info!(
+            "Ingested translation: {} ({} apocryphal books skipped: {})",
+            translation.id,
+            skipped.len(),
+            skipped.join(", ")
+        );
+    }
+
+    Ok(())
+}
+
+/// Resolves the canonical id of a book named by a translation.
+///
+/// A translation may rename a book (the Indonesian Terjemahan Baru calls
+/// Genesis "Kejadian"), so the name is matched against the canonical names and
+/// their aliases. A name that matches nothing is not part of the canon.
+fn canonical_book_id(name: &str) -> Option<i32> {
+    canonical::find_by_name(name).map(|(canonical_index, _)| (canonical_index + 1) as i32)
+}
+
+/// Stores the name a translation uses for a book.
+async fn record_book_name(
+    tx: &mut Transaction<'_, Postgres>,
+    translation_id: &str,
+    book_id: i32,
+    name: &str,
+) -> Result<(), sqlx::Error> {
+    sqlx::query(
+        "INSERT INTO translation_book_names (translation_id, book_id, name) \
+         VALUES ($1, $2, $3) \
+         ON CONFLICT (translation_id, book_id) DO UPDATE SET name = EXCLUDED.name",
+    )
+    .bind(translation_id)
+    .bind(book_id)
+    .bind(name)
+    .execute(&mut **tx)
+    .await?;
+
     Ok(())
 }
 
@@ -191,45 +242,6 @@ async fn get_or_create_license(
     .await?;
 
     Ok(Some(license_id.to_string()))
-}
-
-async fn get_or_create_book(
-    tx: &mut Transaction<'_, Postgres>,
-    name: &str,
-    testament: &str,
-) -> Result<i32, sqlx::Error> {
-    let existing =
-        sqlx::query_scalar::<_, Option<i32>>("SELECT id FROM books WHERE LOWER(name) = LOWER($1)")
-            .bind(name)
-            .fetch_optional(&mut **tx)
-            .await?;
-
-    if let Some(id) = existing.flatten() {
-        return Ok(id);
-    }
-
-    let max_order = sqlx::query_scalar::<_, Option<i32>>("SELECT MAX(ord) FROM books")
-        .fetch_optional(&mut **tx)
-        .await?
-        .flatten()
-        .unwrap_or(0);
-
-    let new_order = max_order + 1;
-
-    let id = sqlx::query_scalar::<_, i32>(
-        r#"
-        INSERT INTO books (name, testament, ord)
-        VALUES ($1, $2, $3)
-        RETURNING id
-        "#,
-    )
-    .bind(name)
-    .bind(testament)
-    .bind(new_order)
-    .fetch_one(&mut **tx)
-    .await?;
-
-    Ok(id)
 }
 
 async fn insert_chapter(
@@ -308,6 +320,11 @@ async fn truncate_translation(
     .await?;
 
     sqlx::query("DELETE FROM chapters WHERE translation_id = $1")
+        .bind(translation_id)
+        .execute(&mut **tx)
+        .await?;
+
+    sqlx::query("DELETE FROM translation_book_names WHERE translation_id = $1")
         .bind(translation_id)
         .execute(&mut **tx)
         .await?;

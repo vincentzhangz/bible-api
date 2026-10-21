@@ -6,7 +6,9 @@ use utoipa::ToSchema;
 pub struct BookResponse {
     pub id: i32,
     pub name: String,
+    pub slug: String,
     pub testament: String,
+    pub ord: i32,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize, ToSchema)]

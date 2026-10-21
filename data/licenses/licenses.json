@@ -1,5 +1,12 @@
 [
   {
+    "id": "cc0",
+    "name": "Creative Commons Public Domain Dedication",
+    "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "attributionRequired": false,
+    "commercialUse": true
+  },
+  {
     "id": "public-domain",
     "name": "Public Domain",
     "url": "https://creativecommons.org/publicdomain/",

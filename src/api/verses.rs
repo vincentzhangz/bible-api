@@ -5,6 +5,7 @@ use axum::{
 use serde::Deserialize;
 use sqlx::PgPool;
 
+use crate::db;
 use crate::error::AppError;
 use crate::models::{ChapterResponse, VerseResponse};
 
@@ -28,7 +29,7 @@ pub struct ChapterPathParams {
     path = "/api/v1/translations/{translation}/books/{book}/chapters/{chapter}/verses/{verse}",
     params(
         ("translation" = String, Path, description = "Translation ID"),
-        ("book" = String, Path, description = "Book name"),
+        ("book" = String, Path, description = "Book name or slug"),
         ("chapter" = i32, Path, description = "Chapter number"),
         ("verse" = i32, Path, description = "Verse number")
     ),
@@ -41,6 +42,10 @@ pub async fn get_verse(
     State(pool): State<PgPool>,
     Path(params): Path<VersePathParams>,
 ) -> Result<Json<VerseResponse>, AppError> {
+    let resolved = db::resolve_book(&pool, &params.book)
+        .await?
+        .ok_or_else(|| AppError::NotFound(format!("book {} not found", params.book)))?;
+
     let result = sqlx::query_as::<_, (String, String, i32, i32, String)>(
         r#"
         SELECT t.id, b.name, c.chapter_number, v.verse_number, v.text
@@ -48,11 +53,11 @@ pub async fn get_verse(
         JOIN chapters c ON v.chapter_id = c.id
         JOIN translations t ON c.translation_id = t.id
         JOIN books b ON c.book_id = b.id
-        WHERE t.id = $1 AND LOWER(b.name) = LOWER($2) AND c.chapter_number = $3 AND v.verse_number = $4
+        WHERE t.id = $1 AND c.book_id = $2 AND c.chapter_number = $3 AND v.verse_number = $4
         "#,
     )
     .bind(&params.translation)
-    .bind(&params.book)
+    .bind(resolved.id)
     .bind(params.chapter)
     .bind(params.verse)
     .fetch_optional(&pool)
@@ -70,7 +75,7 @@ pub async fn get_verse(
     path = "/api/v1/translations/{translation}/books/{book}/chapters/{chapter}",
     params(
         ("translation" = String, Path, description = "Translation ID"),
-        ("book" = String, Path, description = "Book name"),
+        ("book" = String, Path, description = "Book name or slug"),
         ("chapter" = i32, Path, description = "Chapter number")
     ),
     responses(
@@ -82,17 +87,21 @@ pub async fn get_chapter(
     State(pool): State<PgPool>,
     Path(params): Path<ChapterPathParams>,
 ) -> Result<Json<ChapterResponse>, AppError> {
+    let resolved = db::resolve_book(&pool, &params.book)
+        .await?
+        .ok_or_else(|| AppError::NotFound(format!("book {} not found", params.book)))?;
+
     let result = sqlx::query_as::<_, (String, String, i32)>(
         r#"
         SELECT t.id, b.name, c.chapter_number
         FROM chapters c
         JOIN translations t ON c.translation_id = t.id
         JOIN books b ON c.book_id = b.id
-        WHERE t.id = $1 AND LOWER(b.name) = LOWER($2) AND c.chapter_number = $3
+        WHERE t.id = $1 AND c.book_id = $2 AND c.chapter_number = $3
         "#,
     )
     .bind(&params.translation)
-    .bind(&params.book)
+    .bind(resolved.id)
     .bind(params.chapter)
     .fetch_optional(&pool)
     .await
@@ -108,14 +117,12 @@ pub async fn get_chapter(
         SELECT v.verse_number, v.text
         FROM verses v
         JOIN chapters c ON v.chapter_id = c.id
-        JOIN translations t ON c.translation_id = t.id
-        JOIN books b ON c.book_id = b.id
-        WHERE t.id = $1 AND LOWER(b.name) = LOWER($2) AND c.chapter_number = $3
+        WHERE c.translation_id = $1 AND c.book_id = $2 AND c.chapter_number = $3
         ORDER BY v.verse_number
         "#,
     )
     .bind(&params.translation)
-    .bind(&params.book)
+    .bind(resolved.id)
     .bind(params.chapter)
     .fetch_all(&pool)
     .await

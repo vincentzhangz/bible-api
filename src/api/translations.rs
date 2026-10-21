@@ -22,8 +22,12 @@ pub struct BookPathParams {
 pub async fn list_translations(
     State(pool): State<PgPool>,
 ) -> Result<Json<Vec<TranslationResponse>>, AppError> {
+    // Grouped by language so that a reader who knows their language can find
+    // it straight away.
     let translations = sqlx::query_as::<_, Translation>(
-        "SELECT id, name, language, license_id, source, json_hash FROM translations ORDER BY name",
+        "SELECT id, name, language, license_id, source, json_hash, shortname, \
+         year, publisher, description, url, copyright_statement, version \
+         FROM translations ORDER BY language, name",
     )
     .fetch_all(&pool)
     .await
@@ -50,7 +54,9 @@ pub async fn get_translation(
     Path(id): Path<String>,
 ) -> Result<Json<TranslationResponse>, AppError> {
     let translation = sqlx::query_as::<_, Translation>(
-        "SELECT id, name, language, license_id, source, json_hash FROM translations WHERE id = $1",
+        "SELECT id, name, language, license_id, source, json_hash, shortname, \
+         year, publisher, description, url, copyright_statement, version \
+         FROM translations WHERE id = $1",
     )
     .bind(&id)
     .fetch_optional(&pool)
@@ -78,10 +84,10 @@ pub async fn list_books(
     Path(translation): Path<String>,
 ) -> Result<Json<BooksResponse>, AppError> {
     let books = sqlx::query_as::<_, BookResponse>(
-        "SELECT b.id, b.name, b.testament FROM books b \
+        "SELECT b.id, b.name, b.slug, b.testament, b.ord FROM books b \
          JOIN chapters c ON b.id = c.book_id \
          WHERE c.translation_id = $1 \
-         GROUP BY b.id, b.name, b.testament \
+         GROUP BY b.id, b.name, b.slug, b.testament, b.ord \
          ORDER BY b.ord",
     )
     .bind(&translation)
@@ -97,7 +103,7 @@ pub async fn list_books(
     path = "/api/v1/translations/{translation}/books/{book}",
     params(
         ("translation" = String, Path, description = "Translation ID"),
-        ("book" = String, Path, description = "Book name")
+        ("book" = String, Path, description = "Book name or slug")
     ),
     responses(
         (status = 200, description = "Chapter numbers", body = Vec<i32>)
@@ -107,14 +113,17 @@ pub async fn get_book_chapters(
     State(pool): State<PgPool>,
     Path(params): Path<BookPathParams>,
 ) -> Result<Json<Vec<i32>>, AppError> {
+    let resolved = crate::db::resolve_book(&pool, &params.book)
+        .await?
+        .ok_or_else(|| AppError::NotFound(format!("book {} not found", params.book)))?;
+
     let chapters = sqlx::query_as::<_, (i32,)>(
         "SELECT c.chapter_number FROM chapters c \
-         JOIN books b ON c.book_id = b.id \
-         WHERE c.translation_id = $1 AND LOWER(b.name) = LOWER($2) \
+         WHERE c.translation_id = $1 AND c.book_id = $2 \
          ORDER BY c.chapter_number",
     )
     .bind(&params.translation)
-    .bind(&params.book)
+    .bind(resolved.id)
     .fetch_all(&pool)
     .await
     .map_err(AppError::Database)?;

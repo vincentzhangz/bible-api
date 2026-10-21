@@ -22,11 +22,14 @@ use bible_api::api::visualize::{
     cross_references::CrossReferenceResponse, relationships::RelationshipsResponse,
     timeline::TimelineEvent, word_frequency::WordFrequency,
 };
-use bible_api::api::{search, translations, verses};
+use bible_api::api::{books, daily, parallel, search, translations, verse_context, verses};
 use bible_api::config::AppConfig;
 use bible_api::ingestion::{VisualizeCache, ingest_all_json_files};
 use bible_api::models::{
-    BookResponse, BooksResponse, ChapterResponse, TranslationResponse, VerseResponse,
+    BookDetailResponse, BookResponse, BookSummary, BooksListResponse, BooksResponse,
+    ChapterResponse, CrossReference, DailyReading, NeighborPassage, ParallelResponse,
+    ParallelTranslation, SearchHit, SearchResultsResponse, TranslationResponse,
+    VerseContextResponse, VerseResponse, VerseText,
 };
 use bible_api::{api, db};
 
@@ -39,7 +42,13 @@ use bible_api::{api, db};
         translations::get_book_chapters,
         verses::get_chapter,
         verses::get_verse,
+        verse_context::verse_context,
         search::search,
+        search::search_results,
+        books::list_books,
+        books::get_book,
+        parallel::parallel,
+        daily::daily,
         visualize::word_frequency::word_frequency,
         visualize::cross_references::cross_references,
         visualize::timeline::timeline,
@@ -49,8 +58,20 @@ use bible_api::{api, db};
         TranslationResponse,
         BookResponse,
         BooksResponse,
+        BookSummary,
+        BooksListResponse,
+        BookDetailResponse,
         ChapterResponse,
         VerseResponse,
+        VerseText,
+        NeighborPassage,
+        CrossReference,
+        VerseContextResponse,
+        ParallelTranslation,
+        ParallelResponse,
+        DailyReading,
+        SearchHit,
+        SearchResultsResponse,
         WordFrequency,
         CrossReferenceSource,
         CrossReferenceTarget,
@@ -62,7 +83,7 @@ use bible_api::{api, db};
     )),
     info(
         title = "Bible API",
-        version = "0.2.0",
+        version = env!("CARGO_PKG_VERSION"),
         description = "API for browsing and searching the Bible"
     )
 )]
@@ -84,6 +105,9 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     tracing::info!("Running migrations...");
     db::run_migrations(&pool).await?;
+
+    tracing::info!("Seeding canonical books...");
+    db::seed_canonical_books(&pool).await?;
 
     tracing::info!("Ingesting JSON files...");
     ingest_all_json_files(&pool, &config.data_dir).await?;

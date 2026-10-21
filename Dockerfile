@@ -20,7 +20,7 @@ COPY migrations/ /app/migrations/
 
 USER appuser
 
-HEALTHCHECK --interval=30s --timeout=5s --start-period=5s --retries=3 \
+HEALTHCHECK --interval=10s --timeout=5s --start-period=30s --retries=12 \
     CMD curl -f http://localhost:8080/api/v1/health/live || exit 1
 
 ENTRYPOINT ["bible-api"]

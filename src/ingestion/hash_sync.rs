@@ -3,8 +3,13 @@ use sqlx::Transaction;
 use sqlx::postgres::Postgres;
 use tracing::info;
 
+/// Bumped whenever the shape of the ingested data changes, which forces every
+/// translation to be re-ingested even when its source file is untouched.
+const INGESTION_VERSION: &str = "3";
+
 pub fn calculate_hash(content: &[u8]) -> String {
     let mut hasher = Sha256::new();
+    hasher.update(INGESTION_VERSION.as_bytes());
     hasher.update(content);
     hex::encode(hasher.finalize())
 }
@@ -51,7 +56,9 @@ mod tests {
     fn test_calculate_hash_empty_input() {
         let input = b"";
         let hash = calculate_hash(input);
-        assert_eq!(
+        // The hash covers the ingestion version as well as the content.
+        assert_eq!(hash.len(), 64);
+        assert_ne!(
             hash,
             "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
         );
@@ -63,7 +70,7 @@ mod tests {
         let hash = calculate_hash(input);
         assert_eq!(
             hash,
-            "b94d27b9934d3e08a52e52d7da7dabfac484efe37a5380ee9088f7ace2efcde9"
+            "7b2175a196effa3691a5ca30e58419f2dbf42a9d807d7b4ae400e72c14863313"
         );
     }
 
